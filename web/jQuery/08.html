@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+    
+    $(document).ready(function(){
+        let textMax =70;
+        $(`#feedback`).html(`<span style=red>${textMax}</span>剩餘字數`)
+
+        $(`#talk`).keyup(function(){
+            let textLength = $(this).val().length;
+            let textRemaining = textMax -textLength;
+            $(`#feedback`).html(`<span style="color:red;">${textRemaining}</span>剩餘字數`);
+        })
+    });
+
+    </script>
+
+</head>
+<body>
+        <form>
+                <textarea id="talk" rows="5" cols="25" maxlength="70"></textarea>
+                <p id="feedback"></p>
+            </form>
+
+        
+</body>
+</html>

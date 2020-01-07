@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://10.120.30.199/plugin_sevenSeg.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>jQuery plugin--sevenSeg</title>
+    <link rel="stylesheet" href="http://10.120.30.199/plugin_sevenSeg.html">
+    <script src="./jQuery plugin--sevenSeg_files/jquery.min.js.下載"></script>
+    <script src="./jQuery plugin--sevenSeg_files/jquery-ui.min.js.下載"></script>
+    <script src="./jQuery plugin--sevenSeg_files/sevenSeg.js.下載"></script>
+    <script>
+        $(document).ready(function(){
+            // setInterval(某函數,多少毫秒);
+            setInterval(function(){
+                var now = new Date();
+                var seconds = now.getSeconds();
+                var milliseconds = now.getMilliseconds();
+                var showTime = `${seconds}.${milliseconds}`;
+
+                $('#theTime').sevenSeg({
+                    value: showTime,                //顯示內容
+                    digits: 5,                      //顯示幾位數
+                    colorOn: '#0f0',                //顯示的顏色
+                    colorOff: 'rgba(0,255,0,0.3)',  //消失的顏色
+                });
+
+            },100);
+
+
+           
+        });
+    </script>
+</head>
+<body>
+    <div id="theTime" style="width: 150px; height: 65px; user-select: auto;"></div>
+
+<div class="liner-mini-button"><a class="liner-mb liner-save-button" style="background-image: url(&#39;chrome-extension://bmhcbmnbenmcecpmpepghooflbehcack/images/mini-btn@3x.png&#39;) !important;"></a></div><div class="liner-mini-tooltip"><span class="liner-color-yellow liner-mini-color-circle liner-save-button"></span><span class="liner-color-green liner-mini-color-circle liner-save-button"></span><span class="liner-color-orange liner-mini-color-circle liner-save-button"></span><span class="liner-color-violet liner-mini-color-circle liner-save-button"></span><span class="liner-color-blue liner-mini-color-circle liner-save-button"></span><span class="liner-color-pink liner-mini-color-circle liner-save-button"></span></div><div class="liner-tooltip-wrap"><div class="liner-tooltip-menu"><span class="liner-tooltip-color liner-tooltip-icon"></span><span class="liner-tooltip-comment liner-tooltip-icon"></span><span class="liner-tooltip-undo liner-tooltip-icon"></span></div><div class="liner-color-picker"><span class="liner-color-yellow liner-color-circle"></span><span class="liner-color-green liner-color-circle"></span><span class="liner-color-orange liner-color-circle"></span><span class="liner-color-violet liner-color-circle"></span><span class="liner-color-blue liner-color-circle"></span><span class="liner-color-pink liner-color-circle"></span></div><div class="liner-tooltip-arrow"><span class="liner-arrow-down"></span></div></div><div class="liner-comment-box"><div class="liner-comment-line"></div><div class="liner-comment-area"><textarea class="liner-comment-input" placeholder="寫評論"></textarea></div></div></body></html>

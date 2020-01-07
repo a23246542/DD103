@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+
+
+<body>
+    <div>
+        <!-- 1他們都是用物件裝 -->
+        <!-- 2this指向什麼 js跟一班vue-->
+        <!-- 3四捨五入的兩種方法 -->
+        <!-- 5用this讓現在時間跟填寫這個動作綁定有關聯 出現動作 -->
+        <!-- 補充keycode -->
+    </div>
+    <div id="app">
+        <h2>todo list</h2>
+        <!-- 輸入事項: <input type="text" v-model="newTask" v-on:click.keycode.enter> -->
+        輸入事項: <input type="text" v-model="newTask" v-on:keyup.enter="addTask">
+        <ol>
+            <!-- <li v-for="task in tasks">{{task}}</li> -->
+            <li v-for="task in tasks">
+                <!-- {{task}}-- <a href="" @click ="removeTask">delete</a> -->
+                {{task}}-- <a href="#" @click="removeTask(task)">delete</a>
+            </li>
+        </ol>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="js/vue.js"></script> -->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                newTask: "",
+                tasks: [],
+
+
+            },
+            methods: { //函數(方法)們
+                addTask: function () {
+                    // 就直接push了蠟
+                    // tasks.push(this.nwsTask);
+                    this.tasks.push(this.newTask);
+                },
+                // 聰明會自己加數字
+                // removeTask(){
+                removeTask(task) {
+                    // 先做測試
+                    // alert()
+                    this.tasks.splice(this.tasks.indexOf(task), 1);
+                    //    ??怎麼解決index問題 
+                },
+            },
+
+
+        });
+    </script>
+</body>
+
+</html>

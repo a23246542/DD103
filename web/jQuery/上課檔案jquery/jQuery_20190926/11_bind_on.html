@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery-3.4.1.min.js"></script>		
+		<script>
+			$(document).ready(function(){
+				// $('p').mouseenter().mouseleave();
+				// $('p').mouseenter(function(){}).mouseleave(function(){});
+				/*===
+				$('p').mouseenter(function(){
+					$(this).addClass('highlight');
+				}).mouseleave(function(){
+					$(this).removeClass('highlight');
+				});
+				
+
+				// $('p').bind().bind();
+				// $('p').bind('mouseenter',function(){}).bind('mouseleave',function(){});
+				/*===
+				$('p').bind('mouseenter',function(){
+					$(this).addClass('highlight');
+				}).bind('mouseleave',function(){
+					$(this).removeClass('highlight');
+				});
+				===*/
+
+				// $('p').bind();
+				// $('p').bind('mouseenter mouseleave',function(){});
+				/*===
+				$('p').bind('mouseenter mouseleave',function(){
+					$(this).toggleClass('highlight');
+				});
+				===*/
+
+				/*===
+				$('p').on('mouseenter mouseleave',function(){
+					$(this).toggleClass('highlight');
+				});
+				===*/
+
+				// $('p').on({});
+				/*===
+				$('p').on({
+					mouseenter:function(){},
+					mouseleave:function(){},
+				});
+				===*/
+				/*===
+				$('p').on({
+					mouseenter(){},
+					mouseleave(){},
+				});
+				===*/
+
+				/*===
+				$('p').on({
+					mouseenter:function(){
+						$(this).addClass('highlight');
+					},
+					mouseleave:function(){
+						$(this).removeClass('highlight');
+					},
+				});
+				===*/
+				$('p').on({
+					mouseenter(){
+						$(this).addClass('highlight');
+					},
+					mouseleave(){
+						$(this).removeClass('highlight');
+					},
+				});
+
+				// $(document).on('事件'[,'selector',data],function(){});
+				/*===
+				$(document).on('mouseenter mouseleave','p',function(){
+					$(this).toggleClass('highlight');
+				});
+				===*/
+
+			});			
+		</script>
+		<title>jQuery</title>
+	</head>
+	<body>
+		<p>Ann Hathaway</p>
+	</body>
+</html>

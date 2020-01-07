@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="showMessage()">show storage</button>
+</body>
+<script>
+    function showMessage(){
+        if (sessionStorage['username'] ==null){
+            // !!prompt 提示輸入對話框
+            // 接受輸入的職
+            let name = prompt('what is your username','請在此輸入');
+            sessionStorage['username'] = name;
+        }else{
+            alert(sessionStorage['username']);
+        }
+    }
+</script>
+</html>

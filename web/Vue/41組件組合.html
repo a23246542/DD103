@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+    <!-- js submit 寫個return false就會留在現場  -->
+</head>
+<body>
+
+    <div id="app">
+        <div>
+            <form action="">
+                <input type="text">
+                <button></button>
+            </form>
+            <!-- 傳回來 -->
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+<script>
+Vue.component('todo-input',{ 
+    data(){
+        return{  
+            text:'',
+        };   
+    },
+    methods: {
+        submit:function(){
+        }
+    },
+    template:`
+        <form @submit="submit"> 
+            <!-- 兩個是一樣的 -->
+            <input type="text" v-model="text">
+            <button type="submit">submit</button>
+        </form>
+        `, 
+});
+
+Vue.component('todo-item',{
+    template:`<li></li>`
+});
+
+Vue.component('todo-list',{
+    data(){
+
+    },
+    methods: {
+        
+    },
+    template:``
+})
+
+
+// newvue裡面的data是物件 組件裡面的是function
+new Vue({
+    el:'#app',
+   
+    
+})
+</script>
+</html>

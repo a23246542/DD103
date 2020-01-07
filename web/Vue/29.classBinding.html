@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .submit{
+            background: #3c6e71;
+            color: #fff;
+            border-radius: 8px;
+            padding: 5px 8px;
+        }
+        .submit.disabled{
+            background: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+        <div id="app">
+            <!-- 原本的方法 -->
+            <!-- <input type="text">
+            <button class="submit">submit</button>
+            <button class="submit disabled">submit</button> -->
+
+            <!-- <input type="text"> 沒綁到 -->
+            <input v-model="text">
+            <!-- 兩種寫法 -->
+            <!--...........01--> 
+            <button :class="btnClass">submit</button>
+            <!-- .........02 -->
+            <!-- <button :class="{'submit':true,'disabled':text.length===0}">submit</button> -->
+        </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+    <script>
+    new Vue({
+        el:'#app',
+        data:{
+           text:'',
+        //   ---------- 01可以用陣列放多個class
+        //    btnClass:['submit','disabled']
+        },
+        methods: {
+            
+        },
+        computed: {  
+            // --------02判斷傳哪一個class
+        //    btnClass(){
+            btnClass:function(){
+
+            //    1.傳回值是字串
+                // if(this.text.length===0){
+                //     return 'submit disabled'
+                // }else{
+                //     return 'submit'
+                // }
+
+                // 2.傳回值是物件
+                // if(this.text.length===0){
+                //     return{
+                //         submit:true,
+                //         disabled:true,
+                //     }
+                // }else{
+                //     return{
+                //         submit:true,
+                //         disabled:false//這一行不能少寫註解調
+                //     }
+                // }
+
+                // 3.直接傳回物件就好 更方便vue方式
+                    return{
+                        submit:true,
+                        disabled:this.text.length === 0,
+                    }
+           }
+        },
+        watch: { 
+        },
+    });
+    
+    </script>
+
+ 
+
+</body>
+</html>

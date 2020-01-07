@@ -1,0 +1,51 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+#sliderBoard{
+    width: 300px;
+    height: 300px;
+
+    margin: 50px auto;
+    overflow: hidden;
+}
+#sliderBoard ul{
+    width: 1500px;
+
+    position: relative;
+    animation: slider 6s infinite;
+}
+
+/* 其實寫下面比較好 */
+@keyframes slider{
+   /* 0%{left: -300px;} */
+   0%{left: 0px;}
+   20%{left: -300px;}
+   40%{left: -600px;}
+   60%{left: -900px;}
+   80%{left: -1200px;}
+   /* 100%{left: -1500px;} */
+   /* ??為什麼不能寫-1500 */
+
+}
+#sliderBoard li{
+
+    width: 300px;
+    height: 300px;
+
+    font:bold 66px Calibri; /* 要大寫 */
+    text-align: center;
+    line-height: 300px;
+
+    /* display: inline-block; */
+    float: left;
+    /* !!!!float 跟display inlineblock最大差別就是沒空格!!! */
+}
+
+#sliderBoard li:nth-child(1){background: red;}
+#sliderBoard li:nth-child(2){background: orange;}
+#sliderBoard li:nth-child(3){background: yellow;}
+#sliderBoard li:nth-child(4){background: blue;}
+#sliderBoard li:nth-child(5){background: green;}

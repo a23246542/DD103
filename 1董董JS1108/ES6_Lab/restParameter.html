@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+
+<body>
+<h2>example 0 ...從前</h2>
+<script type="text/javascript">
+//將價錢低於highPrice的金額調漲rate
+function adjust( rate, highPrice, prices){  //rate:調漲幅度, highPrice:低於多少的要調, 商品價格們
+  for(var i=0; i<prices.length; i++){
+  	if( prices[i]<highPrice){
+  		prices[i]+=Math.floor(prices[i] * rate);
+  	}
+  }
+  return prices;
+}
+
+var arr = [ 300, 500, 400, 800]
+document.write( adjust(0.1, 600, arr));
+</script>  
+
+</body>
+</html>

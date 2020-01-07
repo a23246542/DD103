@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+<h2>比較運算</h2>	
+<script type="text/javascript">
+
+document.write("10>=4 :", 10>=4, "<br>"); //true
+document.write("0 == false :", 0 == false, "<br>"); //true 
+document.write("0 === false :", 0 === false, "<br>"); //false
+</script>   
+
+<h2>邏輯運算</h2>
+<script type="text/javascript">
+document.write("10>=4 && 100<10 :", 10>=4 && 100<10, "<br>"); 	//false
+document.write("10>=4 || 100<10 :", 10>=4 || 100<10, "<br>"); 	//true
+document.write("! 10>=4 :", ! 10>=4, "<br>"); 	//false
+
+var price = 100;
+document.write("price == 100 :", price == 100, "<br>");  //true
+document.write("price != 100 :", price != 100, "<br>");  //false
+</script>
+
+
+<h2>指定運算</h2>	
+<script type="text/javascript">
+var x = 10;
+x *= 2;
+document.write("x :", x, "<br>"); //true
+
+var a,b,c;
+a=b=c=100;
+document.write("a :", a, "<br>"); 
+document.write("b :", b, "<br>"); 
+document.write("c :", c, "<br>"); 
+</script>
+
+<h2>位元運算</h2>	
+<script type="text/javascript">
+document.write("12 & 5 :", 12 & 5, "<br>");  //4
+document.write("12 | 5 :", 12 | 5, "<br>");  //13
+</script>
+
+<h2>typeof運算</h2>	
+<script type="text/javascript">
+document.write("typeof 5 :", typeof 5, "<br>");  //number
+document.write("typeof '5' :", typeof '5', "<br>");  //string
+</script>  
+
+<h2>三元運算</h2>	
+<script type="text/javascript">
+
+var avg = 65;
+
+document.write(( avg >= 60 ) ?  "通過" : "未通過", "<br>");
+</script>
+</body>
+</html>

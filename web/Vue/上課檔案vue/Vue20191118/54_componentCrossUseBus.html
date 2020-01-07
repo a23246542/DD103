@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--跨組件的溝通</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <!-- 跨組件的溝通
+        1.前一個程式，將count放到上層(Vue實例)，讓上層組件去聆聽事件，然後去下層設定props
+        2.如果兩個組件沒有上下層關係，要如何溝通? 
+        使用Vuex工具做溝通：將所有的組件跟一個[統一的資料]溝通
+        而這些[統一的資料]可以和各組件去做雙向溝通和雙向綁定
+        Vuex工具不是做組件溝通，而是各個組件與它的store,stat統一管理的狀態做互動
+
+        3.event bus，它是一個專門用來處理你發出的識見與聆聽事件的工具。
+            透過一個共同宣告的event bus，外面的bus發出一個add事件(bus.$emit('add'))
+            另一個組件使用mounted(),將bus.$on()去聆聽add事件
+    -->
+    <div id="app">         
+        <my-count></my-count>
+        <my-button></my-button>
+    </div>
+    
+    <script> 
+
+        const bus = new Vue();  
+        // $emit()和$on() 都是Vue實例的方法
+        // 宣告一個Vue實例，但不用綁定一個element,這個bus用來發出事件和聆聽該事件的一個渠道
+
+        Vue.component('my-count',{ 
+            data(){
+                return{
+                    count:0,
+                };
+            },
+            mounted(){
+                bus.$on('add',()=>{
+                    this.count++;
+                });
+            },
+            template: `<h1>{{count}}</h1>`,        
+        });
+
+        Vue.component('my-button',{ 
+            // template: `<button> +1 </button>`,        
+            template: `<button @click="clickTheButton"> +1 </button>`, 
+            methods: {
+                clickTheButton(){
+                    bus.$emit('add');
+                }
+            },       
+        });
+
+
+
+        new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+</html>

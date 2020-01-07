@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX use jQuery</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#loadButton').click(function(){
+                // $('#feedback').load('2_removeImage.html');
+                // $('#feedback').load('data.php');
+                $('#feedback').load('useParameter.php',{name:'Anan',age:15});
+            });
+            $('#getButton').click(function(){                
+                $.get('useParameter.php',{name:'Anan',age:15},function(data){
+                    $('#feedback').html(`<h1 style="color:red;">${data}</h1>`);
+                });
+            });
+            $('#postButton').click(function(){                
+                $.post('useParameter.php',{name:'Anan',age:15},function(data){
+                    $('#feedback').html(`<h1 style="color:red;">${data}</h1>`);
+                });
+            });
+            $('#getJSONButton').click(function(){                
+                $.post('JSON_XML_CSV/animal.json',{},function(data){
+                    $('#feedback').html(`<h1>${data[0].Reason}</h1>`);
+                });
+            });
+            $('#ajaxButton').click(function(){ 
+                $.ajax({
+                    url: 'useParameter.php',
+                    data: {name:'Anan',age:15},
+                    type: 'POST',
+                    success: function(data){
+                        $('#feedback').html(`<h1 style="color:red;">${data}</h1>`);
+                    },
+                });
+            /*
+                $.ajax();
+                $.ajax({});
+                $.ajax({
+                    url: '',        //發出請求的網址列或檔案
+                    data: ,         //傳送到server的資料，會自動轉成jQuery的string型態
+                    type: ,         //GET或POST
+                    dataType: ,     //server端還船的資料型態，xml/html/script/json/jsonp/text(包含csv)
+                    success: function(){},
+                    error: function(){},
+                    complete: function(){},
+                });
+            */
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="loadButton">Load</button>
+    <button id="getButton">Get</button>
+    <button id="postButton">Post</button>
+    <button id="getJSONButton">Get JSON</button>
+    <button id="ajaxButton">AJAX</button>
+
+    <p id="feedback"></p>
+</body>
+</html>

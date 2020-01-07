@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<script type="text/javascript" src="lib.js"></script>	
+<script type="text/javascript">
+showSmile();
+
+function showSmile(){  //function statement, 有hoist現象
+	document.write("smile........" , "<br>");
+}
+
+//function express
+var showAngry = function (){  
+		document.write("angry........" , "<br>");
+}
+showAngry();  //........
+
+
+//.................IIFE
+var total = 111111111;
+
+(function (){
+	var total = 10000;
+
+	document.write( "total : ", total, "<br>");	
+})();
+
+
+(function (msg){
+	document.write( `${msg}<br>`);
+})("謝謝光臨");
+document.write( "total : ", total, "<br>");	
+
+
+
+</script>    
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
+    <style>
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <script>
+       
+
+        $(document).ready(function(){
+
+             let Condiments = ['mustard', 'salt', 'pepper', 'spices', 'soy sauce', 'olive oli', 'ketchup', 'cooking oil',
+            'sugar'
+        ]
+        let Deli = ['roast beef', 'turkey', 'swiss chess', 'potato salad', 'potato Diane']
+        let coffeeTea = ['coffee', 'herbal', 'hot chocolate', 'cafe au lait', 'latte']
+        let Bread = ['white bread', 'wheat bread', 'whole grain bread', 'rye bread', 'pita bread', 'french bread',
+            'bagel',
+            'rolls', 'donut', 'bread sticks', 'swiss rolls', 'croissant'
+        ]
+            
+        $('.food').click(function(){
+
+             let choice = $(this).val();
+
+             if($.inArray(choice,condiments)!==-1){
+
+             }else if($.inArray(choice,Deli)!==-1){
+
+             }else if($)
+        });
+       
+
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>coffee|tea</td>
+        </tr>
+        <tr>
+            <td>Deli</td>
+        </tr>
+        <tr>
+            <td>Condiments</td>
+        </tr>
+        <tr>
+            <td>Bread</td>
+        </tr>
+
+    </table>
+
+
+
+
+
+
+    <h3>調味料</h3>
+
+    <button class="food">mustard</button>
+    <button class="food">salt</button>
+    <button class="food"> pepper</button>
+    <button class="food">spices</button>
+    <button class="food"> soy sauce</button>
+    <button class="food"> olive oil</button>
+    <button class="food"> ketchup</button>
+    <button class="food"> cooking oil</button>
+    <button class="food"> sugar</button>
+    <button class="food"> roast beef</button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+    <button class="food"> </button>
+
+    
+turkey
+Swiss cheese
+potato salad
+potato Diane
+
+
+</body>
+
+</html>

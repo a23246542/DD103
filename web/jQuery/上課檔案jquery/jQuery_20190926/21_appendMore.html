@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery-3.4.1.min.js"></script>		
+		<script>
+			$(document).ready(function(){
+				$('.food').click(function(){
+					let item = $(this).text();
+
+					$('#myList').append(`<li>${item}</li>`);
+					$('#mySelect').append(`<option>${item}</option>`);
+					$('#myTable').attr('border',1).append(`<tr><td>${item}</td></tr>`);
+				});
+			});			
+		</script>
+		<title>jQuery</title>
+	</head>
+	<body>
+		<h3>Condiments(調味料類)</h3>
+		<p>
+			<button class="food">mustard</button>
+			<button class="food">salt</button>
+			<button class="food">pepper</button>
+			<button class="food">spices</button>
+			<button class="food">soy sauce</button>
+			<button class="food">ketchup</button>
+		</p>
+		<h3>Deli(熟食類)</h3>
+		<p>
+			<button class="food">roast beef</button>
+			<button class="food">turkey</button>
+			<button class="food">Swiss cheese</button>
+			<button class="food">potato salad</button>
+			<button class="food">potato Diane</button>
+		</p>
+		<h3>Coffee and Tea(咖啡茶飲類)</h3>
+		<p>
+			<button class="food">coffee</button>
+			<button class="food">herbal tea</button>
+			<button class="food">hot chocolate</button>
+			<button class="food">latte</button>
+			<button class="food">cafe au lait </button>
+			<button class="food">Con Panna</button>
+		</p>
+		<h3>Bread(麵包類)</h3>
+		<p>
+			<button class="food">white bread</button>
+			<button class="food">wheat bread</button>
+			<button class="food">whole grain bread</button>
+			<button class="food">rye bread</button>
+			<button class="food">pretzel</button>
+			<button class="food">pita bread</button>
+		</p>
+		<hr>
+		<h2>Your choices : </h2>
+		
+		<!-- create an ordered list -->
+		<p>
+			<ol id="myList"></ol>
+		</p>
+
+		<!-- create a drop-down menu -->
+		<p>
+			<select id="mySelect"></select>
+		</p>
+
+		<!-- create a table -->
+		<p>
+			<table id="myTable"></table>
+		</p>
+		
+
+	</body>
+</html>

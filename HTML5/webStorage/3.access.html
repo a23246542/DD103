@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <style>
+    label,button{
+        text-transform:capitalize;
+    }
+
+    label{
+    width: 60px;
+    float: left;
+    }
+    
+    </style>
+</head>
+<body>
+    <p>
+        <label for="keyText">key:</label>
+        <input type="text" id="keyText">
+    </p>
+    <p>
+        <label for="valueText">value:</label>
+        <input type="text" id="valueText">
+    </p>
+    <hr>
+    <!--!小技巧傳入不同參數 -->
+    <button onclick="storageAccess(1)">setItem</button>
+    <button onclick="storageAccess(2)">getItem</button>
+    <button onclick="storageAccess(3)">removeItem</button>
+    <button onclick="storageAccess(4)">clear</button>
+</body>
+<script>
+    function storageAccess(accessId){
+    var storage = sessionStorage;
+    var key = document.getElementById('keyText').value;
+    var value = document.getElementById('valueText').value;
+    // alert(`${key} / ${value}`);
+
+    alert(storage.length);
+    
+    switch(accessId){
+        case 1:
+            storage.setItem(key,value);
+            break;
+        case 2:
+            var item = storage.getItem(key);
+            alert(item);
+            break; 
+        case 3:
+            storage.removeItem(key);
+            break;
+        case 4:
+            storage.clear();
+            break; 
+        default:
+            alert('That is a stumper!');
+            break;     
+    }//end of switch
+}
+
+    
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <h2>json jquery</h2>
+    <P align='center'>
+        <button id="loadButton" class="btn btn-info">load data</button>
+    </P>
+    <div id="feedback"></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script>
+        $(document).ready(function () {
+           
+            $('#loadButton').click(function () {
+                $.ajax({
+                    url: 'JSON_XML_CSV/apiIn.json',
+                    // url: 'JSON_XML_CSV/apiIn.tet'!!!!!!,
+                    // data: {
+                    //     name: 'anna',
+                    //     age: 15
+                    // },
+                    // type: 'POST ',
+                    dataType:'JSON',//@不是看附檔名 就算是txt黨裡面是json這樣才能幫我編譯
+                    success: function (res) {
+                        console.log('res');//json黨
+                        let apiData = '<ul>';//ul開始
+
+                            
+                        // 第一種寫法 for()
+                            // for(let i=0;i<res.length;i++){
+                            //     apiData+=`<li>${res[i].Name}</li>`
+                            // } 
+                        // 第二種寫法$.each
+                        $.each(res,function(index,content){
+                            // !!!!物件讀取有兩種寫法
+                            apiData+=`<li>${content["Name"]}</li>`;
+                            // apiData+=`<li>${content.Name}</li>`;
+                        }) 
+
+
+
+                        apiData+="</ul>"//ul結束
+                        $('#feedback').append(apiData);
+                    },
+                    // error: function () {},
+                    // complete: function () {}
+                });
+            })
+
+
+           
+        })
+    </script>
+</body>
+
+</html>

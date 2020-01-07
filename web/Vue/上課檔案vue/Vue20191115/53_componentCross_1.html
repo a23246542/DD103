@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--跨組件的溝通</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <!-- 如果兩個組件沒有上下層關係，要如何溝通? -->
+    <div id="app">         
+        <my-count :count="count"></my-count>
+        <my-button @click.native="count+=1"></my-button>
+    </div>
+    
+    <script> 
+        Vue.component('my-count',{ 
+            // data(){
+            //     return{
+            //         count:0,
+            //     };
+            // },
+            props: ['count'],
+            template: `<h1>{{count}}</h1>`,        
+        });
+
+        Vue.component('my-button',{ 
+            template: `<button> +1 </button>`,        
+        });
+
+
+
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0,  
+            },
+        });
+    </script>
+</body>
+</html>

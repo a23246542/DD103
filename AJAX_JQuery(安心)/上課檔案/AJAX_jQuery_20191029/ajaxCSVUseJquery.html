@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX CSV use jQuery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#loadButton').click(function(){ 
+                $.ajax({
+                    url: 'JSON_XML_CSV/employee.csv',
+                    dataType: 'text',
+                    success: function(data){                      
+                       
+                        let employeeData = data.split(/\n|\r\n/);     //match on \n or \r\n
+                        // let employeeData = data.split(/\r?\n|\r/);    
+                            
+                        tableData = '<table class="table table-bordered table-striped">';
+                            for(let rows=0; rows<employeeData.length; rows++){  //row-major
+                                var cellData = employeeData[rows].split(',');
+                                tableData += '<tr>';
+                                    for(let cols=0; cols<cellData.length; cols++){
+                                        if(rows===0){
+                                            tableData += `<th>${cellData[cols]}</th>`;
+                                        }else{
+                                            tableData += `<td>${cellData[cols]}</td>`;
+                                        }
+                                    }
+                                tableData += '</tr>';
+                            }
+                        tableData += '</table>';                       
+
+                        $('#feedback').append(tableData);
+                    },
+                });          
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2 align="center">CSV to Table using AJAX(jQuery)</h2>
+    <p align="center">
+        <button id="loadButton" class="btn btn-info">Load Data</button>
+    </p>    
+
+    <div id="feedback" align="center"></div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--v-for-修改陣列或物件的注意事項</title>
+</head>
+<body>
+    <div id="app"> 
+        
+        <ul>
+            <!-- 陣列 -->
+            <!-- <li v-for="num in nums">{{num}}</li> -->
+            <!-- <li v-for="(num,index) in nums">{{index}} - {{num}}</li> -->
+        
+            <!-- 物件 -->
+            <li v-for="(num, key) in nums">{{key}} - {{num}}</li>
+        </ul>
+        <button @click="action">Click me!</button>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>        
+        var vm = new Vue({
+            el: '#app', 
+            data: {
+                // 陣列
+                // nums: [1,2,3,4,5,6,7,8,9],
+                // nums: [10,20,30,40,50,60,70,80,90,100],
+                // nums: [1,5,3,8,6,5,2],
+
+                // 物件
+                nums: {
+                    x: 5,
+                    y: 10,
+                },
+            },
+            methods: {
+                action(){
+                    //修改陣列
+                    //將數字render到<li>
+                        //將資料塞進陣列裡
+                    // this.nums.push(this.nums.length + 1);
+                    // this.nums.unshift(1);
+                        //將資料從陣列中移除              
+                    // this.nums.pop();
+                    // this.nums.shift();
+
+                    // this.nums.splice(2,1,1000,2000,3000);
+                    // this.nums.sort();
+                    // this.nums.reverse();
+
+                    //以上陣列的方法皆可改變陣列的內容
+                    // this.nums = this.nums.filter(function(){});
+                    // this.nums = this.nums.filter(function(elm){
+                    //     return elm % 2 === 0;
+                    // });
+                    // this.nums = this.nums.filter(elm => elm % 2 === 0);
+                    // this.nums = this.nums.filter(elm => elm > 50);
+
+                    //this.nums[0] = 123;  //無法改變陣列的內容
+                    // this.nums.splice(0,1,123);
+
+                    //如何清空陣列?
+                    // this.nums.splice(0);
+                    //this.nums.length = 0;   //無法清空陣列
+
+                    // this.nums = this.nums.slice(from,to);
+                    // this.nums = this.nums.slice(0,5);
+
+                   
+                    //修改物件
+                    //this.nums.z = 15;  //無法新增物件的key/value                    
+
+                    //this.$set(要設定的物件,key,value);
+                    // this.$set(this.nums,'z',15);
+                    // Vue.set(this.nums,'z',200);
+
+                    // this.nums.x = 123;   //修改已經有的key的value
+                },
+            },
+        });
+        vm.$set(vm.nums,'z',200);
+    </script>
+</body>
+</html>

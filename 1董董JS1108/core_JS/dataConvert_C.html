@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+<h2>隱含轉換.....危險</h2>	
+<script type="text/javascript">
+var price = "20";
+var amount = "10";
+var ship = "80";
+var subTotal = price * amount ;	//20 * 10 --> 200
+var total = subTotal + ship;  //200 + "80" --> "200" + "80"  -->"20080"
+document.write("subTotal :", subTotal, "<br>");
+document.write("total :", total, "<br>");
+</script>
+
+<h2>強制轉換parseInt()</h2>
+<script type="text/javascript">
+document.write("parseInt('321abc') :", parseInt('321abc'), "<br>");	//321
+document.write("parseInt('321abc', 16) :", parseInt('321abc', 16), "<br>"); //3283644
+document.write("parseInt('321abc', 8) :", parseInt('321abc', 8), "<br>");  //209
+document.write("parseInt('321abc', 2) :", parseInt('321abc', 2), "<br>");  //NaN: Not a Number
+</script> 
+
+<h2>強制轉換parseInt().....</h2>	
+<script type="text/javascript">
+var price = parseInt("20");
+var amount = "10";
+var ship = "80";
+var subTotal = price * amount ;	//20 * 10 --> 200
+var total = subTotal + parseInt(ship);  //200 + "80" --> "200" + "80"  -->"20080"
+document.write("subTotal :", subTotal, "<br>");
+document.write("total :", total, "<br>");
+</script>   
+</body>
+</html>

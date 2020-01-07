@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/act-form.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <!-- <script  src="js/dropkick.js"></script> -->
+    <title>Document</title>
+    <style>
+        /* td {
+            border: 1px solid red;
+        } */
+    </style>
+
+</head>
+
+<body>
+
+    <div  id="wrapper-form" >
+
+
+            <!-- enctype="multipart/form-data" -->
+
+        <form action="" class="act-form" id="act-form" >
+            <fieldset>
+                <legend>建立車友活動</legend>
+                <div class="form-content">
+                    <div class="flex-row">
+                        <label for="" class="form-title fix">活動相片</label>
+                        <div class="form-text photo">
+                            <div id="drag-box">
+                                <img id="drag-img" src="./images/act_image/camera.svg" alt="">
+                            </div>
+                            <!-- <div class="up-file">
+                                <input type="file" id="the-file" name="theFile">
+                                <span id="file-info"></span>
+                            </div> -->
+                            <div class="up-file">
+                                <label class="file-btn" >
+                                    <input id="the-file" style="display:none;" type="file">
+                                    <i class="far fa-image"></i>上傳圖片
+                                </label>
+                                <div id="file-info"></div>
+                            </div>
+                            
+                        </div>
+                        
+                        <!-- <form method="post" accept-charset="utf-8" id="form1" enctype="multipart/form-data">
+                                <input name="hidden_data" id='hidden_data' type="text"/>
+                        </form> -->
+                        
+                        <!-- <input name="hidden_data" id='hidden_data' type="hidden"/> -->
+
+                        <!-- <form action="uploadAct.php" method="post" enctype="multipart/form-data">
+                            大頭貼 <input type="file" name="upFile"><br>
+                            <input type="submit" value="OK">
+                        </form> -->
+
+                    </div>
+
+                    <div class="flex-row ">
+                        <label for="" class="form-title fix">活動標題
+                            <!-- <span class="required">*</span> -->
+                        </label>
+                        <div class="input-group">
+                            <div class="form-text-s box-center">
+                                <input type="text"  class="input-title" id="title" name="title">
+                            </div>
+                            <div class="input-err">
+                                <div></div>
+                                <!-- <div>必填選項</div> -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="flex-row" class="form-title">
+                        <label for="twzipcode" class="form-title fix">出發地</label>
+                        <div class="form-text-s">
+                            <!-- <label for="" visibility='hidden'>xx</label> -->
+                            <!-- <select data-role="county" name="" id="county" class="county">
+                                <option value="1">台北</option>
+                                <option value="2">桃園</option>
+                                <option value="3">新竹</option>
+                            </select> -->
+
+                            <!-- 鄉鎮04非同步範例 -->
+                            <div id="twzipcode" name="twzipcode">
+                                <span data-role="county" data-style="depart county dk-selected" data-name="county"></span>
+                                <span data-role="district" data-style="depart district dk-selected" data-name="district"></span>
+                                <span data-role="zipcode" style="display: none;"></span>
+                            </div>
+
+
+
+                            <!-- <select name="" id="town" class="town" tabindex="3">
+                                <option value="1">復興鄉</option>
+                                <option value="2">中壢區</option>
+                                <option value="3">桃園區</option>
+                            </select> -->
+                        </div>
+                    </div>
+                    <div class="flex-row">
+                        <label for="" class="form-title">詳細地點</label>
+                        <div class="input-group">
+                            <div class="form-text-s">
+                                <input type="text" id="loc" name="loc">
+                            </div>
+                            <div class="input-err">
+                                <div></div>
+                                <!-- <div>必填選項</div> -->
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="flex-row">
+                        <label for="" class="form-title fix">活動內容</label>
+                        <textarea  required  class="input-content" name="content" id="act-content" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="flex-row">
+                        <label for="" class="form-title fix">時間</label>
+                        <div class="time-area">
+                            <input type="date" name="Date" id="date">
+                            <!-- <date-picker></date-picker> -->
+                            <input type="time" name="time" id="time">
+                        </div>
+                        <label for="" class="form-title">報名截止</label>
+                        <div >
+                            <input type="date" name="DeadLineDate" id="DeadLineDate">
+                        </div>
+
+                        <!-- jquery checkboxhttps://kknews.cc/zh-tw/code/oax4qxo.html -->
+                    </div>
+                    <div class="flex-row">
+                        <label for="" class="form-title">適合車種</label>
+                        <div class="form-text-s type type-area">
+                            <label class="control" for="road-check">公路車
+                                <input type="checkbox" name="type[]" id="road-check" value="1" >
+                                <div class="control-indicator"><i class="fas fa-check"></i></div>
+                            </label>
+                            <label class="control" for="mount-check">登山車
+                                <input type="checkbox" name="type[]" id="mount-check" value="2">
+                                <div class="control-indicator"><i class="fas fa-check"></i></div>
+                            </label>
+                            <label class="control" for="city-check">城市車
+                                <input type="checkbox" name="type[]" id="city-check" value="3">
+                                <div class="control-indicator"><i class="fas fa-check"></i></div>
+                            </label>
+                            
+                            <!-- <input type="checkbox" name="" id="">公路車
+                            <input type="checkbox" name="" id="">登山車
+                            <input type="checkbox" name="" id="">城市車 -->
+                        </div>
+                        <!-- <input type="range" name="" id=""> -->
+                    </div>
+                    <div class="flex-row box-center">
+                        <label for="" class="form-title fix">騎乘強度</label>
+                        <div class="level-area">
+                            <select name="level" id="level">
+                                <option value="休閒級">休閒級</option>
+                                <option value="運動級">運動級</option>
+                                <option value="挑戰級">挑戰級</option>
+                            </select>
+                        </div>
+                        <!-- <span id="test" style="width:30px;height:30px;background:red;"></span> -->
+                        <label for="" class="form-title" >人數限制</label>
+                        <div limit-area>
+                            <!-- <input type="number" name="" id=""> -->
+                            <div class="input-group">
+                                    <div class="form-text-s">
+                                        <input type="text" id="limit" name="limit" placeholder="輸入人數">
+                                    </div>
+                                    <div class="input-err">
+                                        <div></div>
+                                        <!-- <div>必填選項</div> -->
+                                    </div>
+                                </div>
+                        </div>
+
+                    </div>
+                    <div class="flex-row" style="justify-content: center;">
+                        <button type="button" id="act-submit">送出</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script> -->
+    <script src='js/jquery-3.4.1.min.js'></script>
+    <!-- 可刪<script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script> -->
+    <script type="module" src="js/dropkick.js"></script>
+    <script src="js/jquery.twzipcode.min.js"></script>
+    <script src="js/activityForm.js"></script>
+    <script>
+        // $(document).ready(function(){
+
+        //     $('#twzipcode').twzipcode({
+        //         onCountySelect:function(){
+        //             $('.county').addClass("dk-select-open-up");
+        //         }
+        //     });
+
+        //     document.getElementById("drag-box").ondragover = dragOver;
+        //     document.getElementById("drag-box").ondrop = dropped;
+        //     document.getElementById("the-file").onchange = fileChange
+
+        //     function dragOver(e) {
+        //         e.preventDefault();
+
+        //     }
+
+        //     let image = document.getElementById('drag-img');
+
+        //     function dropped(e) {
+        //         e.preventDefault();
+        //         let file = e.dataTransfer.files[0];
+        //         document.getElementById("the-file").innerText = file.name;
+
+        //         let reader = new FileReader();
+        //         reader.readAsDataURL(file);
+        //         reader.addEventListener('load', function (e) {
+
+
+        //             image.src = this.result;
+
+        //             // image.style.maxWidth = '500px';
+        //             // image.style.maxHeight = '400px';
+
+        //         })
+        //     }
+
+        //     function fileChange() {
+        //         let file = document.getElementById("the-file").files[0];
+
+        //         let reader = new FileReader();
+        //         reader.readAsDataURL(file);
+        //         reader.addEventListener('load', function () {
+        //             image.src = this.result;
+        //         })
+        //     }
+
+
+        //     $('#level').dropkick(
+        //         // initialize(){},
+
+        //     );
+
+        
+
+        //     // $('.county').dropkick();
+        //     // $('.district').dropkick();
+        // })
+    </script>
+</body>
+
+</html>

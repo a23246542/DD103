@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BookList>
+	<Book>
+		<Title>HTML5 &amp; CSS3</Title>
+		<Publisher>O'Reilly</Publisher>
+	</Book>
+	<Book>
+		<Title>Learning HTML5</Title>
+		<Publisher>PACKET</Publisher>
+	</Book>
+	<Book>
+		<Title>Head First jQuery</Title>
+		<Publisher>O'Reilly</Publisher>
+	</Book>
+	<Book>
+		<Title>Modern CSS3</Title>
+		<Publisher>Sitepoint</Publisher>
+	</Book>
+	<Book>
+		<Title>Learning Python</Title>
+		<Publisher>O'Reilly</Publisher>
+	</Book>
+</BookList>

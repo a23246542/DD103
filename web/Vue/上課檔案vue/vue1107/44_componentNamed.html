@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--命名方式</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <!-- <my-first-component></my-first-component>   -->
+        <!-- <myFirstComponent></myFirstComponent>   -->
+        <!-- <MyFirstComponent></MyFirstComponent>   -->
+        <my-first-component/>
+    </div>
+
+    
+    <script>
+        // 假設:組件的命名叫my first component
+        // Vue支援三種命名方式:
+        //     'my-first-component'  //kebab-case
+        //     'myFirstComponent'    //camel-case
+        //     'MyFirstComponent'    //pascal-case
+
+        Vue.component('my-first-component',{  
+            template: `
+                <h1>Hello!</h1>
+            `,
+        });
+        Vue.component('myFirstComponent',{  
+            template: `
+                <h1>Hello!!</h1>
+            `,
+        });
+        Vue.component('MyFirstComponent',{  
+            template: `
+                <h1>Hello!!!</h1>
+            `,
+        });
+
+        new Vue({
+            el: '#app',
+
+            // 寫在這裡的template和寫在HTML裡的template不同:
+            // 1.不一定用kebab-case
+            // 2.可以寫self-closing,但HTML內不能這麼寫
+
+            // template: `
+            //     <div>
+            //         <myFirstComponent></myFirstComponent> 
+            //         <!--或 <myFirstComponent/>-->
+            //     </div>
+            // `,
+        });
+    </script>
+</body>
+</html>

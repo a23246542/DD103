@@ -1,0 +1,14 @@
+Vue面試準備方向:
+
+1. MVVM架構是甚麼？
+    (可以順便準備MVC是甚麼?並說明其差別。)
+2. v-if和v-show的差別
+3. 記得準備vue directives(vue指令)
+4. methods和computed的差別
+5. vue hook functions是甚麼?並說明其觸發時機?
+6. vue 父子組件如何溝通?　若非父子組件，要如何溝通？
+    (父子組件：請熟悉emit up, props down)
+    (非父子組件：參考54_componentCrossUseBus.html的三種作法)
+7. 說明vuex是甚麼？　　(參考54_componentCrossUseBus.html)
+8. 說明vue-cli是甚麼？　　(參考55_vue-cli.txt)
+9. 說明vue-router是甚麼？　　(加課再說)

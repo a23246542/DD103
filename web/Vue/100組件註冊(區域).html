@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      
+        
+    </style>
+</head>
+<body>
+    <!-- vue component:預先定義好的模組 包含了HTML的視覺元素 還有綁定的資料.方法和偵聽器 很像Vue實例
+    除了可以重複使用之外 也可以讓我們在開發的時候 可以專注在一個小區塊上 也方便維護 -->
+
+    <div id="app">
+        <!-- xhtml可以自訂標籤 -->
+        <my-component></my-component> <!--組件系統 寫在這裡只能小寫加減號隔開-->
+    </div>
+    <div id="app2">
+        <my-component></my-component>
+    </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+  <script>
+    //   如何開始使用Vie組件?
+    // Vue.component('組件名稱',{設定options
+    //    使用template
+    //    template:"定義HTML的視覺元素",
+    // });
+
+    //global component 全域組件
+    Vue.component('my-component',{  //老師建議小寫加-寫法   因為雖然VUE這邊改大寫也可以 可是不遵守規範
+        template:'<div style="color:red;">My component</div>'
+
+    })
+  new Vue({
+      el:'#app',
+      data:{
+       
+          
+      },
+      methods: {
+         
+      },
+      computed: {
+        
+      },
+
+  })
+
+  new Vue({
+      el:'#app2'
+  })
+  
+  </script>
+
+</body>
+</html>

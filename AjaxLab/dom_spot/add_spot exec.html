@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<img src="add_2.png" id="btnAddSpot">
+
+
+<!-- 01把他裝在一起比較好當templete -->
+<!-- <form id="myForm">
+  景點<input type="text" name="spot"><img src="trash.png">
+  <br>
+  <input type="submit" id="btnSend" value="送出">	
+</form>   -->
+
+<div class="spotTemplate" style="display: none;">
+     <!-- 用陣列才不會都叫同一個name -->
+     <!-- ???以後如何知道選到哪一個 填入e還是i -->
+     景點<input type="text" name="spot[]"> <img src="trash.png" alt="">
+</div>
+
+<!-- 新增的會加入到表單然後送出 -->
+<form action="" id="myForm">
+   <input type="submit" id="btnSend" value="送出">
+</form>
+
+<script type="text/javascript">
+function $id(id){
+  return document.getElementById(id);
+}
+
+window.addEventListener('load',function(){
+  
+  $id('btnAddSpot').addEventListener('click',function(){
+    let myForm = document.getElementById('myForm');
+    let spotTemp = document.querySelector('.spotTemplate');
+    // let newSpot = spotTemp.cloneNode();
+    let newSpot = spotTemp.cloneNode(true);
+    newSpot.style.display="";
+    
+    // newSpot.getElementsByTagName("img")[0].onclick=function(e){
+      newSpot.getElementsByTagName("img")[0].onclick=function(e){
+      //  document.querySelector('myForm').removeChild(e.target.parentNode);
+       myForm.removeChild(e.target.parentNode)
+    }
+    
+    myForm.insertBefore(newSpot,$id('btnSend'));
+
+  })
+})
+
+
+
+</script>
+</body>
+</html>

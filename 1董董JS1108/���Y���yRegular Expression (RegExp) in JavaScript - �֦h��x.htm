@@ -1,0 +1,507 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0054)http://blog.roodo.com/rocksaying/archives/2670695.html -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>石頭閒語:Regular Expression (RegExp) in JavaScript - 樂多日誌</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK 
+href="石頭閒語Regular Expression (RegExp) in JavaScript - 樂多日誌_files/site.css" 
+type=text/css rel=stylesheet><LINK 
+href="石頭閒語Regular Expression (RegExp) in JavaScript - 樂多日誌_files/output.css" 
+type=text/css rel=stylesheet><LINK title=RSS 
+href="http://blog.roodo.com/rocksaying/index.rdf" type=application/rss+xml 
+rel=alternate><LINK title=Atom href="http://blog.roodo.com/rocksaying/atom.xml" 
+type=application/atom+xml rel=alternate><LINK title=FOAF 
+href="http://blog.roodo.com/rocksaying/foaf.rdf" type=application/rdf+xml 
+rel=meta>
+<SCRIPT language=JavaScript>
+<!--
+var HOST = 'blog.roodo.com';
+var PATH = '/rocksaying';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + (expires ? "; expires=" + expires.toGMTString() : "") + (path ? "; path=" + path : "") + (domain ? "; domain=" + domain : "") + (secure ? "secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function setCommentAuthor(f) {
+	  if(f.myicon != undefined)
+        setCookie("myicon", f.myicon.checked, now, PATH, HOST, '');
+    if(f.bake != undefined)
+        setCookie("bake", f.bake.checked, now, PATH, HOST, '');
+    if(!f.bake.checked) {
+         deleteCookie("author", PATH, HOST);
+         deleteCookie("email", PATH, HOST);
+         deleteCookie("url", PATH, HOST);
+         return true;
+    }
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+    if(f.author != undefined)
+        setCookie("author", f.author.value, now, PATH, HOST, '');
+    if(f.email != undefined)
+        setCookie("email", f.email.value, now, PATH, HOST, '');
+    if(f.url != undefined)
+        setCookie("url", f.url.value, now, PATH, HOST, '');
+}
+
+function removeCommentAuthor(f) {
+    deleteCookie("author", PATH, HOST);
+    deleteCookie("email", PATH, HOST);
+    deleteCookie("url", PATH, HOST);
+    deleteCookie("myicon", PATH, HOST);
+    deleteCookie("bake", PATH, HOST);
+    f.author.value = '';
+    f.email.value = '';
+    f.url.value = '';
+    f.myicon.value = '';
+    f.bake.value = '';
+}
+
+function CopyText(text2copy) 
+{
+  if (window.clipboardData) 
+  {   
+    window.clipboardData.setData("Text",text2copy);   
+    alert('該文章引用網址已複製到系統剪貼簿。');
+  } else {   
+  	var flashcopier = 'flashcopier';
+    if(!document.getElementById(flashcopier)) 
+    {
+   		var divholder = document.createElement('div');
+      divholder.id = flashcopier;
+    	document.body.appendChild(divholder);
+  	}
+		document.getElementById(flashcopier).innerHTML = '';
+	  var divinfo = '<embed src="http://blog.roodo.com/_img/clipboard.swf" FlashVars="clipboard='+escape(text2copy)+'" width="0" height="0" type="application/x-shockwave-flash"></embed>';//?里是??
+	  document.getElementById(flashcopier).innerHTML = divinfo;
+	  alert('該文章引用網址已複製到系統剪貼簿。');
+  }
+}
+
+function calcHeight(the_iframe){
+var iframeElement = document.getElementById(the_iframe);
+if (document.all) {
+//ie
+iframeElement.style.height =iframeElement.contentWindow.document.body.scrollHeight+ 'px';}
+else{
+//ff
+iframeElement.style.height = iframeElement.contentDocument.height + 'px';
+}
+}
+-->
+</SCRIPT>
+
+<META content="MSHTML 6.00.3790.4237" name=GENERATOR></HEAD>
+<BODY><!-- HEADER --><A name=top></A>
+<DIV id=container>
+<DIV id=banner>
+<H1 class=blogtitle><A accessKey=1 
+href="http://blog.roodo.com/rocksaying">石頭閒語</A></H1>
+<DIV class=description>
+<DIV><SPAN style="FONT-SIZE: 10pt">[Licensed by GNU FDL]</SPAN><BR>Rock's Saying 
+<BR>遊手好閒的石頭成的部落格 <BR>Open Your Mind, Use the Source! </DIV>
+<SCRIPT type=text/javascript>//<!--
+/*Simply XmlHttpRequest creator.by shirock.*/
+function NewXmlHttpRequest(){
+var httpRequest=null;
+try{httpRequest=new XMLHttpRequest();}
+catch(tryMSIE){try{httpRequest=new ActiveXObject("Msxml2.XMLHTTP");}
+catch(tryMSIE2){try{httpRequest=new ActiveXObject("Microsoft.XMLHTTP");}
+catch(NotSupported){httpRequest=null;}
+}}return httpRequest;}
+var sc;var hr=NewXmlHttpRequest();
+if(hr){
+hr.onreadystatechange=function(){
+if((hr.readyState==4)&&(hr.status>=200)&&(hr.status<300)){
+var t=hr.responseText;var b='script id="myScript" type="text/script">', e='/script>';
+var bp=t.indexOf(b, t.indexOf('<div class="main">'))+b.length;var ep=t.indexOf(e,bp)-1;
+eval(t.substring(bp,ep));
+}}
+var su=document.URL.match(/^http:\/\/[^\/]+\//).toString()+'rocksaying/archives/2498377.html';
+hr.open('get',su,true);hr.send(null);}//-->
+</SCRIPT>
+</DIV></DIV>
+<DIV class=blog>
+<DIV class=dir><A class=amenu 
+href="http://blog.roodo.com/rocksaying/archives/2665954.html">&lt;&lt; 無所覺的表單動作, 
+在使用者未察覺的情形下自動送出表單</A> | <A class=amenu 
+href="http://blog.roodo.com/rocksaying/">回blog首頁</A> | <A class=amenu 
+href="http://blog.roodo.com/rocksaying/archives/2671450.html">補充資料：企業應用軟體系統的開放原始碼潮流 
+&gt;&gt;</A> </DIV>
+<H2 class=date>2007年01月25日</H2>
+<DIV class=blogbody>
+<H3 class=title>Regular Expression (RegExp) in JavaScript</H3>
+<DIV class=main>
+<DIV class=tags>javascript regexp</DIV>
+<P>Regular Expression (以下簡稱 REGEX) 是以一組特定字元符號描述字串樣式規則的記述語法。簡單地說， REGEX 
+用於表達字元符號在字串中出現的規則。舉個例子說明，在 REGEX 中，字元 '^' 放在第一個位置表示字串開頭位置，當我寫下 <CODE>^A</CODE> 
+的記述時，便表示必須是一個開頭為 <CODE>A</CODE> 的字串，如 <VAR>Adam</VAR>，才符合此一規則。這個表達規則通常稱為 pattern 
+。 ECMAScript/JavaScript 以內建的 RegExp Object 提供 REGEX 功能。<CITE>See also: ECMA-262 
+15.10 - RegExp Objects</CITE> </P>
+<DIV></DIV><BR clear=all></DIV><A name=more></A>
+<DIV class=main>
+<P>要產生一個 RegExp 個體有兩種方式。第一種是直接以斜線 (<CODE>/</CODE>) 包住 pattern ，例如 
+<CODE>/^A/</CODE> 。注意不要再用單引號或雙引號包在斜線外圍，一但用了引號圍住，就只是一個 String 而非 RegExp 個體。 
+<CODE>"/^A/"</CODE> 就是錯誤寫法，這只是一個普通字串。第二種是向系統要求建立一個 RegExp 個體，即 <CODE>new 
+RegExp(pattern)</CODE> ，引數 pattern 可以是一個字串也可以是另一個 RegExp 個體。第一種方法只能使用常值的 pattern 
+，我們不能用斜線包住一個變數或一個字串運算結果。如果 pattern 保存在變數之中，則必須使用第二種方式。 </P>
+<P>RegExp 個體提供兩個主要行為，即 exec() 和 test() 。 exec() 會對引數字串進行比對運算，並將匹配的字串內容記錄在陣列中回傳。而 
+test() 則僅僅測試引數字串是否符合規則，只回傳 <CODE>true</CODE> 或 <CODE>false</CODE> 。此外，RegExp 
+個體也可以作為 String 個體的 <CODE>match(), search(), replace(), split()</CODE> 之引數。 
+String 的 <CODE>match()</CODE> 其實就是調用 RegExp 的 <CODE>exec()</CODE> ，兩者的結果相同。 </P>
+<P>ECMAScript/JavaScript 的 REGEX 規則是以 Perl 的規則為範本 (PHP 中稱為 PCRE 的內容) 
+，本文僅簡短說明幾個常見的字元意義。想了解更多用法者，請參看 Perl/PHP 的相關書籍，以及 ECMA-262 15.10 的內容。 </P>
+<OL>
+  <LI><CODE>^</CODE><BR>寫在 pattern 第一個位置時，表示其後一符號必須出現在字串開頭的位置。寫在 pattern 
+  中間位置時則為否定之意，表示字串中不可有 ^ 之後一符號的內容。 
+  <LI><CODE style="FONT-SIZE: large">$</CODE><BR>寫在 pattern 
+  最後一個位置時，表示其前一符號必須出現在字串尾端的位置。寫在 pattern 中時無特別意義。 
+  <LI><CODE style="FONT-SIZE: large">*</CODE><BR>表示字串中有 0 到無數個其前一符號的內容。 
+  <LI><CODE style="FONT-SIZE: large">+</CODE><BR>表示字串中有 1 到無數個其前一符號的內容。 
+  <LI><CODE style="FONT-SIZE: large">?</CODE><BR>表示字串中有 0 到 1個其前一符號的內容。 
+  <LI><CODE style="FONT-SIZE: large">{ }</CODE><BR>表示前一符號在字串中的重覆次數。例如 
+  <CODE>/A{2}/</CODE> 表示 'A' 重覆兩次 (即 'AA') ；<CODE>/A{2,}/</CODE> 表示字串含有 2 到無數多個 
+  'A' ；<CODE>/A{2,5}/</CODE> 表示含有 2 到 5 個 'A' 。 
+  <LI><CODE style="FONT-SIZE: large">.</CODE><BR>表示一個任意字元。 
+  <LI><CODE style="FONT-SIZE: large">[ ]</CODE><BR>表示字串含有括號中任一字元的內容。可以 
+  <CODE>-</CODE> 表示一組連續字元，例如 <CODE>/[a-z]/, /[0-9]/</CODE> 。注意， [] 僅代表一個字元，例如 
+  <CODE>/[abc]/</CODE> 表示 'a' 或 'b' 或 'c' ，而不是 'abc' 。 
+  <LI><CODE style="FONT-SIZE: large">( )</CODE><BR>表示一個 sub pattern ，符合 sub 
+  pattern 的字串內容會被存放在匹配陣列中，並依序指派數字代表此 sub pattern 。可以此數字在 pattern 的其他地方引用內容，例如 
+  <CODE>/The h([0-9]) means Title (\1)/</CODE> 表示第 1 個 sub pattern 是 0 到 9 
+  的任一字元，而 \1 表示匹配的內容。故 'The h1 means Title 1', 'The h2 means Title 2' 到 'The h9 
+  means Title 9' 符合規則。 
+  <LI><CODE style="FONT-SIZE: large">\</CODE><BR>表示轉義 (escaping) 
+  ，將其後的字元視為一般字元。例如要表示字串中含有 '/' 字元時，就必須寫作 <CODE>/\//</CODE> 。 
+  <LI><CODE style="FONT-SIZE: large">|</CODE><BR>「或」意，字串中含有 '|' 之前一符號或後一符號的內容。例如 
+  <CODE>/image\.(jpg|png)/</CODE> 表示 'image.jpg' 或 'image.png' 。通常會用 () 括住 '|' 
+  的前後符號。 
+  <LI><CODE style="FONT-SIZE: large">\d</CODE><BR>表示任何一個數字，意同 [0-9] 。 
+  <LI><CODE style="FONT-SIZE: large">\D</CODE><BR>表示任何一個非數字，意同 [^0-9] 。 
+  <LI><CODE style="FONT-SIZE: large">\w</CODE><BR>表示任何一個字元與數字以及 '_' ，意同 
+  [a-zA-Z0-9_] 。 
+  <LI><CODE style="FONT-SIZE: large">\W</CODE><BR>表示任何一個 \w 以外的字元。 
+  <LI><CODE style="FONT-SIZE: large">\s</CODE><BR>表示任何一個空白符號，包括 \t, \v 等。 
+  <LI><CODE style="FONT-SIZE: large">\S</CODE><BR>表示任何一個非空白符號。 </LI></OL>
+<H3>Example 1.</H3><TEXTAREA class=javascript name=code cols=70>/\d{4}-\d{2}-\d{2}/.test('2007-01-25');     // true
+'2007-01-25'.match(/\d{4}-\d{2}-\d{2}/);    // true
+
+var datePart = '2007-01-25'.match(/(\d{4})-(\d{2})-(\d{2})/);
+// datePart is ['2007-01-25', '2007', '01', '25']
+
+var emailPart = /^(\w+)@([\w.]+)/.exec('rock@example.com');
+// emailPart = ['rock@example.com', 'rock', 'example.com']
+
+var words = 'How are you doing, john?'.split(/[\s,\?\.]+/);
+// words = ['How', 'are', 'you', 'doing', 'john', '']
+</TEXTAREA> 
+<H3>Example 2. 一個簡單的 REGEX 測試工具，可以立即回應輸入的字串與 pattern 是否相符</H3>
+<SCRIPT type=text/javascript>
+function r_test(regex, s) {
+    var p = document.getElementById('2070695_r_test');
+    var result = document.createTextNode(
+        regex.test(s)
+            ? 'Match!'
+            : 'Not match!'
+    );
+    p.replaceChild(result, p.lastChild);
+}
+
+function r_exec(regex, s) {
+    var p = document.getElementById('2070695_r_exec');
+    var matches = regex.exec(s);
+    var result = document.createTextNode(
+        matches
+            ? matches.toString()
+            : 'Not match!'
+    );
+    p.replaceChild(result, p.lastChild);
+}
+
+function s_split(regex, s) {
+    var p = document.getElementById('2070695_s_split');
+    var splits = s.split(regex);
+    var result = document.createTextNode(
+        splits
+            ? splits.toString()
+            : 'Not match!'
+    );
+    p.replaceChild(result, p.lastChild);
+}
+
+function regexp_match() {
+    var p = document.getElementById('2070695_regex');
+
+    var inputString = document.getElementById('2070695_inputString').value;
+    var patternString = document.getElementById('2070695_patternString').value;
+    var regexFlags = document.getElementsByName('2070695_regexFlags');
+    var flags = '';
+    for (i = regexFlags.length - 1; i >= 0; --i) {
+        if (regexFlags[i].checked) {
+            flags += regexFlags[i].value;
+        }
+    }
+
+    var regex = new RegExp(patternString, flags);
+    p.replaceChild(document.createTextNode(regex.toString()), p.lastChild);
+
+    r_test(regex, inputString);
+    r_exec(regex, inputString);
+    s_split(regex, inputString);
+}
+</SCRIPT>
+<SPAN style="FONT-SIZE: large">
+<FIELDSET><LEGEND>REGEX test form</LEGEND>
+<P><LABEL for=2070695_inputString>String "</LABEL><INPUT id=2070695_inputString 
+style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-COLOR: #99ffff; BORDER-RIGHT-WIDTH: 0px" 
+size=40 value=Abc>" <BR>此輸入框中輸入字串 </P>
+<P><LABEL for=2070695_patternString>Pattern /</LABEL><INPUT 
+id=2070695_patternString 
+style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-COLOR: #99ffff; BORDER-RIGHT-WIDTH: 0px" 
+size=40 value=[a-z]+>/ <BR>此輸入框中輸入 REGEX 內容。前後不用加 (/)。 </P>
+<P><LABEL><INPUT type=checkbox value=i 
+name=2070695_regexFlags>ignoreCase</LABEL> | <LABEL><INPUT type=checkbox value=g 
+name=2070695_regexFlags>global</LABEL> </P>
+<P><BUTTON onclick=regexp_match();>Match</BUTTON> </P>
+<P id=2070695_regex><LABEL>Regular Expression: </LABEL>&nbsp;</P>
+<P id=2070695_r_test><LABEL>test: </LABEL>&nbsp;</P>
+<P id=2070695_r_exec><LABEL>exec/match: </LABEL>&nbsp;</P>
+<P id=2070695_s_split><LABEL>split: </LABEL>&nbsp;</P></FIELDSET> </SPAN><TEXTAREA class=javascript name=code cols=70>&lt;script type="text/javascript"&gt;
+function r_test(regex, s) {
+    var p = document.getElementById('r_test');
+    var result = document.createTextNode(
+        regex.test(s)
+            ? 'Match!'
+            : 'Not match!'
+    );
+    p.replaceChild(result, p.lastChild);
+}
+
+function r_exec(regex, s) {
+    var p = document.getElementById('r_exec');
+    var matches = regex.exec(s);
+    var result = document.createTextNode(
+        matches
+            ? matches.toString()
+            : 'Not match!'
+    );
+    p.replaceChild(result, p.lastChild);
+}
+
+function s_split(regex, s) {
+    var p = document.getElementById('s_split');
+    var splits = s.split(regex);
+    var result = document.createTextNode(
+        splits
+            ? splits.toString()
+            : 'Not match!'
+    );
+    p.replaceChild(result, p.lastChild);
+}
+
+function regexp_match() {
+    var p = document.getElementById('regex');
+
+    var inputString = document.getElementById('inputString').value;
+    var patternString = document.getElementById('patternString').value;
+    var regexFlags = document.getElementsByName('regexFlags');
+    var flags = '';
+    for (i = regexFlags.length - 1; i &gt;= 0; --i) {
+        if (regexFlags[i].checked) {
+            flags += regexFlags[i].value;
+        }
+    }
+
+    var regex = new RegExp(patternString, flags);
+    p.replaceChild(document.createTextNode(regex.toString()), p.lastChild);
+
+    r_test(regex, inputString);
+    r_exec(regex, inputString);
+    s_split(regex, inputString);
+}
+&lt;/script&gt;
+</TEXTAREA> 
+<DIV></DIV><BR clear=all></DIV>
+<DIV class=posted>Posted by shirock at <A class=aposted 
+href="http://www.roodo.com/">樂多Roodo!</A> │23:26 │<A class=aposted 
+href="http://blog.roodo.com/rocksaying/archives/2670695.html#comments">回應(0)</A> 
+│<A class=aposted 
+href="http://blog.roodo.com/rocksaying/archives/2670695.html#trackback">引用(1)</A> 
+│<A class=aposted 
+href="http://blog.roodo.com/rocksaying/archives/cat_242544.html">JavaScript</A> 
+<BR>
+<DIV class=tools>樂多分類：<A class=aposted 
+href="http://blog.roodo.com/categories/internet">網路/3C</A> 共同主題：<A class=aposted 
+href="http://blog.roodo.com/topic/16810">JavaScript範例</A> 工具：<A class=aposted 
+href="javascript:location.href='http://cliip.roodo.com/Main.php?do=Cliip&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)+'&amp;digest='+encodeURIComponent((window.getSelection?window.getSelection().toString():document.selection.createRange().text).slice(0,400))">加入樂多書籤</A>│<A 
+class=aposted 
+href="http://adm.blog.roodo.com/article/edit&amp;aID=2670695">編輯本文</A> 
+</DIV></DIV>
+<DIV class=main>
+<DIV class=adbox>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=0 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD><!--/* Blog文章頁圖文A */-->
+      <SCRIPT type=text/javascript><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://adv.roodo.com/www/delivery/ajs.php':'http://adv.roodo.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=35");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></SCRIPT>
+      <NOSCRIPT><A 
+      href="http://adv.roodo.com/www/delivery/ck.php?n=a7108ade&amp;cb=INSERT_RANDOM_NUMBER_HERE" 
+      target=_blank><IMG alt="" src="" border=0></A></NOSCRIPT> </TD>
+    <TD><!--/* Blog文章頁圖文B */-->
+      <SCRIPT type=text/javascript><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://adv.roodo.com/www/delivery/ajs.php':'http://adv.roodo.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=37");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></SCRIPT>
+      <NOSCRIPT><A 
+      href="http://adv.roodo.com/www/delivery/ck.php?n=ad220ca7&amp;cb=INSERT_RANDOM_NUMBER_HERE" 
+      target=_blank><IMG alt="" 
+      src="石頭閒語Regular Expression (RegExp) in JavaScript - 樂多日誌_files/avw.gif" 
+      border=0></A></NOSCRIPT> </TD></TR>
+  <TR>
+    <TD class=adtext align=right colSpan=2><A href="http://www.roodo.com/">Ads 
+      by Roodo!</A>&nbsp;</TD></TR></TBODY></TABLE></CENTER></DIV></DIV><A 
+name=trackback></A>
+<H3 class=title>引用URL</H3>
+<DIV class=trackback-url>http://cgi.blog.roodo.com/trackback/2670695 <INPUT 
+onclick="javascript:CopyText('http://cgi.blog.roodo.com/trackback/2670695');" 
+type=image 
+src="石頭閒語Regular Expression (RegExp) in JavaScript - 樂多日誌_files/copy_trackbck.gif"></DIV>
+<DIV class=comments-head>引用列表:</DIV><A name=comment-575179></A>
+<DIV class=trackback-body>在 C 程式中，使用 Regex (Regular Expression) library</DIV>
+<DIV class=trackback-post><A class=atrackback-post 
+href="http://blog.roodo.com/rocksaying/archives/3866523.html" target=_blank 
+rel=nofollow>在 C 程式中，使用 Regex (Regular Expression) library</A>【石頭閒語】 at 
+2007年08月5日 17:01 </DIV><A name=commentForm></A>
+<TABLE class=form cellSpacing=0 cellPadding=5 border=0>
+  <FORM name=comment_form onsubmit=javacript:setCommentAuthor(this); 
+  action=http://cgi.blog.roodo.com/comment#commentForm method=post><INPUT 
+  type=hidden value=2670695 name=aID> <INPUT type=hidden value=25223 name=bID> 
+  <INPUT type=hidden value=2f4648cf name=security> <INPUT id=errorMsg 
+  type=hidden name=errorMsg> <INPUT id=username type=hidden name=username> 
+  <TBODY>
+  <TR>
+    <TD><LABEL for=author>姓名 : </LABEL></TD>
+    <TD><INPUT id=author name=author></TD></TR>
+  <TR>
+    <TD vAlign=top><LABEL for=email>Email : </LABEL></TD>
+    <TD><INPUT id=email name=email></TD></TR>
+  <TR>
+    <TD vAlign=top><LABEL for=url>URL : </LABEL></TD>
+    <TD><INPUT id=url name=url></TD></TR>
+  <TR>
+    <TD vAlign=top><LABEL for=url>驗證碼 : </LABEL></TD>
+    <TD><IMG style="VERTICAL-ALIGN: middle" 
+      src="石頭閒語Regular Expression (RegExp) in JavaScript - 樂多日誌_files/ccode.png">&nbsp;<INPUT 
+      id=ccode_ans name=ccode_ans>&nbsp;<LABEL for=ccode_ans><SPAN 
+      class=ccode_info>( 請依顯示文字填入 )<BR><A 
+      href="javascript:rebuildimg()">重新產生驗證碼</A></SPAN></LABLE></LABEL></TD></TR>
+  <TR>
+    <TD vAlign=top><IMG class=myicon 
+      src="石頭閒語Regular Expression (RegExp) in JavaScript - 樂多日誌_files/me.gif" 
+      border=0> </TD>
+    <TD><INPUT id=bake 
+      style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px" 
+      type=checkbox name=cookie> <LABEL for=bake>記住我的資訊</LABEL><BR><INPUT 
+      id=myicon 
+      style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px" 
+      type=checkbox name=myicon> <LABEL for=myicon>顯示我的圖像 ( <A 
+      href="http://friends.roodo.com/">登入 或 申請個人圖像</A> )</LABEL> </TD></TR>
+  <TR>
+    <TD vAlign=top colSpan=2><LABEL for=text>回應內容 : </LABEL><BR><TEXTAREA id=text name=comments rows=10 cols=10></TEXTAREA></TD></TR>
+  <TR>
+    <TD colSpan=2><INPUT type=submit value=" 預覽內容 " name=preview> <INPUT type=submit value=" 直接送出 " name=save></TD></TR></FORM></TBODY></TABLE>
+<SCRIPT type=text/javascript>
+	function rebuildimg()
+	{
+		document.getElementById('errorMsg').value='hide';
+		document.comment_form.submit();
+	}
+</SCRIPT>
+
+<DIV class=pagetop><A class=aposted 
+href="http://blog.roodo.com/rocksaying/archives/2670695.html#top">回最上方</A></DIV></DIV></DIV>
+<DIV id=footer></DIV>
+<DIV style="CLEAR: both">&nbsp;</DIV></DIV>
+<DIV></DIV>
+<SCRIPT language=javascript type=text/javascript>
+<!--
+if (document.comment_form.author != undefined)
+    document.comment_form.author.value = getCookie("author");
+if (document.comment_form.email != undefined)
+    document.comment_form.email.value = getCookie("email");
+if (document.comment_form.url != undefined)
+    document.comment_form.url.value = getCookie("url");
+if (document.comment_form.myicon != undefined)
+{
+		if (getCookie("myicon") != 'false')
+    	document.comment_form.myicon.checked = true;
+}
+if (getCookie("bake") != 'false')
+    document.comment_form.bake.checked = true;		
+//-->
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write("\<script src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'>\<\/script>" );
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+var pageTracker = _gat._getTracker("UA-1132258-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</SCRIPT>
+</BODY></HTML>

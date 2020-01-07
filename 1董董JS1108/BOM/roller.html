@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	.box {
+		width:80px;
+		height:80px;
+	}
+
+</style>
+</head>
+<body>
+
+<br><br>
+<center><input type="button" id="btnPlay" value="play"></center>
+<br><br>
+
+<table border="1" cellspacing="0" align="center">
+	<tr><td class="box" id="c_0"></td><td class="box" id="c_1"></td><td class="box" id="c_2"></td><td class="box" id="c_3"></td></tr>
+	<tr><td class="box" id="c_11"></td><td colspan="2" rowspan="2"></td><td class="box" id="c_4"></td></tr>
+	<tr><td class="box" id="c_10"></td><td class="box" id="c_5"></td></tr>
+	<tr><td class="box" id="c_9"></td><td class="box" id="c_8"></td><td class="box" id="c_7"></td><td class="box" id="c_6"></td></tr>
+</table>
+<script type="text/javascript" src="rand.js"></script>
+<script type="text/javascript">
+// let timerId;
+let loop; //應跑的總次數
+let count;//已經跑幾次 
+let duration;//多久跑一次
+let i=11;
+
+function run(){
+	//把前一格正常化
+	document.getElementById(`c_${i}`).style.backgroundColor = "white";
+	
+	//把目前這一格亮化
+	i = ++i % 12;
+	document.getElementById(`c_${i}`).style.backgroundColor = "gold";
+
+	//如果已跑完應該跑的次數，就停止，show出獎金
+	count++;
+	if( count == loop){
+		document.getElementById(`c_${i}`).innerText = rand(10,100000)*100;
+		document.getElementById("btnPlay").disabled = false;
+	}else{
+		duration += 10;
+		setTimeout(run, duration);
+	}
+}
+
+function roll(){
+	//清除上一次的狀態
+	document.getElementById(`c_${i}`).innerText = "";
+	document.getElementById(`c_${i}`).style.backgroundColor = "white";
+	i=11;
+	//決定跑幾次
+	loop = rand(18,36);
+	count = 0;
+	duration = 100;
+	document.getElementById("btnPlay").disabled = true;
+	setTimeout(run, duration);
+}
+
+function init(){
+	document.getElementById("btnPlay").onclick = roll;
+}
+window.addEventListener("load", init, false);
+</script>
+</body>
+</html>

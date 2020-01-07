@@ -1,0 +1,49 @@
+<h1>解析Json</h1>
+<a href="">https://jsoneditoronline.org/</a>
+<!-- 小不忍，則亂大謀。快把其他分頁都關掉，專心上課！ -->
+<!-- 職人之路說的 發生事件後 我只操作資料 資料自動去操作DOM -->
+
+<!-- =========================== -->
+
+v-for = (item,index) in 陣列
+
+<div id="app">
+    <div class="banner">
+
+    </div>
+    <div class="classes">
+        <a class="classbox" v-for="cls in classdatas" :href="'http://hahow.in/courses/'+cls._id">
+            <div class="teacher" :style="'background-image:url('+cls.owner.profileImageUrl+')'"></div>
+            <div class="top">
+                <div class="booktbtn"><i class="fa fa-bookmark-o"></i></div>
+            </div>
+            <div class="bottom">
+                <h1></h1>
+                <div class="text">
+                    <div class="pr"></div>
+                    <div class="preprice">預購價<span class="orange" >NT${{cls.preOrderedPrice}}</span></div>
+                    <div class="lastday">剩<span>{{parseInt((new Date(cls.proposalDueTime)-new Date('2016/10/14'))/1000/60/60/24)}}天</span></div>
+                </div>
+                <div class="progressbar">
+                    <div class="valuebar"
+                        v-bind:style="'width:'+220*cls.numSoldTickets/cls.successCriteria.numSoldTickets+'px'">
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<script>
+    $.ajax({
+        url: apiUrl,
+        success: function (res) {
+            var obj = JSON.parse(res);
+            console.log(obj);
+            vm.classdatas = obj;
+            // !!!
+            Vue.set(vm, "classdatas", obj);
+        }
+    })
+</script>

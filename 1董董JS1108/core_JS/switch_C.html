@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+
+<script type="text/javascript">
+var lowType, amount, education;
+
+lowType = 1;
+education = true
+switch( lowType ){
+	case "1" : 
+	   amount = 5000;
+	   if( education == true){
+	   	amount = amount + 1000;
+	   }
+	   break;
+	case "2" : 
+	   amount = 3000;
+	   break;
+	case "3" : 
+	   amount = 1000;
+	   break;
+	default : 
+	   amount = 0;   
+}
+document.write("補助款為", amount, "<br>");		
+</script>    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <img src="../images/border.png"> -->
+
+        <!-- <img v-bind:src="imgURL"> -->
+        <img :src="imgURL">
+    </div>
+
+    <!-- directives指令 v-bind-->
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello, VueJS!',
+                imgURL: 'https://miro.medium.com/max/1200/1*XGw9zUEZGYPNmeKGmyeX1g.jpeg',
+            }
+        });
+    </script>
+</body>
+</html>

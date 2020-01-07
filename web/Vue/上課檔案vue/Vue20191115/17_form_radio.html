@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+    <style>
+        label{
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">       
+       <!-- <input type="radio" name="gender" value="male" checked><label>Male</label>
+       <input type="radio" name="gender" value="female"><label>Female</label>
+       <input type="radio" name="gender" value="others"><label>others</label> -->
+
+       <input type="radio" v-model="gender" value="male"><label>Male</label>
+       <input type="radio" v-model="gender" value="female"><label>Female</label>
+       <input type="radio" v-model="gender" value="others"><label>others</label>
+    </div>
+   
+    <script src="js/vue.js"></script>
+    <script>        
+        new Vue({
+            el: '#app', 
+            data: {
+                gender: 'male',
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+    .highlight{
+        background-color: #fa0;
+    }
+    
+    </style>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+    
+    $(document).ready(function(){
+        $('#search').keyup(function(){
+            let searchName = $(this).val();
+
+            $('#names li').removeClass('highlight'); //這行不佳不行
+
+            if($.trim(searchName)!==''){
+                $(`#names li:contains(${searchName})`).addClass('highlight'); 
+            }
+        });
+    });
+
+    // $(document).ready(function(){
+	// 			$('#search').keyup(function(){
+	// 				let searchName = $(this).val();
+	// 				// alert(searchName);
+
+	// 				$('#names li').removeClass('highlight');
+
+	// 				if($.trim(searchName) !== ''){
+	// 					// $('#names li:contains("'+searchName+'")').addClass('highlight');
+	// 					$(`#names li:contains(${searchName})`).addClass('highlight');
+	// 				}
+
+					
+
+	// 			});
+	// 		});		
+    
+    
+    </script>
+</head> 
+<body>
+
+    	<p>
+                <label for="search">search:</label>
+                <input type="search" id="search">
+            </p>
+            <ul id="names">
+                <li>Ann Hathaway</li>
+                <li>Robert De Niro</li>
+                <li>Maryl Streep</li>
+                <li>Robin Williams</li>
+                <li>Bred Pitt</li>
+                <li>Angelina Jolie</li>
+                <li>Robert Downey Jr.</li>
+                <li>Demi Moore</li>
+                <li>Bruce Willis</li>
+                <li>Cybill Shepherd</li>
+                <li>Marilyn Monroe</li>
+                <li>Robert Redford</li>
+                <li>Annete Bening</li>
+            </ul>
+            <div id="feedback"></div>
+    
+</body>
+</html>

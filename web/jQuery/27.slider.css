@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.image{
+    width: 100%;
+    height: 550px;
+    border: 1px solid red;
+}
+
+/* div */
+#sliderBoard{
+    width: 60%;
+    height: 600px;
+
+    margin: 50px auto;
+    /* 工作1 */
+    overflow: hidden;
+}
+
+/* ul */
+#sliderContent{
+
+    /* 工作2 */
+    position: relative;
+}
+
+
+/* li */
+#sliderContent li{
+
+    /* 工作3 */
+    float: left;
+}
+#sliderContent::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+#sliderButton{
+    /* 老師給個線就可以看ul */
+    border:  1px red solid;
+
+    width: 100%;
+    /* 這是ul腳色!!! */
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+
+}
+#sliderButton li{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ccc;
+
+    /* 老師這邊有空格就沒關係用inlineblock */
+    display: inline-block;
+    /* margin: 5px; */
+}
+
+#sliderButton li.clickMe{
+    background: #888;
+}

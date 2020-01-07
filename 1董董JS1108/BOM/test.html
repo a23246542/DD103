@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+
+<div id = "showPanel" style="font-size:20px;width:200px;height:200px;overflow:scroll">
+	    <p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>	
+</div>	
+
+<div id="outer">
+	<div id="inner" style="">
+		
+	</div>
+</div>
+
+<h2>double array element, 使用arrow function</h2>
+<script type="text/javascript">
+var arr = [10, 20, 30];
+
+var final = arr.reduce(function(total, data){
+	total += data;
+	return total;
+}, 0);
+
+document.write( final,"<br>");
+</script>  
+</body>
+</html>

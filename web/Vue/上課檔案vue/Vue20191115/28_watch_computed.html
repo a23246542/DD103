@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app"> 
+       <input v-model="A"> + 
+       <input v-model="B"> = 
+       <input v-model="C">
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app', 
+            data: {
+                A: 0,
+                B: 0,
+                // C: 0,
+            },
+            methods: {},
+            computed: {
+                C(){
+                    return parseInt(this.A) + parseInt(this.B);
+                },
+            },
+            watch: {
+                // A(val){
+                //     this.C = parseInt(val) + parseInt(this.B);
+                // },
+                // B(val){
+                //     this.C = parseInt(this.A) + parseInt(val);
+                // },
+            },
+        });
+    </script>
+</body>
+</html>

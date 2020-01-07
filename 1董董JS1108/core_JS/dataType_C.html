@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+
+<h2>string</h2>	
+<script type="text/javascript">
+
+document.write("Hi", "<br>");
+document.write('早安', "<br>");
+</script>
+
+<h2>number</h2>	
+<script type="text/javascript">
+
+document.write("21 :", 21, "<br>");  //21
+document.write("021 :", 021, "<br>"); //八進位的21
+document.write("0x21 :", 0x21, "<br>");//十六進位的21
+document.write(1.23, "<br>");
+</script>   
+ 
+<h2>boolean</h2>	
+<script type="text/javascript">
+document.write("true :", true, "<br>");  //內部用1來存-->輸出會先轉成字串 "true"
+document.write("false :", false, "<br>"); //
+</script> 
+
+<h2>undefined, null</h2>	
+<script type="text/javascript">
+var a;
+document.write("undefined :", undefined, "<br>");  
+document.write("null :", null, "<br>"); 
+document.write("a :", a, "<br>");
+…document.write("b :", b, "<br>"); //此行會error
+</script>  
+
+<h2>escape</h2>
+<script type="text/javascript">
+	document.write( "I am Sara", "<br>");
+	document.write( "I am 'Sara'", "<br>");
+	document.write( "I am \"Sara\"", "<br>");
+	window.alert( "I am \"Sara\" , \n早安");
+</script>
+</body>
+</html>

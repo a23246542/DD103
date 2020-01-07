@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <select>
+            <option><my-component></my-component></option>
+        </select>
+        <!-- 瀏覽器會先parse解析元素 解析過程 發現格式不符合 他會刪了當作沒讀到  -->
+        <!-- 所以就乾脆select也寫在vue裡面 -->
+        <!-- 可是ul table chrome可以 -->
+        <ul>
+            <my-component></my-component>
+        </ul>
+
+    </div>
+    
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+<script>
+Vue.component('MyComponent',{ //標籤一定要寫那樣
+    template:'<option>Hello<option>',
+})
+new Vue({
+    el:'#app',
+    template:`<select>
+                  <my-component></my-component>
+              </select>`
+              ,
+    
+})
+</script>
+</html>

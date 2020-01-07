@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--組件的註冊</title>
+</head>
+<body>
+    <div id="app">        
+        <my-component></my-component> 
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            //local component
+            components: {
+                'my-component': {
+                    template: '<h2>Local Component</h2>',
+                },
+            },
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<img src="./add_2.png"  id="btnAddSpot">
+<div class="spotTemplate" style="display: none;">
+	景點 <input type="text" name="spot[]"> <img src="trash.png" alt="">
+</div>
+
+<form action="" id="spotForm">
+	<input type="submit" id="btnSend" value="送出">
+</form>
+
+<script>
+	//1載入註冊
+	// 2按圖會新增
+	// 3按垃圾桶可以刪除
+ 
+ function $getId(id){
+
+	//  return document.getElementById('id');
+	 return document.getElementById(id);
+	//  @@@1寫法跟jquery不一樣!!!!!!
+ }
+  
+  window.addEventListener("load",function(){
+		// let btnAddSpot = $getId('')
+		// @@2放錯位置
+		// let spotTemp = document.querySelector('spotTemplate');
+		// let spotForm = document.getElementById('spotForm')
+        // let send = $getId('btnSend')
+
+		// $getId("btnAddSpot").onclick = function(){
+		$getId("btnAddSpot").onclick = function(){
+            // let spotTemp = document.querySelector('spotTemplate');
+			// @@3query要css選擇氣血法 要加點
+            let spotTemp = document.querySelector('.spotTemplate');
+		    let spotForm = document.getElementById('spotForm');
+           let send = $getId('btnSend')
+
+			let newSpot = spotTemp.cloneNode(true);
+			newSpot.style.display = "";
+
+			// spotForm.appendChild(newSpot)
+			spotForm.insertBefore(newSpot,send);
+			// @@4忘記家s!!!!
+			// newSpot.getElementByTagName('img')[0].onclick = function(e){
+			// newSpot.getElementsByTagName('img')[0].onclick = function(e){
+			// 	// spotForm.removeChild(e.target.parentNode);
+			// 	document.querySelector('#spotForm').removeChild(e.target.parentNode);
+			// }
+				// 我就是太那個 還沒學熟 就一直追求新更好技術
+			// 然後querySelector無法動態更新 所以寫這邊對
+			// document.querySelector('newSpot img').onclick = function(e){
+			// document.querySelector('.newSpot img').onclick = function(e){
+			// document.querySelector('.spotTemplate').getElementsByTagName('img')[0].onclick=function(e){
+				// 純select只會選到第一個?
+			document.querySelectorAll(".spotTemplate img")[0].onclick = function(e){
+			    //   document.querySelector('#spotFrom').removeChild(e.target.parentNode);
+			      document.querySelector('#spotForm').removeChild(e.target.parentNode);
+			}
+
+			document.querySelectorAll(".spotTemplate img")[0].onclick = function(e){
+			    //   document.querySelector('#spotFrom').removeChild(e.target.parentNode);
+			      document.querySelector('#spotForm').removeChild(e.target.parentNode);
+			}
+		}
+
+		
+
+  })
+</script>
+</body>
+</html>

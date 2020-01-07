@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+
+<h2>建立陣列</h2>	
+<script type="text/javascript">
+var arr = new Array(11,22,33);
+var length = arr.length; //3
+
+arr[length] = 100; //arr[3]=100;
+length = arr.length;  //4
+
+for( var i=0; i<length; i++){ //i:0
+	document.write( i, " : ", arr[i], "<br>");
+}
+</script>  
+
+
+<h2>陣列轉字串: 自己做~</h2>	
+<script type="text/javascript">
+var arr = new Array(11,22,33,44,55,66);  //6
+var str = "";
+var length = arr.length; //6
+
+for( var i=0; i<length-1; i++){ //i<5
+	str = str + arr[i] + ",";
+}
+str = str + arr[length-1]; //arr[5]
+document.write( str, "<br>");
+</script> 
+
+<h2>陣列轉字串: toString(), join()</h2>	
+<script type="text/javascript">
+var arr = new Array(11,22,33,44,55,66);  //6
+
+document.write( arr.toString(), "<br>");
+document.write( arr.join(), "<br>");
+document.write( arr.join("#"), "<br>");
+document.write( arr.join("^^"), "<br>");
+document.write( arr, "<br>");  //要輸出成字串, JS會自動呼叫arr.toString()
+</script> 
+
+<h2>將資料放入陣列的最後面: 自己做~</h2>	
+<script type="text/javascript">
+var arr = new Array(11,22,33,44,55,66);  //6 
+var length = arr.length;
+arr[arr.length] = 100; //[6]
+arr[arr.length] = 1000;//[7]
+
+length = arr.length;
+for( var i=0; i<length; i++){
+	document.write( arr[i], "<br>");
+}
+</script> 
+
+<h2> push(), pop(), shift()</h2>	
+<script type="text/javascript">
+var arr = new Array(11,22,33);  
+var length = arr.push(100);
+length = arr.push(1000);
+document.write( arr.toString(), "<br>");
+document.write( "長度 : ", length, "<br>");
+
+document.write( "pop()出 :" , arr.pop(), "<br>");
+document.write( arr.toString(), "<br>");
+
+document.write( "shift()出 :" , arr.shift(), "<br>");
+document.write( arr.toString(), "<br>");
+</script> 
+
+<h2>將資料insert到中間位置 : 自己做~</h2>
+<script type="text/javascript">
+var arr = new Array(11,22,33,44,55,66,77);
+var length = arr.length;
+
+for( var i=length-1;i>=3; i--){
+	arr[i+1] = arr[i];
+}
+arr[3] = 100;
+document.write( arr.toString(), "<br>");
+</script>
+
+<h2>將資料insert到中間位置 : 自己做~進階版</h2>
+<script type="text/javascript">
+var arr = new Array(11,22,33,44,55,66,77);
+var length = arr.length;
+var pos = 2;
+var data = 888;
+for( var i=length-1;i>=pos; i--){
+	arr[i+1] = arr[i];
+}
+arr[pos] = data;
+document.write( arr.toString(), "<br>");
+</script>
+
+
+<h2>splice()</h2>
+<script type="text/javascript">
+var arr = new Array(11,22,33,44,55,66,77,88,99);
+var arr2 = arr.splice(3,4,100,200);//44,55,66,77	
+document.write( arr.toString(), "<br>"); //11,22,33,100,200,88,99
+document.write( arr2.toString(), "<br>"); //44,55,66,77
+</script>
+
+<h2>將資料insert到中間位置 : 使用splice()</h2>
+<script type="text/javascript">
+var arr = new Array(11,22,33,44,55,66,77);
+arr.splice(3,0,100);
+document.write( arr.toString(), "<br>");
+</script>
+
+<h2>將資料自陣列中間的某位置移除 : 使用splice()</h2>
+<script type="text/javascript">
+var arr = new Array(11,22,33,44,55,66,77);
+var arr2 = arr.splice(3,1);
+document.write( arr.toString(), "<br>");
+document.write( "arr2.length : ", arr2.length, "<br>");
+</script>
+
+<h2>將資料自陣列中間拷貝出來 : 使用slice()</h2>
+<script type="text/javascript">
+var arr = new Array(11,22,33,44,55,66,77);
+var arr2 = arr.slice(3,5);
+document.write( "arr  : ", arr, "<br>");
+document.write( "arr2 : ", arr2, "<br>"); //44,55
+</script>
+
+<h2>indexOf()</h2>
+<script type="text/javascript">
+var arr = new Array("張三", "李四", "王五", "婷婷");
+document.write( arr.indexOf("婷婷"), "<br>"); //3
+document.write( arr.indexOf("董董"), "<br>"); //-1	
+</script>
+
+<h2>concat()</h2>
+<script type="text/javascript">
+var arr = new Array(1, 2, 3);
+var arr2 = new Array(11, 22, 33);
+var arr3 = arr2.concat(arr);
+document.write( arr, "<br>");
+document.write( arr2, "<br>");
+document.write( arr3, "<br>");	
+</script>
+
+<h2>concat()</h2>
+<script type="text/javascript">
+var arr = new Array(1, 2, 3);
+arr.reverse();
+document.write( arr, "<br>");
+</script>
+
+<h2>陣列變數的參考</h2>
+<script type="text/javascript">
+var arrA = new Array(11,22,33);
+var arrB = arrA;
+arrB[2] = 300;	
+document.write( arrA[2], "<br>");
+</script>
+</body>
+</html>

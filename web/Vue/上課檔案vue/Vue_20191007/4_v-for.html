@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="color in colors">{{color}}</li>
+        </ul>
+        <ol>
+            <li v-for="item in classmate">{{item.name}}</li>
+        </ol>
+
+        <table border="1">
+            <tr>
+                <td v-for="item in classmate">{{item.name}}</td>
+            </tr>
+            <tr>
+                <td v-for="item in classmate">{{item.age}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- directives指令 v-for -->
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {     
+                message: 'Hello, VueJS!',
+                colors: ['red','orange','yellow','green','blue','indigo','violet'],
+                classmate: [{name:'Steve',age: 18},{name:'Tina',age: 20},{name:'Stella',age: 25},{name:'Anan',age: 15},],
+            },
+        });
+    </script>
+</body>
+</html>

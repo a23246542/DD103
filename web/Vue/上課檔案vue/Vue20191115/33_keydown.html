@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--鍵盤事件</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <input v-model="input" @keydown="keydown"> -->
+        <!-- <input v-model="input" @keydown.enter="keydownEnter"> -->
+        <!-- <input v-model="input" @keydown.13="keydownEnter"> -->
+        <!-- <input v-model="input" @keydown.esc="keydownEnter"> -->
+        <!-- <input v-model="input" @keydown.a="keydownEnter"> -->
+        <input v-model="input" @keydown.a.prevent="keydownEnter">
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                input: '',
+                list: [],
+            },
+            methods: {
+                keydown(e){
+                //    console.log(e); 
+                //    console.log(e.keyCode); 
+                //    if(e.keyCode === 13){
+                //      this.list.push(this.input);
+                //      this.input = '';
+                //    }
+                },
+                keydownEnter(){
+                    this.list.push(this.input);
+                    this.input = '';
+                },
+            },
+        });
+    </script>
+</body>
+</html>

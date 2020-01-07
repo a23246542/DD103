@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* .submit{
+            background: #3c6e71;
+            color: #fff;
+            border-radius: 8px;
+            padding: 5px 8px;
+        }
+        .submit.disabled{
+            background: #aaa;
+        } */
+    </style>
+</head>
+<body>
+
+        <div id="app">
+            <h1 :style="h1style">lore10</h1>
+            <button @click=shrink></button>
+        </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+    <script>
+
+    const h1style ={
+         fontSize:'50px',
+         color:'red',
+    };
+
+    const blueWord ={
+         color:'blue',
+    }
+
+    new Vue({
+        el:'#app',
+        data:{
+            // 1........字串
+                // h1style:'color:blue;font-size:30px',
+            // 2.........物件
+                // h1style:{
+                //     fontSize:"50px",
+                //     color:'red'
+                // },
+            // 2......es6 shorthand
+                h1style,
+            // h1style:h1style  原本是這樣 es6可以簡寫
+
+            // 3...........陣列
+                // h1style:[h1style,blueWord],
+        },
+        methods: {
+            shrink(){
+                // let currentSize = parseInt(this.h1style[0].fontSize); //如果用上面陣列的寫法要加索引
+                let currentSize = parseInt(this.h1style.fontSize);
+                // let currentSize = this.h1style.fontSize.replace('px','');
+                // alert(currentSize);
+                this.h1style.fontSize=`${currentSize-1}px`; 
+                // this.h1style[0].fontSize=`${currentSize-1}px`; 
+            }
+        },
+    });
+    
+    </script>
+
+ 
+
+</body>
+</html>

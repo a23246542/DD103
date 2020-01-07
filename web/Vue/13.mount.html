@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+
+
+<body>
+    <div>
+        <!-- 1他們都是用物件裝 -->
+        <!-- 2this指向什麼 js跟一班vue-->
+        <!-- 3四捨五入的兩種方法 -->
+        <!-- 5用this讓現在時間跟填寫這個動作綁定有關聯 出現動作 -->
+        <!-- 補充keycode -->
+    </div>
+    <div id="app">
+       <h2>{{message}}</h2>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="js/vue.js"></script> -->
+    <script>
+        var vm=new Vue({
+           el:"#app",
+           data:{
+                message:"hello!",
+           },
+           methods:{
+                
+
+           },
+        //    html模板
+           template:`<div><h1 style="color:red;">{{message}}</h1></div>`,
+          
+        });
+
+
+      
+    </script>
+</body>
+
+</html>

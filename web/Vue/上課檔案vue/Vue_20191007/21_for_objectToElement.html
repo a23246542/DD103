@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--v-for-將物件轉成元素</title>
+</head>
+<body>
+    <div id="app"> 
+        <!-- <p v-for="(value,key) in me">{{key}} -- {{value}}</p> -->
+        <p v-for="item in me">{{item.prop}} -- {{item.value}}</p>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>        
+        new Vue({
+            el: '#app', 
+            data: {
+                me: {
+                    name: 'Silvia Huang',
+                    id: 'silvia',
+                    age: 15,
+                    gender: 'Female',
+                    password: '123456',
+                    10: '小學生',
+                    15: '高中生',
+                    20: '大學生',
+                },
+
+                //如果在意render出來的順序，宣告成陣列
+                me: [
+                    {prop: 'name', value:'Silvia Huang'},
+                    {prop: 'id', value:'silvia'},
+                    {prop: 'age', value:15},
+                    {prop: 'gender', value:'Female'},
+                    {prop: 10, value:'小學生'},
+                    {prop: 15, value:'大學生'},
+                    {prop: 20, value:'大學生'},
+                ],
+            },
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        <div id="app">
+            <input type="text" v-model="a">+
+            <input type="text" v-model="b">=
+            <input type="text" v-model="c">
+        </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+    <script>
+    new Vue({
+        el:'#app',
+        data:{
+            a:0,
+            b:0,
+            //  c:0,可以不用
+        },
+        methods: {
+            
+        },
+        computed: { //不能傳參數 但有回傳值
+        // 寫法2 先想有什麼解法 效能之後再說
+           c:function(){
+              return parseInt(this.a) + parseInt(this.b);
+           }
+        },
+        watch: { //偵測data或computed的變化
+            // 計算機 我只打a或b妳也要給我結果 watch就很好用
+        // 寫法1
+           a(val){
+                this.c = parseInt(val) + parseInt(this.b);//因為弱型別 會被轉成字串相加 家保險
+           },
+           b(val){
+               this.c=parseInt(val)+parseInt(this.a)
+           }
+            
+        },
+    });
+    
+    </script>
+
+ 
+
+</body>
+</html>

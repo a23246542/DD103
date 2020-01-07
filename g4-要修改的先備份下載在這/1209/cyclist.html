@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CYCLIST</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/col.css">
+    <link rel="stylesheet" href="./css/fullpage.css">
+    <link rel="shortcut icon" href="images/favicon02.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/chatbot.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/109/three.js"></script>
+    <script src="./js/OBJLoader.js"></script>
+    <script src="./js/OrbitControls.js"></script>
+    <script src="./js/MTLLoader.js"></script>
+    <script src="./js/RGBELoader.js"></script>
+    <script src="./js/fullpage.js"></script>
+    <script src="./js/customize.js"></script>
+    <script src="./js/jquery.flipster.js"></script>
+    <script src="./js/bikeExp.js"></script>
+    <script src="./js/threejsmodel.js"></script>
+    <script src="https://use.fontawesome.com/5b5301724a.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/getLoginInfo.js"></script>
+    <script src="js/sign_in.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/jquery.easings.min.jss"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/scrolloverflow.min.js"></script> -->
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="phone">
+            <input type="checkbox" name="" id="ham">
+            <label for="ham">
+
+                <span class="ham-1"></span>
+                <span class="ham-2"></span>
+                <span class="ham-3"></span>
+                <span class="ham-4"></span>
+            </label>
+
+            <div class="logo ham"><a href="./index.html"><img src="./images/logo.png" alt=""></a></div>
+
+            <ul class="nav-icon ham">
+                <li class="icon-2"><a href="../shoppingCart.html"></a></li>
+                <li class="icon-3"><a href="#"></a></li>
+            </ul>
+
+            <nav class="pc">
+
+                <ul class=" nav-list">
+                    <li><a href="./customize.html">專屬騎行</a></li>
+                    <li><a href="./CYShop.html">CY嚴選</a></li>
+                    <li><a href="./activity.html">活動專區</a></li>
+                    <li class="logo"><a href="./cyclist.html"><img src="./images/logo.png" alt=""></a></li>
+                    <li><a href="./question.html">不可不知</a></li>
+                    <li><a href="./aboutCY.html">關於CY</a></li>
+                </ul>
+
+                <ul class="nav-icon">
+                    <li class="logstatus">
+                        <span id="memberId"></span>
+                        <div id="logout"></div>
+                    </li>
+                    <li class="icon-2"><a href="shoppingCart.html"></a></li>
+                    <li class="icon-3"></li>
+                </ul>
+            </nav>
+        </nav>
+    </header>
+    <div class="login-wrap" id="login-wrap">
+        <div class="login-html">
+            <span href="#" id="lightbox" class="lightbox-close"></span>
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">登入</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">註冊</label>
+
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <span class="userName">
+                            <label for="user" class="label">帳號</label>
+                            <input type="text" type="text" name="memId" id="memId-in" class="input"
+                                placeholder="請輸入6~10碼英數字">
+                        </span>
+
+
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">密碼</label>
+                        <input type="password" name="memPsw" class="input" id="memPsw-in" placeholder="請輸入6~10碼英數字">
+                    </div>
+
+                    <div class="group">
+                        <input id="memsign-in" type="submit" class="button" value="登入">
+                        <div class="sign_logo"></div>
+                    </div>
+
+
+                </div>
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="pass" class="label">暱稱</label>
+                        <input type="text" class="input" name="memNickName" id="memNickName0" type="text"
+                            placeholder="請輸入英數字">
+                    </div>
+
+                    <div class="group">
+                        <label for="user" class="label">帳號</label>
+                        <input type="text" class="input" name="memId" id="memId0" placeholder="請輸入6~10碼英數字">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">密碼</label>
+                        <input type="text" class="input" id="memPsw0" name="memPsw" placeholder="請輸入6~10碼英數字" />
+                    </div>
+                    <!-- <div class="group">
+                            <label for="pass" class="label">確認密碼</label>
+                            <input type="password" name="memPsw" class="input" placeholder="請再次輸入密碼">
+                        </div> -->
+                    <div class="group">
+                        <label for="pass" class="label">電子信箱</label>
+                        <input type="email" class="input" name="memEmail" id="memEmail0" placeholder="請輸入電子信箱">
+                    </div>
+
+                    <div class="group">
+                        <input class="button" id="sign-up-btn" type="submit" name="submit" value="確認">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fullpage" id="full">
+        <!-- 首屏 -->
+        <section class="section" id="banner">
+            <div id="three" class="col-12" style="margin-left: -25px;"></div>
+        </section>
+        <!-- 客製化 -->
+        <section class="section" id="customizer">
+
+            <div class="customize-area">
+
+                <div class="bike-background">
+
+                    <div class="picture-area">
+                        <div class="wheel"><img src="./images/wheels.png" alt=""></div>
+                        <div class="frame"><img src="./images/mountain-frame1-color1.png" alt=""></div>
+                        <div class="handle"><img src="./images/mountain-frame1-handle1.png" alt=""></div>
+                        <div class="picture-area-fake"><img src="./images/mountain-frame1-handle1.png" alt=""></div>
+                    </div>
+
+
+
+                    <div class="bgAndPrice">
+                        <div class="bgselector">
+                            <label>更換背景:</label>
+                            <span class="place place-1 active" data-place="1"></span>
+                            <span class="place place-2" data-place="2"></span>
+                            <span class="place place-3" data-place="3"></span>
+                            <span class="place place-4" data-place="4"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bike-selector">
+                    <div class="option-head">
+                        <h4>打造您的專屬騎行</h4>
+                    </div>
+                    <div class="option active biketype">
+                        <div class="option-part option-part-1 active" data-option="1">
+                            <div class="icon">
+                                <div class="icon-1"><img src="./images/bikeicon1.png" alt=""></div>
+                            </div>
+                            <div class="title">
+                                <h4>
+                                    車款
+                                </h4>
+                            </div>
+                            <div class="more">
+                                <div class="arrow">
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option option-frame">
+                        <div class="option-part option-part-2" data-option="2">
+                            <div class="icon">
+                                <div class="icon-2"><img src="./images/frame0.png" alt=""></div>
+                            </div>
+                            <div class="title">
+                                <h4>
+                                    車架
+                                </h4>
+                            </div>
+                            <div class="more">
+                                <div class="arrow">
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option option-handle">
+                        <div class="option-part option-part-3" data-option="3">
+                            <div class="icon">
+                                <div class="icon-3"><img src="./images/handle0.png" alt=""></div>
+                            </div>
+                            <div class="title">
+                                <h4>
+                                    把手
+                                </h4>
+                            </div>
+                            <div class="more">
+                                <div class="arrow">
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="option option-color">
+                        <div class="option-part option-part-4" data-option="4">
+                            <div class="icon">
+                                <div class="icon-4"><img src="./images/brush0.png" alt=""></div>
+                            </div>
+                            <div class="title">
+                                <h4>
+                                    顏色
+                                </h4>
+                            </div>
+                            <div class="more">
+                                <div class="arrow">
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mobile">
+                        <div class="mobile-extend mobile1 active"></div>
+                        <!-- 車架 -->
+                        <div class="mobile-extend mobile2 option-content"></div>
+                        <!-- 把手 -->
+                        <div class="mobile-extend mobile3 option-content"></div>
+                        <!-- 顏色 -->
+                        <div class="mobile-extend mobile4 option-content"></div>
+
+                    </div>
+                    <div class="option-end">
+
+                        <a href="./customize.html">
+                            <div class="option-btn">
+                                <h3>專屬騎行</h3>
+                            </div>
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+        </section>
+        <!-- 單車體驗 -->
+        <section class="section" id="cycling">
+        </section>
+        <!-- 最新活動 -->
+        <section class="section" id="activity">
+            <span class="addAct"><a href="./activityForm.html"></a></span>
+            <div class="my-flipster">
+                <ul class="flip-items">
+                    <li class="post-detail">
+                        <div class="post-item">
+                            <div class="avatar"><img src="images/orangecat.jpg" alt=""></div>
+                            <figure class="post-img">
+                                <img src="./images/act_image/act_08.jpg" alt="">
+                            </figure>
+                            <div class="post-intro">
+                                <h3 class="hm_title">舊草嶺隧道遊</h3>
+                                <div class="hm_txt">
+                                    <div class="meta-top">
+                                        <div class="date">週六 11月30日</div>
+                                        <div class="location">新北市福隆火車站</div>
+                                    </div>
+
+                                    <div class="meta-bottom">
+                                        <span class="hard">休閒級<span class="circle"></span></span>
+                                        <div class="social">
+                                            <span class="people">5/6</span>
+                                            <span class="msg">5</span>
+                                        </div>
+                                    </div>
+                                    <span><a href="./activity_inner2.html"><i class="fa fa-angle-down"
+                                                aria-hidden="true"></i></a></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-detail">
+                        <div class="post-item">
+                            <div class="avatar"><img src="images/mempic.png" alt=""></div>
+                            <figure class="post-img">
+                                <img src="./images/act_image/act_02.jpg" alt="">
+                            </figure>
+                            <div class="post-intro">
+                                <h3 class="hm_title">一日雙港：台中港-花蓮港</h3>
+                                <div class="hm_txt">
+                                    <div class="meta-top">
+                                        <div class="date">週六 12月14日</div>
+                                        <div class="location">台中市台中港</div>
+                                    </div>
+
+                                    <div class="meta-bottom">
+                                        <span class="hard">挑戰級<span class="circle"></span><span
+                                                class="circle"></span><span class="circle"></span>
+                                            <div class="social">
+                                                <span class="people">5/6</span>
+                                                <span class="msg">10</span>
+                                            </div>
+                                    </div>
+                                    <span><a href="./activity_inner2.html"><i class="fa fa-angle-down"
+                                                aria-hidden="true"></i></a></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-detail">
+                        <div class="post-item">
+                            <div class="avatar"><img src="images/orangecat.jpg" alt=""></div>
+                            <figure class="post-img">
+                                <img src="./images/act_image/act_03.jpg" alt="">
+                            </figure>
+                            <div class="post-intro">
+                                <h3 class="hm_title">一日雙北：北橫公路-北宜公路</h3>
+                                <div class="hm_txt">
+                                    <div class="meta-top">
+                                        <div class="date">週六 11月30日</div>
+                                        <div class="location">桃園市復興</div>
+                                    </div>
+
+                                    <div class="meta-bottom">
+                                        <span class="hard">挑戰級<span class="circle"></span><span
+                                                class="circle"></span><span class="circle"></span>
+                                            <div class="social">
+                                                <span class="people">5/6</span>
+                                                <span class="msg">5</span>
+                                            </div>
+                                    </div>
+                                    <span><a href="./activity_inner2.html"><i class="fa fa-angle-down"
+                                                aria-hidden="true"></i></a></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-detail">
+                        <div class="post-item">
+                            <div class="avatar"><img src="images/act_image/avatar_01.jpg" alt=""></div>
+                            <figure class="post-img">
+                                <img src="./images/act_image/act_04.jpg" alt="">
+                            </figure>
+                            <div class="post-intro">
+                                <h3 class="hm_title">單車百岳：合歡山</h3>
+                                <div class="hm_txt">
+                                    <div class="meta-top">
+                                        <div class="date">週日 12月01日</div>
+                                        <div class="location">南投縣清境</div>
+                                    </div>
+
+                                    <div class="meta-bottom">
+                                        <span class="hard">運動級<span class="circle"></span><span
+                                                class="circle"></span></span>
+                                        <div class="social">
+                                            <span class="people">5/6</span>
+                                            <span class="msg">5</span>
+                                        </div>
+                                    </div>
+                                    <span><a href="./activity_inner2.html"><i class="fa fa-angle-down"
+                                                aria-hidden="true"></i></a></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-detail">
+                        <div class="post-item">
+                            <div class="avatar"><img src="images/mempic.png" alt=""></div>
+                            <figure class="post-img">
+                                <img src="./images/act_image/act_05.jpg" alt="">
+                            </figure>
+                            <div class="post-intro">
+                                <h3 class="hm_title">金龍自行車漫遊</h3>
+                                <div class="hm_txt">
+                                    <div class="meta-top">
+                                        <div class="date">週日 12月01日</div>
+                                        <div class="location">新北市汐止</div>
+                                    </div>
+
+                                    <div class="meta-bottom">
+                                        <span class="hard">休閒級<span class="circle"></span></span>
+                                        <div class="social">
+                                            <span class="people">5/6</span>
+                                            <span class="msg">5</span>
+                                        </div>
+                                    </div>
+                                    <span><a href="./activity_inner2.html"><i class="fa fa-angle-down"
+                                                aria-hidden="true"></i></a></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-detail">
+                        <div class="post-item">
+                            <div class="avatar"><img src="images/orangecat.jpg" alt=""></div>
+                            <figure class="post-img">
+                                <img src="./images/act_image/act_01.jpg" alt="">
+                            </figure>
+                            <div class="post-intro">
+                                <h3 class="hm_title">一日宇武：宇老-北進武嶺</h3>
+                                <div class="hm_txt">
+                                    <div class="meta-top">
+                                        <div class="date">週六 12月14日</div>
+                                        <div class="location">新竹縣尖石</div>
+                                    </div>
+
+                                    <div class="meta-bottom">
+                                        <span class="hard">挑戰級<span class="circle"></span><span
+                                                class="circle"></span></span>
+                                        <div class="social">
+                                            <span class="people">4/6</span>
+                                            <span class="msg">3</span>
+                                        </div>
+                                    </div>
+                                    <span><a href="./activity_inner2.html"><i class="fa fa-angle-down"
+                                                aria-hidden="true"></i></a></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-detail">
+                        <div class="post-item">
+                            <div class="avatar"><img src="images/act_image/avatar.PNG" alt=""></div>
+                            <figure class="post-img">
+                                <img src="./images/act_image/act_06.jpg" alt="">
+                            </figure>
+                            <div class="post-intro">
+                                <h3 class="hm_title">八里左岸漫遊</h3>
+                                <div class="hm_txt">
+                                    <div class="meta-top">
+                                        <div class="date">週六 12月14日</div>
+                                        <div class="location">新北市八里</div>
+                                    </div>
+
+                                    <div class="meta-bottom">
+                                        <span class="hard">休閒級<span class="circle"></span></span>
+                                        <div class="social">
+                                            <span class="people">5/6</span>
+                                            <span class="msg">6</span>
+                                        </div>
+                                    </div>
+                                    <span><a href="./activity_inner2.html"><i class="fa fa-angle-down"
+                                                aria-hidden="true"></i></a></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-detail">
+                        <div class="post-item">
+                            <div class="avatar"><img src="images/act_image/avatar.PNG" alt=""></div>
+                            <figure class="post-img">
+                                <img src="./images/act_image/act_07.jpg" alt="">
+                            </figure>
+                            <div class="post-intro">
+                                <h3 class="hm_title">淡水河岸漫遊</h3>
+                                <div class="hm_txt">
+                                    <div class="meta-top">
+                                        <div class="date">週六 12月14日</div>
+                                        <div class="location">新北市淡水</div>
+                                    </div>
+
+                                    <div class="meta-bottom">
+                                        <span class="hard">休閒級<span class="circle"></span></span>
+                                        <div class="social">
+                                            <span class="people">5/6</span>
+                                            <span class="msg">5</span>
+                                        </div>
+                                    </div>
+                                    <span><a href="./activity_inner2.html"><i class="fa fa-angle-down"
+                                                aria-hidden="true"></i></a></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <button class="more"><a href="./activity.html">瀏覽更多活動</a></button>
+        </section>
+
+        <script src="./js/jquery.flipster.js"></script>
+        <script>
+            $(".my-flipster").flipster({
+                style: 'coverflow',
+                scrollwheel: true,
+            });
+        </script>
+        <!-- 熱門商品 -->
+        <section class="section" id="product">
+            <div id="silderBoard">
+                <ul class="prod-list col-12">
+                    <li class="prodContent col-md-12">
+                        <div class="prod-shell">
+                            <div class="prod-bag"></div>
+                            <div class="prod-pic">
+                                <img class="proBike_img" src=./images/TCR_SLR_C03.png> <h3 class="prod-title">TCR_SL
+                                5
+                                城市車
+                                </h3>
+                                <p class="prod-money">$28,000</p>
+                                <div class="prod-icon">
+                                    <p class="prod_like"><a href=""></a></p>
+                                    <p class="prod_cart"><a href=""></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="prodContent">
+                        <div class="prod-shell">
+                            <div class="prod-bag"></div>
+                            <div class="prod-pic">
+                                <img class="proBike_img" src=./images/TCR_SLR_R02.png> <h3 class="prod-title">TCR_SL2
+                                公路車</h3>
+                                <p class="prod-money">$28,000</p>
+                                <div class="prod-icon">
+                                    <p class="prod_like"><a href=""></a></p>
+                                    <p class="prod_cart"><a href=""></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="prodContent">
+                        <div class="prod-shell">
+                            <div class="prod-bag"></div>
+                            <div class="prod-pic">
+                                <img class="proBike_img" src=./images/TCR_SLR_C03.png> <h3 class="prod-title">TCR_SL
+                                5
+                                城市車
+                                </h3>
+                                <p class="prod-money">$28,000</p>
+                                <div class="prod-icon">
+                                    <p class="prod_like"><a href=""></a></p>
+                                    <p class="prod_cart"><a href=""></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="prodContent">
+                        <div class="prod-shell">
+                            <div class="prod-bag"></div>
+                            <div class="prod-pic">
+                                <img class="proBike_img" src=./images/TCR_SLR_C03.png> <h3 class="prod-title">TCR_SL
+                                6
+                                越野車
+                                </h3>
+                                <p class="prod-money">$28,000</p>
+                                <div class="prod-icon">
+                                    <p class="prod_like"><a href=""></a></p>
+                                    <p class="prod_cart"><a href=""></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="prodContent">
+                        <div class="prod-shell">
+                            <div class="prod-bag"></div>
+                            <div class="prod-pic">
+                                <img class="proBike_img" src=./images/TCR_SLR_R02.png> <h3 class="prod-title">TCR_SL2
+                                公路車</h3>
+                                <p class="prod-money">$28,000</p>
+                                <div class="prod-icon">
+                                    <p class="prod_like"><a href=""></a></p>
+                                    <p class="prod_cart"><a href=""></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="moreDiv">
+                <ul class="num"></ul>
+                <button class="more"><a href="CYShop.html">瀏覽更多商品</a></button>
+            </div>
+        </section>
+        <!-- 不可不知 -->
+        <section class="section" id="mustKnow">
+            <main>
+                <div class="content content--second">
+                </div>
+                <div class="content content--first">
+                    <div class="content__move">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="column__img" style="background-image:url(images/k.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k11.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k5.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k10.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k6.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k4.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k3.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k9.png)"></div>
+                            </div>
+                            <div class="column column--bottom">
+                                <div class="column__img" style="background-image:url(images/k5.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k6.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k8.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k7.png)"></div>
+                            </div>
+                            <div class="column">
+                                <div class="column__img" style="background-image:url(images/k7.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k2.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k12.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k5.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k8.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k3.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k4.png)"></div>
+                            </div>
+                            <div class="column column--bottom">
+                                <div class="column__img" style="background-image:url(images/k6.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k13.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k9.png)"></div>
+                                <div class="column__img" style="background-image:url(images/k3.png)"></div>
+                            </div>
+                        </div>
+                        <!--/columns-->
+                        <nav class="menu">
+                            <a class="menu__item" href="./question.html">挑戰問答</a>
+                        </nav>
+                    </div>
+                    <!--/content--move-->
+                </div>
+                <!--/content-->
+            </main>
+            <div class="cursor">
+                <div class="cursor__inner cursor__inner--circle"></div>
+            </div>
+        </section>
+        <!-- 關於CY -->
+        <section class="section" id="about">
+            <div class="row hm_about">
+                <div class="col-12 col-md-12 hm_about-info">
+                    <div class="back_square">CYCLIST<br>完美騎行</div>
+                    <img src="images/hm_aboutBike.png">
+                    <div class="infoT1">
+                        <span class="span1"></span>
+                        <p class="p1">31.6毫米碳纖維座桿,可以自由調整高度至適合位置</p>
+                    </div>
+                    <div class="infoT2">
+                        <span class="span2"></span>
+                        <p class="p2">寬大的踩踏面積及強有力的踩踏性能，使動能作用力最大化轉為前進得動能</p>
+                    </div>
+                    <div class="infoT3">
+                        <span class="span3"></span>
+                        <p class="p3">製作過程中使用PU心軸來仔細控制生產過程中的樹脂流動，從而確保所有框架的剛度和柔順性保持一致</p>
+                    </div>
+                    <div class="infoT4">
+                        <span class="span4"></span>
+                        <p class="p4">特有的安裝系統，具有三種不同的軸距設置，可以安裝不同的車輪尺寸</p>
+                    </div>
+                    <div class="infoT5">
+                        <span class="span5"></span>
+                        <p class="p5">特殊防滑握把，使騎乘過程更舒適安全</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="chat-bot-btn">
+            <a href="#">
+                <div class="pic">
+                    <!-- <img src="https://picsum.photos/100/100?random=10" alt=""> -->
+                </div>
+            </a>
+
+        </div>
+        <div class="chat-bot-btn">
+            <a href="#">
+                <div class="pic">
+                    <!-- <img src="https://picsum.photos/100/100?random=10" alt=""> -->
+                </div>
+            </a>
+        </div>
+
+        <div id="chat-bot">
+            <div class="title">CYCLIST</div>
+            <div id="chatBot-box">
+                <div id="chatBot-content">
+
+                    <div id="greet" class="dialog official">
+                        <div class="avatar">
+                            <div class="pic">
+                                <img src="./images/chat_bot/offical-1.jpg" alt="">
+                            </div>
+                            <div class="name">客服</div>
+                        </div>
+                        <div class="msg">
+                            歡迎來到cyclist官方網站，請問有什麼需要為您服務的嗎?
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <ul id="QA-group">
+                </ul>
+                <div class="input-bar">
+                    <textarea class="input" id="input-search-bar" cols="10" rows="10"></textarea>
+                    <!-- <div class="input"></div> -->
+                    <div class="send">送出</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer class="section">
+        <ul>
+            <li><img src="./images/facebook.png"></li>
+            <li><img src="./images/ig.png"></li>
+            <li><img src="./images/tw.png"></li>
+        </ul>
+    </footer>
+    </div>
+
+
+
+
+    <script src="js/index.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/charming.min.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/demo.js"></script>
+
+
+</body>
+
+</html>

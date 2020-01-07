@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<script type="text/javascript">
+var regExp = /^[A-Z|a-z][12][0-9]{8}$/;	
+var regExp = new RegExp("^[A-Z|a-z][12][0-9]{8}$");
+
+var idNo = "a12345678888888888888";
+
+if( regExp.test(idNo) === true){
+	document.write("正確", "<br>");
+}else{
+	document.write("不符合", "<br>");
+}
+</script>    
+</body>
+</html>

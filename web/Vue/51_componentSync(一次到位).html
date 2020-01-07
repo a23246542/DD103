@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--sync修飾符</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <!--Vue實例的模板-->
+    <!-- <div id="app"> 
+       <my-counter></my-counter>
+       <h2>{{outerCount}}</h2>
+    </div> -->
+
+    <div id="app"> 
+        <!-- <my-counter :outer-count="outerCount"></my-counter> -->
+        <!-- <my-counter :outer-count="outerCount" @update="setOuterCount"></my-counter> -->
+        <my-counter :outer-count.sync="outerCount"></my-counter>
+
+        <h2>{{outerCount}}</h2>
+    </div>
+    
+    <script>       
+
+
+        Vue.component('my-counter',{
+            props: ['outerCount'],
+            data(){
+                return {
+                    // innerCount: 0,
+                    innerCount: this.outerCount,
+                };
+            },
+            methods: {
+                sync(){
+                    // 此層(下層或內層)將innerCount的內容往上層傳
+                    // this.$emit('update',this.innerCount);
+                    this.$emit('update:outerCount',this.innerCount);
+                },
+            },
+            template: `
+                <div>
+                    <h1>{{innerCount}}</h1>
+                    <button @click="innerCount+=1"> +1 </button>
+                    <button @click="sync"> sync </button>
+                </div>
+            `,        
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                outerCount: 10,  //Vue實例的變數
+            },
+            // methods: {
+                // setOuterCount(count){
+                //     this.outerCount = count;
+                // },
+            // },
+        });
+
+
+
+
+                // Vue.component('my-counter',{
+        //     data(){
+        //         return {
+        //             innerCount: 0,
+        //         };
+        //     }, 
+        //     methods: {
+        //         sync(){
+
+        //         },
+        //     },          
+        //     template: `
+        //         <div>
+        //             <h1>{{innerCount}}</h1>
+        //             <button @click="innerCount+=1"> +1 </button>
+        //             <button @click="sync"> sync </button>
+        //         </div>
+        //     `,           
+        // });
+    </script>
+</body>
+</html>

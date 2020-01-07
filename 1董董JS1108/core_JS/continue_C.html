@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<script type="text/javascript">
+var total = 0;
+for(var i=1; i<=50; i++){
+	if(i%3 != 0){ //不是3的倍數, 往下一個去處理
+		continue;
+	}
+	document.write( i, "<br>");
+	total += i;
+}
+document.write("總和 : ", total, "<br>");
+</script>    
+</body>
+</html>

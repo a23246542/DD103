@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="jQuery/js/jquery-3.4.1.min.js"> -->
+    <!-- <script src="js/jquery-3.4.1.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+     
+        $('p:nth-child(1)').css('color','green');
+        
+        $('img').click(function(){
+            $(this).remove();
+        })
+
+        $('.box p').text('hello jquery');
+
+        $(':submit').click(function(){
+            alert("hi~~~")
+        });
+
+
+        $('input[type="email"]').focus(function(){
+            $(this).css('background','yellow');
+        }).blur(function(){
+            $(this).css('background','transparent');
+        });
+
+        $(':text').focus(function(){
+            $(this).attr('placeholder','').css('background','deeppink');
+        }).blur(function(){
+            $(this).css('background','transparent')
+        });
+
+        $('textarea').focus(function(){
+            // 不會分開寫而是包成物件一次寫完
+            $(this).attr({
+                rows:5,
+                cols:50,
+            });
+        });
+
+    });  
+    
+    </script>
+    <title>Document</title>                                                                                                                                                                             
+</head>
+<body>
+
+     <p>hello word</p>
+    <img src="../images/img3/pic1.gif" alt="">
+    <img src="../images/img3/pic2.gif" alt="">
+    <img src="../images/img3/pic3.gif" alt="">
+   
+    <p>
+    hell world
+    </p>
+    <div class="p">haha</div>
+    <div class="p">haha</div>
+    <div class="p">haha</div>
+
+    姓名: <input type="text" placeholder="你的名字"><br>
+    電子郵件: <input type="email""><br>
+    <input type="submit" value="提交">
+    <input type="submit" value="提交">
+    <p>
+    <input type="textarea"><br>
+    <textarea></textarea>
+    </p>
+    
+</body>
+</html>

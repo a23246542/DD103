@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #wrap {
+            width: 800px;
+            margin: 0px auto;
+            padding: 50px 0;
+            text-align: left;
+        }
+
+        #sliderBoard {
+            /*div*/
+            /* width: 800px; */
+            width: 100px;
+            height: 500px;
+            text-align: left;
+
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="wrap">
+        <div id="sliderBoard">
+            <ul>
+
+                <li><img src="https://picsum.photos/100/100/?random=1" class="pic"></li>
+                <li><img src="https://picsum.photos/100/100/?random=2" class="pic"></li>
+                <li><img src="https://picsum.photos/100/100/?random=3" class="pic"></li>
+                <li><img src="https://picsum.photos/100/100/?random=4" class="pic"></li>
+                <li><img src="https://picsum.photos/100/100/?random=5" class="pic"></li>
+                <li><img src="https://picsum.photos/100/100/?random=6" class="pic"></li>
+                <li><img src="https://picsum.photos/100/100/?random=7" class="pic"></li>
+                <li><img src="https://picsum.photos/100/100/?random=8" class="pic"></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#sliderBoard").each(function () {
+                let selfHeight = $(this).innerHeight(); //500
+                let listHeight = $(this).find("ul").find("li").outerHeight(); //18
+                let listCount = $(this).find("ul").find("li").length;
+
+                alert(`${selfHeight}|${listHeight}|${listCount}`);
+                //記得加alert或console除錯
+
+                let sliderHeight = listHeight * listCount;
+
+                // $(this).find("ul").wrapAll("<div class='sliderWrap'></div>");
+                // 老師寫這樣也可以
+                $(this).find('ul').wrapAll('<div class="sliderWrap"/>');
+                let sliderWrap = $(this).find('.sliderWrap');
+
+                if (sliderHeight > selfHeight) {
+                    $(this).find('ul').css({
+                        height: sliderHeight
+                    }).clone().appendTo(sliderWrap);
+
+                    sliderWrap.css({
+                        height: sliderHeight * 2
+                    });
+
+                    move();
+
+                    // function move() {
+                    //     sliderWrap.animate({
+                    //         top: sliderHeight * -1 + 'px',
+                    //     }, 3000, 'linear', function () {
+                    //         sliderWrap.css({
+                    //             top: '0px'
+                    //         });
+                    //         move();
+                    //     });
+                    // }
+
+                    function move() {
+                        // $().animate({properties},duration,easing,function());
+                        sliderWrap.animate({
+                            top: sliderHeight * -1 + 'px',
+                        }, 1000 * listCount, 'linear', function () {
+                            move();
+                        });
+                    }
+
+                }
+
+
+            })
+
+        });
+
+
+        // $.each(Array,function(index,element){…});
+
+        // var arr = ['aaa','bbb','ccc','ddd'];
+        // $.each(arr,function(index,value){
+        //     console.log(`${index}: ${value}`);
+        // });
+
+
+
+
+        // $.each(Object,function(key,value){…});
+
+        // $('selector').each(function(){…});
+        // $('li').each(function(){
+        //     console.log($(this).text());
+        // });
+
+
+        // $('selector').each(function(index,element){…});
+    </script>
+</body>
+
+</html>

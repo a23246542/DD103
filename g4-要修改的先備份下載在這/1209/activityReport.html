@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>CYCLIST 活動檢舉</title>
+  <!-- Icons-->
+  <link href="node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+  <link href="node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+  <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+  <!-- Main styles for this application-->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+ <!-- top_header -->
+ <header class="app-header navbar">
+    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="blank.html">
+      <img class="navbar-brand-full" src="img/brand/LOGO.png" width="55" height="42" alt="Cyclist Logo">
+      <img class="navbar-brand-minimized" src="img/brand/LOGO.png" width="30" height="30" alt="Cyclist Logo">
+    </a>
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item mr-3 adminName"></li>
+        <a class="nav-item mr-3 logOut" href="login.html">登出</a>
+      </ul>
+    <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </header>
+  <div class="app-body">
+    <div class="sidebar">
+      <!-- sidebar menu-->
+      <nav class="sidebar-nav">
+    <ul class="nav">
+      <li class="nav-title" style="font-size:22px;">後台管理</li>
+      <li class="nav-item">
+          <a class="nav-link" href="adminManage.html">
+            <i class="nav-icon icon-settings"></i>管理員管理</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="accountManage.html">
+            <i class="nav-icon icon-people"></i>會員管理</a>
+        </li>
+      <li class="nav-item">
+          <a class="nav-link" href="productManage.html">
+            <i class="nav-icon icon-heart"></i>商品管理</a>
+        </li>
+      <li class="nav-item">
+          <a class="nav-link" href="orderManage.html">
+            <i class="nav-icon icon-basket-loaded"></i>訂單管理</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="customizeManage.html">
+            <i class="nav-icon icon-wrench"></i>客製管理</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="activityManage.html">
+            <i class="nav-icon icon-calendar"></i>活動管理</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="activityReport.html">
+            <i class="nav-icon icon-calendar"></i>活動檢舉</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="chatbotManage.html">
+            <i class="nav-icon icon-info"></i>機器人管理</a>
+      </li>
+    </ul>
+  </nav>
+      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+    </div>
+    <main class="main">
+      <!-- Breadcrumb-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="blank.html">首頁</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="activityManage.html">活動管理</a>
+        </li>
+        <!-- Breadcrumb Menu-->
+      </ol>
+      <div class="container-fluid">
+       <!-- 中間內容 -->
+
+       <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">     
+              </div>
+              <div class="card-body">
+                <table class="table table-responsive-sm table-sm">
+                  <thead>
+                    <tr>
+                        <th>檢舉編號</th>
+                        <th>檢舉人</th>
+                        <th>檢舉姓名</th>
+                        <th>活動編號</th>
+                        <th>活動名稱</th>
+                        <th>檢舉日期</th>
+                        <th>檢舉理由</th>
+                        <th>檢舉狀態</th>
+
+                    </tr>
+                  </thead>
+                  <tbody class="repAdd">                    
+                  </tbody>              
+                </table>            
+              </div>
+            </div>
+          </div>
+     </div>
+       <!-- end -->
+      </div>
+    </main>
+  </div>
+        <footer class="app-footer">
+        <div>
+          <a href="http://140.115.236.71/demo-projects/DD103/DD103G4/">CYCLIST</a>
+          <span>&copy; 2019 copyright</span>
+        </div>
+      </footer>
+  <!-- CoreUI and necessary plugins-->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/pace-progress/pace.min.js"></script>
+  <script src="node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+  <script src="node_modules/@coreui/coreui/dist/js/coreui.min.js"></script>
+  <!-- <script>
+    $('.adminName').text(sessionStorage.getItem('adminId') + ' 您好');
+    if(sessionStorage.getItem('adminNo') == null){
+        window.location.href = "login.html";
+    }
+  </script> -->
+  <script>
+    $('document').ready(function(){
+    let storage = sessionStorage;
+    let actCancel = storage.getItem('actCancelStat');
+    let url = "activity.php";
+      function actManage(){
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function(){
+        if(xhr.status == 200){ //server OK
+          let dataString = JSON.parse(xhr.responseText);
+          let htmlStr = '';
+          for (i = 0; i < dataString.length; i++) {
+                    htmlStr += `<tr>`;
+                    htmlStr += `<td class="repChange">${dataString[i].repNo}</td>`;
+                    htmlStr += `<td>${dataString[i].memNo}</td>`;
+                    htmlStr += `<td>${dataString[i].memId}</td>`;
+                    htmlStr += `<td>${dataString[i].actNo}</td>`;
+                    htmlStr += `<td>${dataString[i].actName}</td>`;
+                    htmlStr += `<td>${dataString[i].repDate}</td>`;
+                    htmlStr += `<td>${dataString[i].repReason}</td>`;
+                    htmlStr += `<td><label class="switch switch-3d switch-success">`;
+                    if(`${dataString[i].repStat}`== 0){
+                          htmlStr +=`<input class="switch-input repStatus" type="checkbox">`;
+                        }else{
+                          htmlStr +=`<input class="switch-input repStatus" type="checkbox" checked>`; 
+                        }
+                    htmlStr +=`<span class="switch-slider"></span></label></td`;        
+                    htmlStr += `</tr>`;
+                    // $('.memAdd').append(htmlStr);
+                    document.querySelector(".repAdd").innerHTML= htmlStr;
+          }  
+        }else{ //error
+          alert(xhr.status);
+        }
+      } //xhr function end
+      xhr.open("get", "./php/report.php", true);
+      // xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      xhr.send( null );
+      }
+      actManage();
+//---------------------------------------------
+
+$('body').on('change', '.repStatus', function (){
+        let repNo = $(this).parent().parent().parent().children('.repChange').text();
+        // alert( $(this).attr('checked') == "checked" );
+        // alert(repNo);
+      let value;
+        if( $(this).attr('checked') == 'checked' ){
+                $(this).attr('checked', false);
+                value = 0;  
+            }else{
+                $(this).attr('checked', true);
+                value = 1;
+            }  
+        $.ajax({
+            type: 'POST',
+            url: `./php/reportManage.php`,
+            data: {
+                repNo,
+                action: 'changeStat',
+                value,
+            },
+            success: function (data) {
+                    if(value == true){
+                        alert("檢舉成功");
+                  }else{ 
+                    alert("收回檢舉");
+                  }
+                },  
+        })
+    });  
+
+
+
+    })
+  </script>
+</body>
+</html>

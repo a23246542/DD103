@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--prop單向數據流</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <!--  
+        假設count,從上層傳往下層
+        下層 +1 會不會影響上層?　不會
+        上層 +1 會不會影響下層?　會
+        
+        若要互不影響? 將count改成start,讓count放在data function裡面
+    -->
+    <div id="app"> 
+        <h1>{{count}}</h1>
+        <button @click="count+=1"> +1 </button>
+
+        <!-- <counter :count="count"></counter> -->
+        <counter :start="count"></counter>
+    </div>
+    
+    <script>        
+        new Vue({
+            el: '#app',
+            data: {
+                count: 1,
+            },
+            components: {
+                counter: {
+                    props: ['start'],
+                    data(){
+                        return{
+                            count:this.start,
+                        };
+                    },
+                    template: `
+                        <div>
+                            <h1 style="color:red;">{{count}}</h1>
+                            <button @click="count+=1"> + </button>
+                        </div>
+                    `,
+                },
+            },
+        });
+    </script>
+</body>
+</html>
+
+<!--下層要用上層傳來的值乘以2,可以用computed
+<div id="app"> 
+        <h1>{{count}}</h1>
+        <button @click="count+=1"> +1 </button>
+
+        <counter :count="count"></counter>
+    </div>
+    
+    <script>        
+        new Vue({
+            el: '#app',
+            data: {
+                count: 10,
+            },
+            components: {
+                counter: {
+                    props: ['count'],
+                    computed: {
+                        countDoubled(){
+                            return this.count * 2;
+                        },
+                    },
+                    template: `
+                        <div>
+                            <h1 style="color:red;">{{countDoubled}}</h1>
+                        </div>
+                    `,
+                },
+            },
+        });
+    </script>
+
+-->

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>constant</title>
+</head>
+
+<body>
+<h2> </h2>  
+<script type="text/javascript">
+//var 有hoist的現象  
+
+
+//let 没有hoist的現象
+//document.write('kk : ' , kk ,"<br>"); //此行會error
+
+
+//var 可重複宣告 
+
+
+//let 不可重複宣告
+
+
+//var 没有區塊性的作用範圍
+for( var i=1; i<=10; i++){
+	document.write("i : ", i,", I love JavaScript...", "<br>");
+}
+
+document.write("i : ", i,  "<br>");
+
+//ES6 : for句型中的let作用範圍
+
+//document.write('j : ' , j ,"<br>"); //此行會error
+
+//ES6 : for句型中的let作用範圍
+
+for( let j=1; j<=10; j++){
+	document.write("j : ", j,", I love JavaScript...", "<br>");
+}
+
+// document.write("j : ", j,  "<br>"); //error
+</script>
+
+
+<h2>for區塊</h2>
+<script type="text/javascript">
+var total = 0;	
+for( let k=1; k<=10; k++){
+	total += k;
+}
+document.write( "total : ", total, "<br>");	
+</script>
+
+<h2>區塊</h2>
+<script type="text/javascript">
+var total = 0;	
+for( let k=1; k<=10; k++){  //k:3
+	let k = 10;  //k:10
+	total += k;
+}
+document.write( "total : ", total, "<br>");	
+</script>
+
+
+<h2>區塊</h2>
+<script type="text/javascript">
+{
+	let mm = 1000;
+	document.write( "mm : ", mm, "<br>"); //mm 在此區塊建立, 可以使用
+}
+document.write( "mm : ", mm, "<br>"); //不可使用別的區塊中的變數資料
+</script>
+</body>
+</html>

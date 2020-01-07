@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery plugin--sevenSeg</title>
+    <link rel="stylesheet" href="">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/sevenSeg.js"></script>
+    <script>
+        $(document).ready(function(){
+            // setInterval(某函數,多少毫秒);
+            setInterval(function(){
+                var now = new Date();
+                var seconds = now.getSeconds();
+                var milliseconds = now.getMilliseconds();
+                var showTime = `${seconds}.${milliseconds}`;
+
+                $('#theTime').sevenSeg({
+                    value: showTime,                //顯示內容
+                    digits: 5,                      //顯示幾位數
+                    colorOn: '#0f0',                //顯示的顏色
+                    colorOff: 'rgba(0,255,0,0.3)',  //消失的顏色
+                });
+
+            },100);
+
+
+           
+        });
+    </script>
+</head>
+<body>
+    <div id="theTime" style="width:150px;height:65px;"></div>
+</body>
+</html>

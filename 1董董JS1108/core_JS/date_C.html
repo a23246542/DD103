@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+	<div>
+	現在時刻 : <span id="timePanel"></span>
+</div>	
+<script type="text/javascript">
+function showTime(){
+	var today = new Date();
+	document.getElementById("timePanel").innerText = today.getHours() + " : " + today.getMinutes() + " : " + today.getSeconds();
+}
+
+function init(){
+	showTime();
+	setInterval( showTime, 1000);
+}
+window.onload = init;
+
+
+
+
+
+
+
+// var birthday = new Date(1992, 2, 13);
+// document.write("星期", birthday.getDay(), "<br>");
+
+// var today = new Date();
+// if( today.getHours() < 12){
+// 	document.write("早安", "<br>");
+// }else if( today.getHours() < 18){
+// 	document.write("午安", "<br>");
+// }else{
+// 	document.write("晚安", "<br>");
+// }
+</script>    
+</body>
+</html>

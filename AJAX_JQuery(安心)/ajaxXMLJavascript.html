@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <h2>csv to table  jquery</h2>
+    <P align='center'>
+        <button id="loadButton" class="btn btn-info">load data</button>
+    </P>
+    <div id="feedback"></div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script>
+        // $(document).ready(function () {
+
+        // }
+
+
+        function doFirst(){
+            // 01跟html畫面產生關聯
+            let loadButo
+
+
+            // 02再建事件聆聽功能
+            loadButton.addEventListener('click',function(){
+                // step1 建立ajax物件
+                let xhr = new XMLHttpRequest();
+                
+                xhr.addEventListener('readystatechange',cellState);
+
+                // step2 發送請求
+                let url = 'JSON_XML_CSV\travellocationCHINESE_1.xml'
+                xhr.open("GET",url,'true');
+                xhr.send(null);
+
+            })
+
+            function cellState(){
+                // step03接收serve端回應
+                if(xhr.readyState==4){
+                    if(xhr.status==200){
+                         var xmlData = xhr.responseXML;//@@@!!!!
+
+                        //  景點有幾筆
+                        // let section = xmlData.getElementsBytagName('section')
+                        // 老師推薦
+                        let section =xmlData.querySelectorAll('Section');//!!!!要配合標籤大寫
+                        // !!!!xml都網路上抓的一班都先整理前幾筆 然後測試會過再來排版
+                        for(let i=0;i<5;i++){
+                            var theImage = document.createElement('img');
+                            // var src = section[i].getElementsByTagName('img')[0].firstChild.NodeValue;
+                            // var html +=""
+                            theImage.src = section[i].getElementsByTagName('img')[0].firstChild.NodeValue;
+                            theImage.width = 300; 
+
+                            feedback.appendChild(theImage);
+                        }
+
+                        // !!!!childrenNodes空白也當成小孩!!!
+                    }else{
+                        feedback.innerHTML = `${xhr.status}:${xhr.statusText}`
+                    }
+                }
+            }
+            
+
+
+        }
+
+        window.addEventListener('load',doFirst);
+           
+        
+    </script>
+</body>
+
+</html>

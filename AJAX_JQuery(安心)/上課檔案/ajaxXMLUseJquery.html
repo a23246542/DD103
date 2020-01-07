@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX XML use jQuery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#loadButton').click(function(){ 
+                $.ajax({
+                    url: 'JSON_XML_CSV/books.xml',
+                    dataType: 'xml',
+                    success: function(data){
+                        // console.log(data);                      
+                        // $.each(data,function(i,n){});
+
+                        let bookData = '<ol>';
+                            
+                        //  $().each(function(){});
+                            $(data).find('Book').each(function(){
+                                let theTitle = $(this).find('Title').text();
+                                let theAuthor = $(this).find('Author').text();
+                                let thePublisher = $(this).find('Publisher').text();
+
+                                bookData += `<li>『${theTitle}』 written by <u>${theAuthor}</u>, ${thePublisher}</li>`;
+                            });
+
+                        bookData += '</ol>';
+
+                        $('#feedback').append(bookData);
+                    },
+                });          
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2 align="center">XML to Ordered List using AJAX(jQuery)</h2>
+    <p align="center">
+        <button id="loadButton" class="btn btn-info">Load Data</button>
+    </p>    
+
+    <div id="feedback"></div>
+</body>
+</html>

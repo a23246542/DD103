@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+</head>
+<body>
+
+    <div id="app">
+        <!-- 加上組件之後註解以下兩行 -->
+        <!-- <h1>{{count}}</h1>
+        <button @click="count+1">+1</button> -->
+        <counter></counter>   
+        <counter></counter>
+        <!-- 各自獨立 原本的方法只能不同命名    -->
+    </div>
+   
+    
+</body>
+<script>
+Vue.component('counter',{ 
+    data(){ //跟compute寫法很像
+        return{   //會臨時幫你建物件 然後return回去
+            count:0,
+        };   
+    },
+    template:`
+        <div>
+          <h1>{{count}}</h1>
+        <button @click="count+=1">+1</button>
+        </div>
+        `, 
+});
+// newvue裡面的data是物件 組件裡面的是function
+new Vue({
+    el:'#app',
+    // data:{
+    //     count:0
+    // },
+    
+})
+</script>
+</html>

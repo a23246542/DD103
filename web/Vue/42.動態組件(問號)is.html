@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--動態組件</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <!-- !!動態組件:先定義好組件 再透過條件判斷來決定出現什麼組件 -->
+    <div id="app"> 
+      <button @click="content='lessons'">lessons</button>
+      <button @click="content='apply'">apply</button>
+      <button @click="content='temp'">temp</button>
+      <hr>
+      <p>
+          <component :is="content"></component>
+      </p>
+    </div>
+
+    <script>
+        Vue.component('apply',{
+            template:`<form action="">
+            <textarea></textarea>
+            <button>submit</button>
+        </form>`,
+        });
+
+        Vue.component('lessons',{
+            template:` <ul>
+            <li>html</li>
+            <li>css</li>
+            <li>javascript</li>
+        </ul>`,
+        })
+        Vue.component('temp',{
+            template:`
+            <img src="https://picsum.photos/350/200?random=10" alt="">
+
+            `
+        })       
+        new Vue({
+            el: '#app',
+            data:{
+                content:'lessons'
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+    <style>
+        label{
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"> 
+       <!-- 第一段 -->
+       <!-- <select v-model="year">
+           <option value="" disabled>Select year</option>
+           <option>2017</option>
+           <option>2018</option>
+           <option>2019</option>
+       </select>
+       <h1>{{year}}</h1> -->
+
+       <!-- 第二段 -->
+       <!-- <select v-model="years" multiple>
+            <option value="" disabled>Select year</option>
+            <option>2017</option>
+            <option>2018</option>
+            <option>2019</option>
+        </select>
+        <h1>{{years}}</h1> -->
+
+        <!-- 第三段 -->
+        <!-- <select v-model="selectedYear">
+            <option v-for="year in years">{{year}}</option>
+        </select>
+        <h1>{{selectedYear}}</h1> -->
+
+        <!-- 第四段 -->
+        <select v-model="selectedYear">
+            <option v-for="year in years">{{year}}</option>
+        </select>
+        <select v-model="selectedMonth">
+            <option v-for="month in 12">{{month}}</option>
+        </select>
+        <h1>{{selectedYear}} - {{selectedMonth}}</h1>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>        
+        new Vue({
+            el: '#app', 
+            data: {
+            //  year: '',   //第一段
+            //  years:[],   //第二段
+                years:[2017,2018,2019],   //第三段 + 第四段
+                selectedYear: 2019,
+                selectedMonth: 1,
+            },
+            methods: {
+               
+            },
+        });
+    </script>
+</body>
+</html>

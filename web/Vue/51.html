@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--組件綁定原生事件</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <div id="app"> 
+      <my-counter :outer-count="outerCount"></my-counter>
+      <h2>{{outerCount}}</h2>
+    </div>
+   
+    <script>       
+        Vue.component('my-counter',{
+            data(){
+                return {
+                    innerCount:0,
+                };
+            },
+            methods:{
+                sync(){
+
+                }
+            },           
+            template: `
+             <div>
+                <h1>{{innerCount}}</h1>
+                <button @click="innerCount+=1"> +1 </button>
+                <button @click="sync"></button>
+            </div>
+            `,           
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                outerCount: 10,
+            },
+            methods: {
+               setOuter(count){
+
+              },
+            },
+        });
+    </script>
+</body>
+</html>

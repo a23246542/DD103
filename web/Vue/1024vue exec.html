@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 01files!!! -->
+    <!-- let file去編碼 去給result
+    雙向綁定語法堂 是input事件去改資料 -->
+
+
+    <!-- mv e -->
+    <!-- <div id="app">
+        <input type="file" @change="showFile">
+        <img v-if="image" :src="image" alt="">
+    </div> -->
+
+    <div id="app2">
+        <input :value="input" @keydown.a.prevent="keyEnter">
+        <li v-for="item in list">{{item}}</li>
+    </div>
+
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+    <script>
+        // new Vue({
+        //     el: "#app",
+        //     data: {
+        //         file: "",
+        //         image: "",
+        //     },
+        //     methods: {
+        //         showFile(e) {
+        //             // this.file = e.target.files[0];
+        //             let reader = new FileReader;
+        //             reader.readAsDataURL(e.target.files[0]);
+        //             reader.addEventListener('load', this.imgLoaded)
+
+        //         },
+        //         imgLoaded(e) {
+        //             this.image = e.target.result;
+        //         }
+        //     },
+        // })
+
+        new Vue({
+                    el: '#app2',
+                    data: {
+                        input: '',
+                        list: [],
+                    },
+                    methods: {
+                        keyEnter(e) {
+                            // this.list.push(this.input); 這樣this只是送入vue自己的空字串
+                            this.list.push(e.target.value);
+                            // this.input='';
+                        }
+                    },
+                    computed: {
+
+                    },
+        }) 
+
+
+        
+
+                   
+    </script>
+
+//   分為物件truefalse寫法跟連內回傳
+    <div id="app3">
+    //    CLASS做判斷 可以RETURN很多
+        <input v-model="text">
+        <button :class="btnClass"></button>
+
+      
+        // STYLE直接給
+        <h1 :style="h1style"></h1>
+    </div>
+
+     <script>
+     
+      new Vue({
+                 el: '#app',
+                 data: {
+                     currentSize:50,
+                    // 字串
+                     h1style:'color:blue;font-size:30px;'
+                     h1style:{
+                         fonzSize:'50px',
+                         color:'red'
+                     },
+                     h1style:[h1style,blueWord]]
+                 },
+                 methods: {
+     
+                 },
+                 computed: {
+                    btnClass(){
+                        return{
+                            submit:true,
+                            disabled:this.text.length ===0,
+                        }
+                    },
+                    h1style(){
+                        return{
+                            color:'red',
+                            fontSize:`${this.currentSize}`,
+                        },
+                    },
+                 },
+     
+             })
+     
+     </script>
+
+
+     <h1 v-if="loading">aa</h1>
+     <h1 v-else>bb</h1>
+</body>
+
+</html>

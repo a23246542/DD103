@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app"> <!--容器-->
+
+        <!-- v-model -->
+        <h3>{{message}}</h3>
+        <p>{{message}}</p>
+        <input type="text" v-model="message">
+        <!-- v-show要不要出現 -->
+        <p v-show = "loading">載入</p>
+
+        <!-- v-model+v-if判斷 -->
+        <p>你的成績 <input type="text" v-model="score"></p>
+        <p v-if="score>60">你過了</p>
+        <p v-else>你gg了</p>
+
+
+        <!-- 用v-for寫li(陣列) -->
+        <ul>
+            <li v-for="shutUp in colors">{{shutUp}}</li>
+        </ul>
+        <ol>
+            <li v-for="item in classmate">名字{{item.name}}</li>
+        </ol>
+        <!-- 用v-for創造表格 陣列物件 -->
+        <table border="1">
+            <tr>
+                <td v-for = "item in classmate">{{item.name}}</td>
+            </tr>
+            <tr>
+                <td v-for = "item in classmate">{{item.age}}</td>
+            </tr>
+        </table>
+
+        <!-- vue可以用index ???-->
+        <select name="" id="">
+            <option value="" v-for ="month in months">{{month}}</option>
+        </select>
+        <select name="" id="">
+            <option value="" v-for ="(month,index) in months"  :value="index">{{index}}-{{month}}</option>
+        </select>
+
+        
+        <!-- <img v-bind:src="imgURL" alt=""> -->
+        <img :src="imgURL" alt="">
+        <ol>
+            <li v-for="todo in todos" :class="todo">{{todo}}</li>
+        </ol>
+        <ol>
+            <!-- 只打item只傳回物件?? -->
+            <!-- <li v-for ="item in classmate" v-on:click ="DD103(item)">{{item.name}}</li> -->
+            <li v-for ="item in classmate" v-on:click ="DD103(item.name)">{{item.name}}</li>
+        </ol>
+
+        
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    // 就跟let num = new Number依樣;
+    let vm = new Vue({
+        // el:"#app", 
+        // select寫法 可以先註解掉先寫好資料
+        // el: document.getElementById("#app");寫錯
+        // el: document.getElementById("app");
+        data:{  //相當於之前js宣告的變數
+            message:"hello,vueJs",
+            // loading:"false",不是字串
+            loading:false,
+            score:0,
+            colors:['red','orange','yellow','green','blue','indigo','violet'],
+            // classmate:[{name:sam,age:24},{name:allen,age:23},{name:kelly,age:18}],
+            classmate:[{name:'sam',age:24},{name:'allen',age:23},{name:'kelly',age:18}],
+            months:['January','February','March','April','May','June','July','August','September','October','November','December'],
+            imgURL:"https://cdn2.ettoday.net/images/2252/d2252181.jpg",
+            todos:[
+                '討論專題',
+                '學習js',
+                '前端居民'
+            ],
+        
+        },
+        methods: {
+            DD103:function(member){
+                alert(`DD103 member:${member}`);
+            }
+        }
+    })
+
+    vm.$mount("#app"); //mount的時候才讓他動
+
+
+    </script>
+</body>
+</html>

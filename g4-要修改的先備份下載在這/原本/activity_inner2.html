@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>活動內頁</title>
+    <link rel="shortcut icon" href="images/favicon02.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/body&header&footer.css">
+    <link rel="stylesheet" href="./css/act_inner_style.css">
+    <!-- <link rel="stylesheet" href="./css/sign_in.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+    <script src="js/innerAct.js"></script>
+    <script src="js/comment.js"></script>
+    <script src="js/getLoginInfo.js"></script>
+    <script src="js/sign_in.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="phone">
+            <input type="checkbox" name="" id="ham">
+            <label for="ham">
+
+                <span class="ham-1"></span>
+                <span class="ham-2"></span>
+                <span class="ham-3"></span>
+                <span class="ham-4"></span>
+            </label>
+
+            <div class="logo ham"><a href="./index.html"><img src="./images/logo.png" alt=""></a></div>
+
+            <ul class="nav-icon ham">
+                <li class="icon-2"><a href="../shoppingCart.html"></a></li>
+                <li class="icon-3"><a href="#"></a></li>
+            </ul>
+
+            <nav class="pc">
+
+                <ul class=" nav-list">
+                    <li><a href="./customize.html">專屬騎行</a></li>
+                    <li><a href="./CYShop.html">CY嚴選</a></li>
+                    <li><a href="./activity.html">活動專區</a></li>
+                    <li class="logo"><a href="./cyclist.html"><img src="./images/logo.png" alt=""></a></li>
+                    <li><a href="./question.html">不可不知</a></li>
+                    <li><a href="./aboutCY.html">關於CY</a></li>
+                </ul>
+
+                <ul class="nav-icon">
+                    <li class="logstatus">
+                        <span id="memberId"></span>
+                        <div id="logout"></div>
+                    </li>
+                    <li class="icon-2"><a href="shoppingCart.html"></a></li>
+                    <li class="icon-3"></li>
+                </ul>
+            </nav>
+        </nav>
+    </header>
+    <div class="login-wrap" id="login-wrap">
+        <div class="login-html">
+            <span href="#" id="lightbox" class="lightbox-close"></span>
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">登入</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">註冊</label>
+
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <span class="userName">
+                            <label for="user" class="label">帳號</label>
+                            <input type="text" type="text" name="memId" id="memId-in" class="input"
+                                placeholder="請輸入6~10碼英數字">
+                        </span>
+
+
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">密碼</label>
+                        <input type="password" name="memPsw" class="input" id="memPsw-in" placeholder="請輸入6~10碼英數字">
+                    </div>
+
+                    <div class="group">
+                        <input id="memsign-in" type="submit" class="button" value="登入">
+                        <div class="sign_logo"></div>
+                    </div>
+
+
+                </div>
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="pass" class="label">暱稱</label>
+                        <input type="text" class="input" name="memNickName" id="memNickName0" type="text"
+                            placeholder="請輸入英數字">
+                    </div>
+
+                    <div class="group">
+                        <label for="user" class="label">帳號</label>
+                        <input type="text" class="input" name="memId" id="memId0" placeholder="請輸入6~10碼英數字">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">密碼</label>
+                        <input type="text" class="input" id="memPsw0" name="memPsw" placeholder="請輸入6~10碼英數字" />
+                    </div>
+                    <!-- <div class="group">
+                            <label for="pass" class="label">確認密碼</label>
+                            <input type="password" name="memPsw" class="input" placeholder="請再次輸入密碼">
+                        </div> -->
+                    <div class="group">
+                        <label for="pass" class="label">電子信箱</label>
+                        <input type="email" class="input" name="memEmail" id="memEmail0" placeholder="請輸入電子信箱">
+                    </div>
+
+                    <div class="group">
+                        <input class="button" id="sign-up-btn" type="submit" name="submit" value="確認">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="act-inner-bg">
+        <main class="wrapper act-inner">
+
+            <div class="container">
+                <div id="app1">
+                    <act-inner :inner="inner" :nick-name="nickName" :attend-list="attendMem" @act-join="joinOne" @report-act="reportThis(e)"></act-inner>
+                </div>
+
+
+                <div class="row">
+                    <div class="comment col-xl-8 col-md-8 col-sm-12" id="app">
+                        <comment-input @input-text="putText"></comment-input>
+                        <div class="comment-list">
+                            <comment-list v-for="item in list" :item=item :key=item.comNo :item-msg="userMessage"></comment-list>
+                        </div>
+            
+                        <!-- <div class="comment-input">
+                            <p class="title">留下意見</p>
+                            <textarea name="" id="" aria-label="" placeholder="有任何疑問嗎"></textarea>
+                            <div class="input-group">
+                                <span class="errMeg"></span>
+                                <span class="counter">0/100</span>
+                            </div>
+                            <div>
+                                <button class="send">留言</button>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="comment-list">
+                            <div class="comment-item">
+                                <div class="avatar">
+                                    <img src="https://picsum.photos/60/60?random=10" alt="">
+                                </div>
+                                <div class="content">
+                                    <div class="comment-name">clair</div>
+                                    <div class="comment-txt">發現新大陸好棒</div>
+                                    <div class="comment-date">2019-11-09</div>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <div class="avatar">
+                                    <img src="https://picsum.photos/60/60?random=10" alt="">
+                                </div>
+                                <div class="content">
+                                    <div class="comment-name">小安</div>
+                                    <div class="comment-txt">竟然有這條自行車道！😱 改天也來騎騎看</div>
+                                    <div class="comment-date">2019-11-09</div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+
+
+        </main>
+    </div>
+
+    <footer class="section">
+        <ul>
+            <li><img src="./images/facebook.png"></li>
+            <li><img src="./images/ig.png"></li>
+            <li><img src="./images/tw.png"></li>
+        </ul>
+    </footer>
+
+
+</body>
+<!-- <script src="https://unpkg.com/swiper/js/swiper.min.js"> </script> -->
+<script src="js/getLoginInfo.js"></script>
+<script src="js/sign_in.js"></script>
+<script>
+    // $(document).ready(function () {
+
+    //     $(".pic-item").click(function () {
+
+    //         //抓到小圖路徑
+    //         let picSrc = $(this).find("img").attr("src");
+    //         //塞進大圖顯示區
+    //         $(".slider-top").find("img").attr("src", picSrc);
+    //     })
+
+    //     // let divWidth = $('#sliderBoard').width();   //div的寬度
+
+    //     let imgCount = $('.pics li').length;
+    //     $('.pic-item').width($('.act-img').width() / 4);
+    //     let divWidth = $('.pic-item').width(); //25%
+    //     $('.pics').width(divWidth * imgCount); //ul的寬度
+    //     // $('#content li').width(divWidth);           //li的寬度
+
+    //     let i = 0;
+    //     $(".btn").click(function () {
+
+    //         let length = $(".pics").find(".pic-item").width();
+
+    //         switch ($(this).data("pic")) {
+
+    //             case "left":
+
+    //                 $(".pics").animate({
+    //                     // "left": `${-36*i}%`
+    //                     "left": `${length}px`
+    //                 })
+    //                 // console.log(`${-36*i}%`)
+    //                 console.log(`${length*i}px`)
+    //                 i++;
+
+    //                 break;
+
+    //             case "right":
+    //                 // i--;
+    //                 $(".pics").animate({
+    //                     "left": `-${length*i}px`
+
+    //                 })
+    //                 i++;
+    //                 console.log(`-${length}px`);
+    //                 break;
+
+    //         }
+
+    //     });
+
+
+
+    //     //   var galleryThumbs = new Swiper('.gallery-thumbs',{
+    //     //       spaceBetween:5,
+    //     //       slidesPerView:3,
+    //     //       loop:true,
+    //     //       freeMode:true,
+    //     //       loopedSlides:3,
+    //     //       watchSlidesVisibility: true,
+    //     //       watchSlidesProgress: true,
+
+    //     //       navigation:{
+    //     //           nextEl:'.swiper-button-next',
+    //     //           prevEl:'.swiper-button-prev'
+    //     //       }
+
+    //     //   })
+
+
+
+    //     var galleryTop = new Swiper('.gallery-top', {
+    //         // direction: 'vertical', // 垂直切换选项
+    //         spaceBetween: 5,
+    //         loop: true, // 循环模式选项
+    //         loopedSlides: 1,
+    //         // thumbs:{
+    //         //     swiper:galleryThumbs,
+    //         // },
+    //         thumbs: {
+    //             swiper: {
+    //                 el: '.gallery-thumbs',
+    //                 slidesPerView: 4,
+    //                 loop: true,
+    //                 freeMode: true,
+    //                 loopedSlides: 3,
+    //                 watchSlidesVisibility: true,
+    //                 watchSlidesProgress: true,
+
+    //             },
+    //             slideThumbActiveClass: 'my-slide-thumb-active',
+    //         }
+
+
+    //     })
+
+    //     $('#report-btn').click(function () {
+    //         $('#report-box-wrap').show();
+
+    //     })
+
+
+    // })
+    
+    
+    
+</script>
+
+</html>

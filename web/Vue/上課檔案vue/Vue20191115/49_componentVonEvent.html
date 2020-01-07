@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--v-on綁定自訂事件</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <!--Vue組件怎麼發出自訂事件?
+        1.Vue.component()
+        2.HTML
+    -->
+    <div id="app"> 
+        <!-- 第一個例子 -->
+        <!-- <my-button @my-click="clicked"></my-button> -->
+
+        <!-- 第二個例子 -->
+        <!-- <my-counter></my-counter> -->
+        <my-counter @emit-count="emitCount"></my-counter>
+        <h2>{{count}}</h2>
+    </div>
+    
+    <script>
+        // 第一個例子 
+        // Vue.component('my-button',{           
+        //     template: `<button @click="myClick">my-button</button>`,
+        //     methods:{
+        //         myClick(){
+        //         // 1.沒有帶資料
+        //             // this.$emit('my-click');  //發出自動事件
+        //         // 2.有帶資料
+        //             // this.$emit('my-click',100);
+        //         // 3.有帶很多資料
+        //             // this.$emit('my-click',100,200,300);
+        //         },
+        //     }, 
+        // });
+
+        // 第二個例子 
+        Vue.component('my-counter',{           
+            template: `
+                <div>
+                    <h1>{{count}}</h1>
+                    <button @click="count+=1"> +1 </button>
+                    <button @click="emit"> emit </button>
+                </div>
+            `,
+            data(){
+                return{
+                    count: 0,
+                };
+            },
+            methods:{
+                emit(){
+                    this.$emit('emit-count',this.count);
+                },
+            }, 
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+            },
+            methods: {
+                // 1.沒有傳資料  
+                // clicked(){
+                //     alert('Hello, button~');
+                // },
+
+                // 2.有傳資料
+                // clicked(num){
+                //     alert(`Hello, ${num}`);
+                // },
+
+                // 3.有傳很多資料
+                // clicked(x,y,z){
+                //     alert(`Hello, ${x}-${y}-${z}`);
+                // },
+
+                emitCount(count){
+                    this.count = count;
+                },
+            },
+        });
+    </script>
+</body>
+</html>

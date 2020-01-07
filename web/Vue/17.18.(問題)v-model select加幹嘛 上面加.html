@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<style>
+
+</style>
+<!-- 01 *= -->
+<!-- 加個v-model就神奇的讓我們可以讓第一個失能又能預設顯示 -->
+
+
+
+<body>
+    <div id="app">
+        <!-- ..................原本寫法.............. -->
+        <!-- <input type="radio" name="gender" value="male" checked ><label>Male</label>
+        <input type="radio" name="gender"  value="female" ><label>female</label>
+        <input type="radio" name="gender" value="others" ><label>other</label> -->
+
+        <!-- ................vue寫法 value要保留!!!............... -->
+        <input type="radio" v-model="gender" value="male"><label>Male</label>
+        <input type="radio" v-model="gender" value="female"><label>female</label>
+        <input type="radio" v-model="gender" value="others"><label>others</label>
+        <br>
+
+        <input type="checkbox" v-model="time" value="morning"><label>早上</label>
+        <input type="checkbox" v-model="time" value="afternoon"><label>中午</label>
+        <input type="checkbox" v-model="time" value="evening"><label>晚上</label>
+        <p>標籤{{time}}</p>
+        <br>
+
+         <!-- ....................select.............................. -->
+         <!-- 第一段 -->
+         <select name="" id="" v-model="year"> 
+             <!-- 加個v-model就神奇的讓我們可以讓第一個失能又能預設顯示 -->
+            <option value="" disabled>選擇年分</option>
+            <option value="">2017</option>
+            <option value="">2018</option>
+            <option value="">2019</option>
+         </select>
+         <br>
+
+         <!-- 第二段 -- 用multiple代替size>
+
+
+         <!-- 第三段 通常是用v-for來抓資料 產生選項 -->
+         <!-- <select v-for="year in years" > -->
+         <select>
+             <option v-for="year in years">{{year}}</option>
+             <!-- 先做資料綁定 再放字串模板 -->
+         </select>
+         <br>
+
+         <!-- ......................................... -->
+         <h2>選擇出現幾年幾月</h2>
+         <select v-model="selectYear">
+             <option v-for="year in years">{{year}}</option>
+         </select>
+         <select v-model="selectMonth">
+             <option v-for="month in 10">{{month}}</option>
+         </select>
+         <!-- <h3>{{year}}---{{month}}</h3> -->
+         <h3>{{selectMonth}}--{{selectYear}}</h3>
+
+         <!-- 第四段 -->
+        <select v-model="selectedYear">
+                <option v-for="year in years">{{year}}</option>
+            </select>
+            <select v-model="selectedMonth">
+                <option v-for="month in 12">{{month}}</option>
+            </select>
+            <h1>{{selectedYear}} - {{selectedMonth}}</h1>
+    </div>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="js/vue.js"></script> -->
+    <script>
+    
+         new Vue({
+             el:"#app",
+             data:{
+                 gender:"",
+                //  !!!!多選初值給陣列
+                //  time:"",
+                time:[],
+                year:"", /*第一段  寫多值會自動轉陣列*/ 
+                // year=[],
+
+                years:[2017,2018,2019],
+                selectYear:2019,
+                selectMonth:1,
+                
+             },
+             methods:{
+                 
+             },
+             
+             
+         })
+      
+
+
+      
+    </script>
+</body>
+
+</html>

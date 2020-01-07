@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>25formValidation/190830</title>
+    <style>
+        h2 {color:deepPink;
+            text-align: center}
+        td {padding:3px;
+            }  
+        td.title {background-color:#FFC;
+            }
+        input {padding-left:3px;}
+    </style>
+</head>
+
+<body>
+    <h2>寫一支程式(25formValidation.html)可以檢查密碼盒中輸入的資料，必須有英文字也有數字
+      </h2>
+      <input type="text" id="Psw">
+      <input type="button" value="檢查" id="btnSend">
+
+        <script>
+        function checkData(id){
+
+            var regExpStr = /[A-Z||a-z]{1}/;
+            var regExpNum = /[0-9]{1}/;
+
+            if( regExpStr.test(Psw.value) == false || regExpNum.test(Psw.value) == false){
+                Psw.select();
+                alert(`密碼英數字都要有才行`);
+                return;
+            }else{
+              alert(`正確`);
+            }
+        }
+        
+        window.addEventListener( "load" , function (){
+          document.getElementById("btnSend").onclick = checkData;
+        });
+        
+        
+          
+        
+        </script>
+</body>
+</html>

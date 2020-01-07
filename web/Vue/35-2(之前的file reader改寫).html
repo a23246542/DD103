@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+        <!--<input type="file"> file不能使用v-model,只能使用change事件-->
+
+        <div id="app">
+            <input type="file" @change="fileSelected">
+            <p></p>
+            <img v-if="image" v-bind:src="image">
+        </div>
+        
+
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                file: '',
+                image: '',
+            },
+            methods: {
+                fileSelected(e) {
+                    // let file = e.target.files[0];
+                    // let file = e.target.files.item(0);
+                    // console.log(file);
+        //  !!!!!要加s
+                    this.file = e.target.files[0];
+                    // this.file = e.target.files.item(0);
+                    console.log(this.file); //印出來是物件 反正file先宣告字串可以隨時改變型別
+
+                    let readFile = new FileReader();
+                    readFile.readAsDataURL(this.file);
+                
+                    // readFile.addEventListener('load',function(e){
+                    //     this.image = e.target.result;
+                    // }); 
+                        //可以直接寫函式也可以直接代
+                    readFile.addEventListener('load', this.imageLoaded);
+                },
+                imageLoaded(e) {
+                    this.image = e.target.result;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

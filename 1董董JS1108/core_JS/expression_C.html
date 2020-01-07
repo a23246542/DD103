@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+<h2>算術運算</h2>	
+<script type="text/javascript">
+
+document.write("10/4 :", 10/4, "<br>"); //2.5
+document.write("10%4 :", 10%4, "<br>"); //2 
+</script>   
+
+<h2>++在前</h2>
+<script type="text/javascript">
+var x = 10;
+var y = 10 + ++x;    //x = x + 1;
+document.write("x :", x, "<br>"); //11
+document.write("y :", y, "<br>"); //21
+</script>
+
+<h2>++在後</h2>
+<script type="text/javascript">
+var x = 10;
+var y = 10 + x++;    //x = x + 1;
+
+document.write("x :", x, "<br>"); //11
+document.write("y :", y, "<br>"); //20
+</script>
+
+
+<h2>--在前</h2>
+<script type="text/javascript">
+var x = 10;  
+var y = 10 + --x;
+//x = x - 1;//9
+//y = 10 + x;
+document.write("x :", x, "<br>"); //9
+document.write("y :", y, "<br>"); //19
+</script>
+
+<h2>--在後</h2>
+<script type="text/javascript">
+var x = 10;
+var y = 10 + x--;    
+//y = 10 + x  //20
+//x = x - 1;  //9
+
+document.write("x :", x, "<br>"); //11
+document.write("y :", y, "<br>"); //20
+</script>
+
+<h2>@@</h2>
+<script type="text/javascript">
+var x = 10;
+var a = 3;
+var b = 4;
+y = x-- + 100 + ++b*2 + a-- + a;
+document.write("a :", a, "<br>");
+document.write("b :", b, "<br>");
+document.write("x :", x, "<br>");
+document.write("y :", y, "<br>");
+</script>
+
+
+</body>
+</html>

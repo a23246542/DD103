@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+<h2>var 有 hoist 現象</h2>	
+<script type="text/javascript">
+
+//var a;
+document.write(a, "<br>");
+
+var a = 10+2;  //給值的動作到此行才做
+document.write(a, "<br>");
+</script> 
+
+<h2>var 可以重覆宣告</h2> 
+<script type="text/javascript">
+var a = 100;	
+document.write("真的嗎? ", a, "<br>");
+</script>
+
+<h2>..................let 没有 hoist 現象</h2>	
+<script type="text/javascript">
+
+// document.write(aa, "<br>"); //會發生error
+let aa = 10;
+document.write(aa, "<br>");
+</script>  
+
+<h2>let 不可以重覆宣告</h2> 
+<script type="text/javascript">
+let aa = 100;	
+document.write("真的嗎? ", aa, "<br>");//真的會錯
+</script>   
+</body>
+</html>

@@ -1,0 +1,52 @@
+/* 6_addClass.html */
+.myLabel{
+    text-transform: capitalize;
+    float: left;
+    width: 120px;
+}
+/* 6_addClass.html + 7_removeClass.html + 11_bind_on.html*/
+.highlight{
+    background: yellow;
+}
+
+/* 12_textHover.html */
+.textHover{
+    cursor: pointer;
+}
+#theDiv{
+    border: 1px solid #ccc;
+    font: 12px Cascadia Code;
+    color:#888;
+    padding: 5px;
+    background: #fff;
+
+    position: absolute;
+    display: none;
+}
+
+/* 13_topMessage.html */
+#topMessage{
+    background: #666;
+    color: #fff;
+    font: 20px Tahoma;
+    text-align: center;
+    width: 600px;
+    margin: 0px auto;
+    padding: 15px 0px;
+
+    display: none;
+}
+
+/* 15_animation.html */
+#imgBoard{
+    width: 100px;
+    background: #888;
+    padding: 8px 30px;
+
+    position: absolute;
+    left: -130px;
+}
+.myPhoto{
+    width: 100px;
+    border: 1px solid #ccc;
+}

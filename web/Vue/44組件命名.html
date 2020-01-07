@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--動態組件</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <!-- !!動態組件:先定義好組件 再透過條件判斷來決定出現什麼組件 -->
+    <div id="app"> 
+      <button @click="content='lessons'">lessons</button>
+      <button @click="content='apply'">apply</button>
+      <button @click="content='temp'">temp</button>
+      <hr>
+      <p>
+          <keep-alive>
+              <component :is="content"></component>
+          </keep-alive>
+      </p>
+    </div>
+
+    <script>
+        // Vue支援三種命名方式
+        Vue.component('apply',{
+            template:``,
+        });
+        Vue.component('lessons',{
+            template:` `,
+        })
+        Vue.component('temp',{
+            template:``,
+        })       
+        new Vue({
+            el: '#app',
+            
+            // 寫在這裡的template案寫在html的template不同
+            // 1.
+            // 2.空標籤 但htmL不一定可以
+        });
+    </script>
+
+</body>
+</html>

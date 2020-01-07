@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+</head>
+<body>
+
+    <div id="app">
+        <!-- !!加上:綁定 屬性值會被當成數值 沒加 就會被當成字串 -->
+        <count number="1"></count>
+        <count :number="1"></count>
+    </div>
+
+    <div id="app2">
+        <post text='text'></post>
+        <post :text='text'></post>
+    </div>
+    
+</body>
+<script>
+
+// 1因為是屬性:
+// 2陣列裡面是物件的話 直接用v-bind就好
+
+ new Vue({
+    el:'#app2',
+    data:{
+        posts:['hello','vue','world']       
+    },
+})
+
+new Vue({
+    el:'#app', 
+    data:{
+        text:'hello',
+    },
+    components:{
+        count:{
+            props:['number'],
+            template:`<h1>{{number+1}}</h1>`
+            // !!!template就是count的代稱
+        }
+    }
+})
+</script>
+</html>

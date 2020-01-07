@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Object 簡介</title>
+<style>
+  h2 { color:deepPink}
+</style>
+
+</head>
+<body>	   
+<h2> new Object()</h2>
+<script>  
+function submit(money){
+	if( money > 10000){
+		document.write(`${this.ename}申請費用${money}, 超過10000元, 不通過`, "<hr>");
+	}else{
+		document.write(`${this.ename}申請費用${money}, 通過`, "<hr>");
+	}
+}
+
+var emp = new Object(); //var emp={}
+emp.empno = "7001";
+emp.ename = "Adam";
+emp.submit = submit;
+document.write( "emp.empno : ", emp.empno, "<br>");
+document.write( "emp.ename : ", emp.ename, "<hr>");
+emp.submit(600);
+
+var emp2 = new Object(); 
+emp2.empno = "7002";
+emp2.ename = "Alice";
+//emp2.submit(300); //error
+</script>
+
+<h2>一般函式</h2>
+<script type="text/javascript">
+function Employee(empno, ename){ 
+	this.empno = empno;
+	this.ename = ename;
+}
+document.write( "window.empno : ", window.empno, "<br>");
+document.write( "window.ename : ", window.ename, "<hr>");
+
+Employee("7111", "John");	//this參考到window物件
+
+document.write( "window.empno : ", window.empno, "<br>");
+document.write( "window.ename : ", window.ename, "<hr>");
+//--------------------------------------------------------------------Function.call
+var emp3 = new Object();
+
+Employee.call( emp3, "7112", "Mary");
+
+document.write( "emp3.empno : ", emp3.empno, "<br>");
+document.write( "emp3.ename : ", emp3.ename, "<hr>");
+
+//--------------------------------------------------------------------Function.apply
+var emp4 = new Object();
+Employee.apply( emp4, ["7113", "David"])
+document.write( "emp4.empno : ", emp4.empno, "<br>");
+document.write( "emp4.ename : ", emp4.ename, "<hr>");
+</script>
+
+<h2> new 類別名稱()</h2>
+<script>
+function Employee(empno, ename){ 
+	this.empno = empno;
+	this.ename = ename;
+	this.submit = submit;
+}
+Employee.prototype.toString = function(){
+		return `員工代號:${this.empno}, 員工姓名:${this.ename}`;
+	}	
+
+var emp5 = new Employee("7115", "Henry");
+// var emp5 = new Object();
+// Employee.call(emp5, "7115", "Henry");
+var emp6 = new Employee("7116", "Peter");
+
+emp5.submit(5000);
+emp6.submit(11000);
+
+document.write( "emp5.empno : ", emp5.empno, "<br>");
+document.write( "emp5 : ", emp5, "<br>");
+</script>  
+
+<h2>object literal</h2>
+<script type="text/javascript">
+	var emp = {
+		empno:"7001",
+		ename:"King",
+		sal:700000000,
+		phone:{O:"03-4257387", M:"0988163163", H:"03-168168"}
+	}
+</script>
+
+<h2>JSON.stringify()</h2>
+<script> 	
+var str = JSON.stringify(emp); //json字串
+document.write( str,"<br>");
+document.write( typeof str,"<br>");
+
+</script>
+
+<h2>JSON.parse()</h2>
+<script type="text/javascript">
+//-------------------------------------------------------------example 1	
+var str = '{"empno":"7001","ename":"King","sal":700000000,"phone":"03-4257387"}';//json字串
+var obj = JSON.parse( str )	;
+document.write( "obj.empno : ", obj.empno, "<br>");
+document.write( "obj.ename : ", obj.ename, "<br>");
+document.write( "obj.phone : ", obj.phone, "<hr>");
+
+//-------------------------------------------------------------example 2
+var str = '{"empno":"7001","ename":"King","sal":700000000,"phone":["03-4257387","0988163163","03-168168"]}';
+var obj = JSON.parse( str )	;
+document.write( "obj.phone[0] : ", obj.phone[0], "<br>");
+document.write( "obj.phone : ", obj.phone, "<hr>");
+
+//-------------------------------------------------------------example 3
+var str = '{"empno":"7001","ename":"King","sal":700000000,"phone":{"O":"03-4257387","M":"0988163163","H":"03-168168"}}';
+var obj = JSON.parse( str )	;
+
+document.write( "obj.phone : ", obj.phone.M, "<br>");
+document.write( "obj.phone : ", obj.phone["M"], "<br>");
+var x = "H";
+document.write( "===obj.phone : ", obj.phone[x], "<br>");
+document.write( "obj.phone : ", obj.phone, "<hr>");
+
+</script>
+</body>
+</html>

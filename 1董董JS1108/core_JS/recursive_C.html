@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+
+<h2>算出 1 加到 10 的總和 </h2>
+<script type="text/javascript">
+
+function sumN(n){
+	if( n == 1){
+		return 1;
+	}else{
+		return n + sumN( n-1 );
+	}
+}
+
+document.write( sumN(10), "<br>");
+</script> 
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <!-- <li v-for="item in classmate" v-on:click="DD103(item.name)">{{item.name}}</li> -->
+            <li v-for="item in classmate" @click="DD103(item.name)">{{item.name}}</li>
+        </ol>
+    </div>
+
+    <!-- directives指令 v-on-->
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello, VueJS!',
+                classmate: [{name:'Steve',age: 18},
+                            {name:'Tina',age: 20},
+                            {name:'Stella',age: 25},
+                            {name:'Anan',age: 15},
+                           ],
+            },
+            methods: {     //函數(方法)們
+                DD103: function(member){
+                    alert(`DD103 member: ${member}`);
+                },
+            },
+        });
+    </script>
+</body>
+</html>

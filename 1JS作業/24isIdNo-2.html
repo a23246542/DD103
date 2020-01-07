@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" name="" id="ID" placeholder="請輸入身分字號" maxlength="10" minlength="10">
+    <input type="submit" value="check" id="check">
+
+
+    <script>
+        var wordscore, id, str, sum;
+
+        wordscore = new Array(1, 10, 19, 28, 37, 46, 55, 64, 39, 73, 82, 2, 11, 20, 48, 29, 38, 47, 56, 65, 74, 83,
+            21, 3, 12, 30); //字母加成表
+
+
+        function isIdNo() {
+
+            id = document.getElementById("ID");
+            str = id.value.toUpperCase();
+
+            //利用正規表達式一次做比較
+            if (str.search(/^[A-Z](1|2)\d{8}$/i) == -1) {
+                alert("身分字號輸入錯誤")
+                id.value = "";
+            }
+
+            //取得首字母的加成
+            sum = wordscore[str.charCodeAt(0) - 65];
+
+            //取得後面8碼的加成
+            for (i = 1; i < 9; i++) {
+
+                sum += str[i] * (9 - i);
+
+            }
+
+            //取得最後一碼的加成
+            sum += parseInt(str[9]);
+
+            //公式是加成後除以10 如果為0就是正確的身分字號
+            if (sum % 10 != 0) {
+                alert("身分字號輸入錯誤")
+                id.value = "";
+            } else {
+                alert("身分字號輸入正確")
+                id.value = "";
+            }
+
+        }
+
+
+        function int() {
+            document.getElementById("check").onclick = isIdNo;
+        }
+
+        window.addEventListener("load", int, false);
+    </script>
+
+</body>
+
+</html>

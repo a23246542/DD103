@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "C:\\inetpub\\wwwroot\\phpLab(new)"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	}
+}

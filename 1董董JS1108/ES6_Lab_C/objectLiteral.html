@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>object literal</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+var a = 10;
+var a = "abc";
+var a = true;
+var arr = [];
+var arr = [11, 22, 33];
+
+//看起來空空的物件
+var obj = {};
+
+//有較多內容的物件
+var emp = {
+	empno : "7101",
+	ename : "Adam"
+}
+document.write( "emp.empno : ", emp.empno, "<br>");
+document.write( "emp.ename : ", emp.ename, "<hr>");
+
+function submit(money){
+	if( money > 10000){
+		document.write(`申請費用${money}, 超過10000元, 不通過`, "<hr>");
+	}else{
+		document.write(`申請費用${money}, 通過`, "<hr>");
+	}
+}
+
+var empno = "7000";
+var ename = "King"
+var emp2 = {
+	empno : empno,
+	ename : ename,
+	submit : submit,
+	showSmile : function(){
+		document.write( "^_________^<br>");
+	}
+}
+
+document.write( "emp2.empno : ", emp2.empno, "<br>");
+document.write( "emp2.ename : ", emp2.ename, "<hr>");
+emp2.submit(300);
+emp2.showSmile();
+
+//ES6的簡化版的物件表示法
+
+var empno = "7001";
+var ename = "Queen";
+var emp3 = {
+	empno,
+	ename,
+	submit,
+	showSmile(){
+		document.write( "哈!!!!!!!!!!!!!!!!<br>");
+	}
+}
+document.write( "emp3.empno : ", emp3.empno, "<br>");
+document.write( "emp3.ename : ", emp3.ename, "<hr>");
+emp3.submit(600);
+emp3.showSmile();
+
+</script>
+
+
+</body>
+</html>

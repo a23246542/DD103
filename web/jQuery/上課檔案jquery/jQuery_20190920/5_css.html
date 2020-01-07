@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // alert(parseInt($('label').css('fontSize')));
+            // $('label').css('text-transform','capitalize');
+            $('label').css({
+                textTransform:'capitalize',
+                float:'left',
+                width:'120px',
+            });
+            $('textarea').focus(function(){
+                // $(this).attr().css();
+                // $(this).attr({}).css({});
+                $(this).attr({
+                    rows: 5,
+                    cols: 50,
+                }).css({
+                    backgroundColor: 'maroon',
+                    color: '#fff',
+                });
+            });
+        });        
+    </script>
+</head>
+<body>
+    <p>
+        <label>your name: </label>   
+        <input type="text">
+    </p>
+    <p>
+        <label>your email: </label>   
+        <input type="email">
+    </p>
+    <p>
+        <label>your Comments: </label>   
+        <textarea></textarea>
+    </p>
+     
+    
+</body>
+</html>

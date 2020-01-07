@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+    <style>
+        label{
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">       
+       <!-- <input type="checkbox" v-model="agree"><label>Agree</label>
+       <h1>{{agree}}</h1>
+       <button @click="submit">Submit</button> -->
+
+       <input type="checkbox" v-model="time" value="morning"><label>morning</label>
+       <input type="checkbox" v-model="time" value="afternoon"><label>afternoon</label>
+       <input type="checkbox" v-model="time" value="evening"><label>evening</label>
+       <h1>{{time}}</h1>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>        
+        new Vue({
+            el: '#app', 
+            data: {
+                // agree: false,
+                time: [],
+            },
+            methods: {
+                // submit(){},
+            },
+        });
+    </script>
+</body>
+</html>

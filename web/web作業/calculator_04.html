@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>Calculator_04</title> 
+    <style>
+        body{
+            font: 110% 'Gill Sans MT',Tahoma;
+            text-transform: capitalize;
+            background: #ddd;
+        }
+        form{
+            background: #fff;
+            width: 210px;
+            padding: 15px;
+            margin: 50px;
+            box-shadow: rgba(0,0,0,0.6) 0px 0px 15px;
+        }
+        div{
+            margin: 8px 0px;
+        }
+        label{
+            width: 150px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="theForm">
+        <fieldset>
+            <legend>Calculator</legend>
+            <div>
+                <label for="quantity">quantity</label>
+                <input type="number" min="0" id="quantity" v-model="quantity">
+            </div>
+            <div>
+                <label for="price">price per unit</label>
+                <input type="text" id="price" v-model="prize">
+            </div>
+            <div>
+                <label for="tax">Tax rate(%)</label>
+                <input type="text" id="tax" v-model="tax">
+            </div>
+            <div>
+                <label for="discount">discount</label>
+                <input type="text" id="discount" v-model="discount">
+            </div>
+            <div>
+                <label for="total">total</label>
+                <input type="text" id="total" v-model="finalTotal">
+            </div>
+        </fieldset>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: "#theForm",
+            data: {
+                quantity: 0,
+                prize: 0,
+                tax: 0,
+                discount: 0,
+                total: 0,
+            },
+            computed: {
+                finalTotal: function(){
+                    return (((this.quantity * this.prize) * (1 + this.tax/100)) - this.discount).toFixed(2);
+                }
+            },
+        })
+    </script>
+</body>
+</html>

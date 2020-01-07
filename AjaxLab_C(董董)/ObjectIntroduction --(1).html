@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Object 簡介</title>
+<style>
+  h2 { color:deepPink}
+</style>
+
+</head>
+<body>	   
+<h2> new Object()</h2>
+<script>  
+function submit(money){
+	if( money > 10000){
+		document.write(`申請費用${money}, 超過10000元, 不通過`, "<hr>");
+	}else{
+		document.write(`申請費用${money}, 通過`, "<hr>");
+	}
+}
+
+var emp = new Object(); //var emp={}
+emp.empno = "7001";
+emp.ename = "Adam";
+emp.submit = submit;
+document.write( "emp.empno : ", emp.empno, "<br>");
+document.write( "emp.ename : ", emp.ename, "<hr>");
+emp.submit(600);
+
+var emp2 = new Object(); 
+emp2.empno = "7002";
+emp2.ename = "Alice";
+emp2.submit(300);
+</script>
+
+<h2>一般函式</h2>
+<script type="text/javascript">
+
+//--------------------------------------------------------------------Function.call
+
+function Employee(empno,ename){
+	this.empno = empno;
+	this.ename = ename;
+}
+
+var emp3 ={};
+Employee.call(emp,"7003","john");
+
+var emp4 = new Object();
+Employee.apply(emp4,["7004","anna"]); 
+
+
+// https://ithelp.ithome.com.tw/articles/10195896
+//--------------------------------------------------------------------Function.apply
+</script>
+
+<h2> new 類別名稱() + prototype</h2>
+<script>
+
+function Employee(empno,ename){
+	this.empno = empno;
+	this.ename = ename;
+
+	this.submit = submit;
+	// 這樣每個物件呼叫 =function什麼的又產生一次函數
+	// this.toString = function(){
+	// 	....很多程式碼
+	// 	retrun `員工代碼:${this.empno},員工姓名${this.ename}`
+	// }
+}
+
+
+// 有呼叫到再載入 但如果要動態每次載入參數 還是只能用上面那個
+Employee.prototype.toString = function(){
+	return `員工代碼:${this.empno},員工姓名${this.ename}`
+}
+// java類別包建構子 我們沒有類別 保留一個雛型還可以彈性改變
+// 這樣就不用很多副本 效能比較好 不用再
+
+// @@忘記var
+// emp5 = new Employee("7115","henry");
+// !不過茶 var emp6 = function(){}效能比要好?? 賤狗仔 
+var emp5 = new Employee("7115","henry");
+var emp6 = new Employee("7116","peter");
+
+
+//!可以設定員工不同狀況
+emp5.submit(500);
+emp6.submit(11000);
+// !!只打emp會整個執行 帶出來
+document.write( "emp5.empno : ", emp5.empno, "<br>");
+document.write( "emp5 : ", emp5, "<br>");
+
+</script>  
+
+<h2>JSON</h2>
+<script> 	
+var str = '{"empno":"7001","ename":"King","sal":700000000,"phone":{"O":"03-4257387","M":"0988163163","H":"03-168168"}}';
+var obj = JSON.parse( str );
+
+
+
+obj.phone.M==obj.phone["M"];
+
+var x = "M"
+// !!物件陣列索引寫法可以代變數 點寫法就不行
+let search = "M";
+var y = `${search}`;
+obj.phone.M == obj.phone[x];
+obj.phone.M == obj.phone[y];
+document.write(obj.phone[x],"<br>");
+document.write(obj.phone[y]);
+</script>
+</body>
+</html>

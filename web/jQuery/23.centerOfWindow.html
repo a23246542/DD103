@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <title>Document</title>
+    <style>
+        #inCenter {
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        $(document).ready(function () {
+
+            let divWidth = $('#inCenter').width();
+            let divHeight = $('#inCenter').height();
+
+            
+            //不是只有resize 一開始就要在中間 就執行
+            moveCenter();
+
+            // 要如何跟著變動center 因為這樣是寫死的要放進function!!
+            // $(window).resize( moveCenter());
+            $(window).resize(function(){
+                moveCenter();
+            });
+
+
+            function moveCenter() {
+                let winWidth = $(window).width();
+                let winHeight = $(window).height();
+
+                $('#inCenter').css({
+                    left: (winWidth - divWidth) / 2,
+                    top: (winHeight - divHeight) / 2,
+                })
+            // .css("",xx)
+            }
+
+        });
+    </script>
+
+
+</body>
+<div id="inCenter"></div>
+
+</html>

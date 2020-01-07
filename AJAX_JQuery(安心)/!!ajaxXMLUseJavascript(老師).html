@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX XML use Javascript</title>
+</head>
+<body>
+    <p>
+        <button id="loadButton">Load Data</button>
+    </p>    
+
+    <div id="feedback"></div>
+
+    <script>
+
+        function doFirst(){
+            //先跟HTML畫面產生關聯
+            loadButton = document.getElementById('loadButton');
+            feedback = document.getElementById('feedback');
+
+            //再建事件聆聽功能
+            loadButton.addEventListener('click',function(){
+                //Step 1: 建立AJAX物件
+                xhr = new XMLHttpRequest();
+                xhr.addEventListener('readystatechange',callState);
+
+                //Step 2: 發出請求
+                let urlSource = 'JSON_XML_CSV/travellocationCHINESE_1.xml';
+                xhr.open('GET',urlSource,true);
+                xhr.send();
+            });
+        }
+        function callState(){
+            //Step 3: 接收Server端的回應
+            if(xhr.readyState === 4){
+                if(xhr.status === 200){
+                    var xmlData = xhr.responseXML;  //xmlData是XML DOM物件
+
+                    //景點有多少筆?
+                    // var Section = xmlData.getElementsByTagName('Section');
+                    // var Section = xmlData.querySelectorAll('Section');
+                    // console.log(Section.length);
+
+                    var Section = xmlData.querySelectorAll('Section');
+                    // var stitle = xmlData.querySelectorAll('stitle');
+                    // for(let i=0; i<10; i++){
+                        // console.log(stitle[i].firstChild.nodeValue);
+                        // console.log(Section[i].childNodes[13].firstChild.nodeValue);
+                    // }
+
+                    // for(let i=0; i<5; i++){
+                    //     console.log(Section[i].getElementsByTagName('stitle')[0].firstChild.nodeValue);
+                    //     console.log(Section[i].getElementsByTagName('xbody')[0].firstChild.nodeValue);
+                    //     console.log(Section[i].getElementsByTagName('latitude')[0].firstChild.nodeValue);
+                    //     console.log(Section[i].getElementsByTagName('longitude')[0].firstChild.nodeValue);
+                    // }
+
+                    //出現在HTML畫面上
+                    for(let i=0; i<5; i++){
+                        var theImage = document.createElement('img');
+                        //jquery gettagname用find代替 nodevalue 有text
+                        theImage.src = Section[i].getElementsByTagName('img')[0].firstChild.nodeValue;
+                        theImage.width = 300;
+
+                        feedback.appendChild(theImage);
+                    }
+
+                }else{
+                    feedback.innerHTML = `${xhr.status} : ${xhr.statusText}`;
+                }
+            }
+        }
+        window.addEventListener('load',doFirst);
+
+    </script>
+</body>
+</html>

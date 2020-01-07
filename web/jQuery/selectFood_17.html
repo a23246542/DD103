@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <style>
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+
+            let Condiments = ['mustard', 'salt', 'pepper', 'spices', 'soy sauce', 'olive oli', 'ketchup',
+                'cooking oil',
+                'sugar'
+            ]
+            let Deli = ['roast beef', 'turkey', 'swiss cheese', 'potato salad', 'potato Diane']
+            let coffeeTea = ['coffee', 'herbal tea', 'hot chocolate', 'cafe au lait', 'latte']
+            let Bread = ['white bread', 'wheat bread', 'whole grain bread', 'rye bread', 'pita bread',
+                'french bread',
+                'bagel',
+                'rolls', 'donut', 'bread sticks', 'swiss rolls', 'croissant'
+            ]
+
+            $('.food').click(function () {
+
+                //  let choice = $(this).val();
+                let choice = $.trim($(this).text());
+                console.log(choice);
+
+                if ($.inArray(choice, Condiments) !== -1) {
+                    $("#cond").append(`<td>${choice}</td>`);
+
+                } else if ($.inArray(choice, Deli) != -1) {
+                    $("#deli").append(`<td>${choice}</td>`);
+                } else if ($.inArray(choice, coffeeTea) !== -1) {
+                    $("#coffeeTea").append(`<td>${choice}</td>`);
+                } else {
+                    $("#bread").append(`<td>${choice}</td>`);
+                }
+            });
+
+
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr id="coffeeTea">
+            <td>coffee or tea</td>
+        </tr>
+        <tr id="deli">
+            <td>Deli</td>
+        </tr>
+        <tr id="cond">
+            <td>Condiments</td>
+        </tr>
+        <tr id="bread">
+            <td>Bread</td>
+        </tr>
+
+    </table>
+
+
+
+
+   /*<!--其實可以跑迴圈產生按鍵就好...-->*/
+
+    <h3>請選擇~</h3>
+     
+    <button class="food">mustard</button>
+    <button class="food">salt</button>
+    <button class="food"> pepper</button>
+    <button class="food">spices</button>
+    <button class="food"> soy sauce</button>
+    <button class="food"> olive oli</button>
+    <button class="food"> ketchup</button>
+    <button class="food"> cooking oil</button>
+    <button class="food"> sugar</button>
+    <button class="food"> roast beef</button>
+    <button class="food"> turkey</button>
+    <button class="food"> swiss cheese</button>
+    <button class="food"> potato salad</button>
+    <button class="food">potato Diane </button>
+    <button class="food">coffee </button>
+    <button class="food"> herbal tea</button>
+    <button class="food">hot chocolate </button>
+    <button class="food">cafe au lait </button>
+    <button class="food">cafe au lait </button>
+    <button class="food">latte </button>
+    <button class="food">Con Panna </button>
+    <button class="food">Viennese coffee </button>
+    <button class="food">white bread </button>
+    <button class="food">wheat bread </button>
+    <button class="food">whole grain bread </button>
+    <button class="food">rye bread </button>
+    <button class="food">pretzel </button>
+    <button class="food">pita bread </button>
+    <button class="food">french bread </button>
+    <button class="food">rolls </button>
+    <button class="food">donut </button>
+    <button class="food">bread sticks </button>
+    <button class="food">swiss rolls </button>
+    <button class="food">croissant </button>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <h2>exec</h2>
+    <p align='center'>
+        <button id="loadJson" class="btn btn-info">load json</button>
+        <button id="loadXml" class="btn btn-info">load xml</button>
+        <button id="loadCsv" class="btn btn-info">load csv</button>
+    </p>
+    <div id="feedback" align='center'></div>
+   
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script>
+    
+    $(document).ready(function(){
+        let feedback =$('#feedback');
+
+        $('#loadJson').click(function(){
+            // @@選取器少寫# 跟ajax不用寫回忽
+        // $('loadJson').click(function(){
+            // $.ajax(function(){
+            //     url:'JSON_XML_CSV/apiIn.json',
+            //     data:{},
+            //     type:,
+            //     dataType:,
+            //     success:,
+            // })
+            $.ajax({
+                url:'JSON_XML_CSV/apiIn.json',
+                data:{},
+                type:'get',
+                dataType:'json',
+                success:function(res){
+                    console.log(res);
+                    // 要顯示景點
+                    let data ="<ul>";
+
+                    $.each(res,function(index,item){
+                        data+=`<li>${item["Name"]}</li>`;
+                        // @@不會報錯 讀取資料大小寫要寫對
+                        // data+=`<li>${item["name"]}</li>`;
+                    })
+
+                    data+="</ul>";
+
+                    feedback.html(data);
+                    // $('#feedback').append(data);
+
+                }
+            })
+
+        
+
+            
+        })
+
+
+        $("#loadXml").click(function(){
+            $.ajax({
+                url:'JSON_XML_CSV/books.xml',
+                data:{},
+                type:'get',
+                // ??dataType用意
+                dataType:'xml',
+                success:function(res){
+                    // 印出作者跟誰寫的
+                    console.log(res);
+                    let data = '<ol>';
+                    
+                    // $(res).find('BookList')
+                    $(res).find('Book').each(function(index,item){
+                        // ??@@為什麼這麼厲害都不用陣列選取
+                        let title = $(this).find('Title').text();
+                        // let title = $(this).find('Title')[0].text();
+                        let author =$(this).find('Author').text();
+                        // let author =$(this).find('Author')[0].text();
+                        data+=`<li>${title}is written by${author}</li>`;
+                    })
+
+                    data+='</ol>';
+
+                    feedback.html(data);
+                }
+            })
+        })
+
+
+        $('#loadCsv').click(function(){
+             $.ajax({
+                url: 'JSON_XML_CSV/temp.csv',
+                dataType:'text',
+                // !!??
+                // dataType:'csv'
+                success:function(res){
+                    console.log(res);
+
+                    let empData = res.split(/\n|\r\n/);
+
+                    let data ='<table class="table table-bordered table-striped">';
+                        for(let row=0;row<empData.length;row++){
+                            data+='<tr>';
+                            let cellData = empData[row].split(",");
+                            for(let col=0;col<cellData.length;col++){
+                                if(row==0){
+                                    data+=`<th>${cellData[col]}</th>`;
+                                }else{
+                                    data+=`<td>${cellData[col]}</td>`;
+                                }
+                            }
+                            
+
+                            data+='</tr>';
+                        }
+                    data+='</data>';
+
+                    feedback.html(data);
+                }
+             })
+        })
+    })
+    
+    
+    </script>
+</body>
+</html>

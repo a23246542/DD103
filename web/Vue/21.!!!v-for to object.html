@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 01v-for將元素轉成物件 -->
+    <!-- 02如果在意順序render出來的順序 宣告成陣列 裡面放物件的方式 -->
+    <!-- '03 (value,key)in me忘記空格會跑不出來' -->
+    <!-- 04 v-for ="(month,index) in months"
+    也是value 再key(索引陣列是index)) -->
+</head>
+<body>
+     <div id="app">
+         <p v-for="(value,key) in me">{{key}}--{{value}}</p>
+         <!-- <p v-for="(value,me)in me">{{key}}--{{value}}</p> -->
+         <hr>
+         <p v-for="item in me2">{{item.prop}}--{{item.value}}</p>
+     </div>
+
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <script>
+         new Vue ({
+            el: '#app', 
+            data: {
+                me: {
+                    name: 'Silvia Huang',
+                    id: 'silvia',
+                    age: 15,
+                    gender: 'Female',
+                    password: '123456',
+                    10: '小學生',
+                    15: '高中生',
+                    20: '大學生',
+                },
+                me2: [
+                    {prop:'name',value:'Silvia Huang'},
+                    {prop:'id',value:'silvia'},
+                    {prop:'age',value:'15'},
+                    {prop:'gender',value:'Silvia Huang'},
+                    {prop:'password',value:'Silvia Huang'},
+                    {prop:'10',value:'Silvia Huang'},
+                    {prop:'15',value:'Silvia Huang'},
+                    {prop:'20',value:'Silvia Huang'},
+
+                ],
+                  
+               
+            },
+         })
+     
+     
+     </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+       <h2>{{sum}}</h2>
+       <button @click="update">Update</button>
+       <button id="deleteButton">Delete</button>
+    </div>
+   
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                sum: 0,
+            },
+            methods: {     
+                update(){
+                    this.sum++;
+                },
+            },
+            // beforeCreate: function(){},
+            beforeCreate(){
+                console.log(`beforeCreate()--sum: ${this.sum}`);
+                console.log(`beforeCreate()--$el: ${this.$el}`);
+            },
+            created(){
+                console.log(`created()--sum: ${this.sum}`);
+                console.log(`created()--$el: ${this.$el}`);
+            },
+            beforeMount(){
+                console.log(`beforeMount()--$el: ${this.$el}`);
+            },
+            mounted(){
+                console.log(`mounted()--$el: ${this.$el}`);
+            },
+            beforeUpdate(){
+                console.log(`beforeUpdate()--sum: ${this.sum}`);
+            },
+            updated(){
+                console.log(`updated()--sum: ${this.sum}`);
+            },
+            beforeDestroy(){
+                console.log(`beforeDestroy()--sum: ${this.sum}`);
+            },
+            destroyed(){
+                console.log(`destroyed()--sum: ${this.sum}`);
+            },
+        });
+
+        document.getElementById('deleteButton').addEventListener('click',function(){
+            vm.$destroy();
+        });
+    </script>
+</body>
+</html>

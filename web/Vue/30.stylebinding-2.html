@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* .submit{
+            background: #3c6e71;
+            color: #fff;
+            border-radius: 8px;
+            padding: 5px 8px;
+        }
+        .submit.disabled{
+            background: #aaa;
+        } */
+    </style>
+</head>
+<body>
+
+        <div id="app">
+            <h1 :style="h1style">lore10</h1>
+            <button @click=shrink></button>
+        </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+    <script>
+
+    // const h1style ={
+    //      fontSize:'50px',
+    //      color:'red',
+    // };
+
+    // const blueWord ={
+    //      color:'blue',
+    // }
+
+    new Vue({
+        el:'#app',
+        data:{
+            currentSize:50,
+            // 把關鍵的東西寫在data 大家都可以用
+        },
+        computed: {
+            h1style(){
+                return{
+                    fontSize:`${this.currentSize}px`,
+                    color:'red',
+                }
+            }
+        },
+        methods: {
+            shrink(){
+                this.currentSize--;
+            }
+        },
+    });
+    
+    </script>
+
+ 
+
+</body>
+</html>

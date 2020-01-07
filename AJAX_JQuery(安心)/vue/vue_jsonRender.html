@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js'></script>
+    <style>
+      body,html{
+          font-family: Tahoma,Arial,Verdana;
+      }
+      h1{font-size: 14px;}
+      a{color:#266; text-decoration: none;}
+      .books{
+          display: inline-block;
+          width: 200px;
+          border:1px solid #aaa;
+          border-radius: 10px;
+          margin: 10px;
+          padding: 10px;
+
+          box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+        }
+        .author{}
+        img{
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+
+        }
+
+    </style>
+</head>
+<body>
+  <div id="app">
+        <div v-for="book in books" class="books">
+            <img :src="book.image" alt="">
+            <a href="book.url">
+                <h1>{{book.title}}</h1>
+            </a>
+            <span class="author">{{book.author}}</span>
+        </div>      
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+  <script>
+  
+    new Vue({
+        el:'#app',
+        data:{
+            books:[],
+        },
+        methods:{},
+        mounted() {
+            // 1.jquery:使用promise的then() 取得response
+                    // $.getJSON('bookData').then(res=>res.json()).then(books=>this.books=books)
+            // $.getJSON('bookData.json').then(books=>this.books=books)
+                        //!!傳進來的參數叫做books 這邊有參數不用家小括號
+
+            //  2.axios
+            // axios.get('bookData.json').then(res => this.books = res.data);//要告訴參數裡面的data
+
+            // 3.用原生的fetch()取得json黨 在使用es6的promise的then()取得res
+            fetch().then(res => res.json()).then(books=> this.books = books)
+
+
+            //1.jQuery:使用ES6的promise的then()取得response
+                // $.getJSON('bookData.json').then(books => this.books = books);
+
+                //2.Axios
+                // axios.get('bookData.json').then(res => this.books = res.data);
+
+                //3.用原生的fetch()取得JSON檔，再使用ES6的promise的then()取得response
+                // fetch('bookData.json').then(res => res.json()).then(books => this.books = books);
+        },
+
+    })
+  </script>
+    
+</body>
+</html>

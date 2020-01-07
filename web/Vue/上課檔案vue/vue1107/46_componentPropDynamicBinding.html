@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--動態綁定prop</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <!--動態綁定prop:設計一個組件，prop可以動態傳入值  -->
+    <div id="app"> 
+    <!-- 只使用Vue裡面的text -->
+       <!-- <post text="text"></post>
+       <post :text="text"></post> -->
+
+    <!-- 使用Vue裡面的posts -->   
+        <!-- <post v-for="text in posts" :text="text"></post> -->
+
+    <!-- 使用Vue裡面的postsObject -->
+        <!-- <post v-for="object in postsObject" :text="object.text" :author="object.author"></post> -->
+    
+    <!-- render物件，除了一個一個render,還有簡便的作法 -->
+        <post v-for="object in postsObject" v-bind="object"></post>
+  </div>
+    
+    <script>        
+        new Vue({
+            el: '#app',
+            //以下稱為local components
+            data: {
+                text: 'Hello',
+                posts: ['Hello','Vue','World'],
+                postsObject: [
+                    {text:'Hello',author:'Peter',age:15},
+                    {text:'Vue',author:'Steve',age:20},
+                    {text:'World',author:'Tina',age:25},
+                ],
+            },
+            components: {
+                post: {
+                    // props: ['text'],
+                    // template: `<h1>{{text}}</h1>`,
+
+                    props: ['text','author','age'],
+                    template: `<h1>{{author}}: {{text}}({{age}})</h1>`,
+                },
+            },
+        });
+    </script>
+</body>
+</html>
+
+<!--
+    <div id="app"> 
+        <count :number="1">加上「:」屬性值會被當成數值;沒加「:」就會被當成字串</count>
+    </div>
+    
+    <script>        
+        new Vue({
+            el: '#app',
+            data: {},
+            components: {
+                count: {
+                    props: ['number'],
+                    template: `<h1>{{number+1}}</h1>`,
+                },
+            },
+        });
+    </script>
+-->

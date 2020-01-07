@@ -1,0 +1,43 @@
+#skin {
+    border: 2px dotted steelblue;
+    border-radius: 10px;
+    width: 700px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+section {
+    border: 1px solid red;
+    margin-top: 10px;
+}
+
+#buttons {
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+button{
+    width: 80px;
+    /* 案件也可以給字體 */
+    text-transform: uppercase;
+    font-family: bold 16px Comic Sans MS;
+}
+
+/* #playBtn{} */
+#defaultBar{
+    border: 1px solid purple;
+    width: 640px;
+    height: 16px;
+     /* 跟裡面一樣都高16 再另外加padding比較可愛 */
+    padding: 2px;
+
+    margin: 10px auto;
+}
+
+#prograssBar{
+    width: 10px;
+    height: 16px;
+    background: #ccc;
+}

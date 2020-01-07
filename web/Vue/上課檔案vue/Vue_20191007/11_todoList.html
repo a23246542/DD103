@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+       <!-- <input type="text" v-on:keyup.enter="addTask(newTask)" v-model="newTask"> -->
+       <!-- <input type="text" v-on:keyup.enter="addTask" v-model="newTask"> -->
+       <input type="text" @keyup.enter="addTask" v-model="newTask">
+
+       <h2>To-Do List</h2>
+       <ol>
+            <li v-for="task in tasks">
+               {{task}} -- <a href="#" @click="removeTask(task)">delete</a>
+            </li>
+       </ol>
+    </div>
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+               tasks: [],
+               newTask: '',
+            },
+            methods: {     
+                addTask: function(){
+                    this.tasks.push(this.newTask);
+                },
+                removeTask(task){
+                    // alert(this.tasks.indexOf(task));
+                    this.tasks.splice(this.tasks.indexOf(task),1);
+                },
+            },
+        });
+    </script>
+</body>
+</html>

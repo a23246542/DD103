@@ -1,0 +1,37 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+.image{
+    width:100px;
+    height:100px;
+}
+#wrapper{
+    margin: 0px auto;
+    padding: 50px 0px;
+    width: 800px;
+    text-align: left;
+}
+#sliderBoard{		/*div*/
+	width: 100px;
+	height: 500px;
+	text-align: left;
+	position: relative;
+    overflow: hidden;
+    
+	margin: 100px auto;
+}
+.sliderWrap{
+	top: 0px;
+	left: 0px;
+	position: relative;
+}
+#sliderBoard ul{			/*ul*/
+	
+}
+#sliderBoard li{		/*li*/
+    height:100px;
+}
+
+

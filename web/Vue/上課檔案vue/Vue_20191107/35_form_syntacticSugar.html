@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--v-model的三種修飾符(modifier)</title>
+</head>
+<body>
+    <!-- v-model modifier 
+        lazy: trigger when blur(全部輸入完成，再顯示全部輸入的值)
+        number: parseInt() 將字串轉成數值
+        trim: $.trim() 刪除輸入時產生的前後空格
+    -->
+    <div id="app">        
+        <!-- <input v-model="message">
+        <h1>{{message}}</h1> -->
+
+        <!-- <input v-model.lazy="message">
+        <h1>{{message}}</h1> -->
+
+        <!-- <input v-model.number="num">
+        <h1>{{num+1}}</h1> -->
+
+        <input v-model.trim="name">
+        <h1>[{{name}}]</h1>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+              message: '',
+              num: 0,
+              name: '',
+            },
+            methods: {
+               
+            },
+        });
+    </script>
+</body>
+</html>

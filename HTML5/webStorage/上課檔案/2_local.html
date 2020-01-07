@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Storage</title>
+</head>
+<body>
+    <button onclick="showMessage()">Show Storage</button>
+
+    <script>
+        function showMessage(){
+            if(localStorage['username'] == null){
+                let name = prompt('What is your username?');
+                localStorage['username'] = name;
+            }else{
+                alert(localStorage['username']);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        <div id="app">
+            <input type="text" v-model="inputValue.x">
+           
+        </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+    <script>
+    new Vue({
+        el:'#app',
+        data:{
+            inputValue:{
+                x:'',
+            }
+        },
+        methods: {
+            
+        },
+        computed: { //不能傳參數 但有回傳值
+          
+        },
+        watch: { //偵測data或computed的變化
+            // 宣告成函數
+            // value(val,oldval){
+            //     console.log(`${oldval}-->${val}`) 
+            // },
+            // valueSquare(val,oldval){
+            //     console.log(`${$oldval}-->${val}`)
+            // }
+
+                
+            // 宣告成物件
+            inputValue:{
+                // 純hanlder做的事跟上面依樣
+                handler(val,oldval){
+                    console.log(`value:${oldval.x}-->${val.x}`);
+                    console.log(val === oldval);
+                },
+                // immediate:true, //立即初值跟值的改變
+                deep:true, //data深度監聽 物件一層一層 變化玩才偵測到
+                
+            }
+        },
+    });
+    
+    </script>
+
+ 
+
+</body>
+</html>

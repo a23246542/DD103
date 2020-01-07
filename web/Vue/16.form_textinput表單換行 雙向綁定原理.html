@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<!-- 01 *= -->
+
+
+<body>
+    <div id="app">
+        <!-- ............................................. -->
+       <input type="text" v-model="message">
+       <!-- 01 v-model就等於做下面的事 /所以可以雙向綁定 -->
+       <!-- 02 input也是一個觸發事件 -->
+       <input type="text" :value = "message" @input ="setMessage">
+
+
+       <!-- ------------------------------------------ -->
+       <textarea  v-model="message"></textarea>
+        <!-- 下面這個就沒辦法雙向綁定 -->
+       <textarea>{{message}}</textarea>
+       <p>{{message}}</p>
+
+       <!-- ------------html標籤 pre原封不動放上去但不用了改用css------------------- -->
+       <!-- <pre>{{message}}</pre> -->
+      
+       <p style="white-space: pre;">可換行{{message }}</p>
+    </div>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="js/vue.js"></script> -->
+    <script>
+    
+         new Vue({
+             el:"#app",
+             data:{
+                 
+                 message:"",
+             },
+             methods:{
+                 setMessage:function(e){
+                     this.message=e.target.value;
+                     //e指向物件本身
+                 },
+             },
+             
+             
+         })
+      
+
+
+      
+    </script>
+</body>
+
+</html>

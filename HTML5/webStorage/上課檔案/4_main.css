@@ -1,0 +1,7 @@
+label,button{
+    text-transform: capitalize;
+}
+label{
+    width: 60px;
+    float: left;
+}

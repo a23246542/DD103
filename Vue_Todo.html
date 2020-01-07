@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+    .completed{
+        text-decoration:line-through;
+    }
+    </style>
+</head>
+
+<!--
+ 01套用版型跟建立待辦事項列表資料(建立資料&新增)
+ 02刪除陣列上的特定資料(刪除)
+ 03頁籤功能(切換資料)
+ 04 雙擊修改資料(編輯)
+ 05 刪除項目補充說明 從索引改成id
+
+-->
+
+<body>
+
+    <div id="app" class="container my-3">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">待辦事項</span>
+            </div>
+            <!-- -------輸入input跟新增案件------------------- -->
+            <input type="text" class="form-control" placeholder="準備要做的任務" v-model="newTodo"
+            @keyup.enter="addTodo">
+            <!--02綁定資料--> <!--這邊也可以綁定同個方法 不用按btn就可以新增-->
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" @click="addTodo">新增</button>
+                <!--02綁定方法-->
+            </div>
+
+        </div>
+        <!-- --------------------頁籤---------------------- -->
+        <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link " :class="{'active':visibility=='all'}" @click="visibility='all'"  href="#">全部</a>
+                        <!-- 3.3 用變數裡面放字串 來做判斷 好像很常這樣 -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " :class="{'active':visibility=='active'}" @click="visibility='active'"href="#">進行中</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" :class="{'active':visibility=='completed'}" @click="visibility='completed'"href="#">已完成</a>
+                    </li>
+                </ul>
+            </div>
+
+        <!-- ---------------------清單---------------------- -->
+            <ul class="list-group list-group-flush text-left">
+                <li class="list-group-item" v-for="(item,key) in filteredTodos" @dblclick="editTodo(item)"> <!--01陣列來存代辦事項有哪些內容-->
+                   
+                    <div class="d-flex" v-if = "item.id !== cacheTodo.id"> <!--修改功能 v-if決定顯示-->
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" v-model="item.completed" :id="item.id"> <!--05細項綁定 id是去指定控制  checkbox的v-modle-->
+                            <label class="form-check-label" 
+                            :class="{'completed':item.completed}" 
+                            :for="item.id">
+                                <!--3.1 input適用complete切換 一個是拿來用class切換-->
+                                {{item.title}}  <!--05 title是當資料模板-->
+                            </label>
+                        </div>
+                        <button type="button" @click="removeTodo(item)" class="close ml-auto" aria-label="Close">
+                            <!--刪除補充項目  edittodo跟removetodo原本是key(索引) 改成item本身-->
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" 
+                    v-model="cacheTitle"
+                    @keyup.esc="cancelEdit()"
+                    @keyup.enter="doneEdit()"
+                    v-if="item.id==cacheTodo.id" 
+                    > <!--修改功能 放到下方d-flex下方-->
+                    <!--????這邊v-model不懂-->
+                    <!--?!!!!設置兩個v-for也是來做切換-->
+                </li>
+
+                <!-- <li class="list-group-item">
+                    <div class="d-flex">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="a1">
+                            <label class="form-check-label completed" for="a1">
+                                Cras justo odio
+                            </label>
+                        </div>
+                        <button type="button" class="close ml-auto" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </li> -->
+
+
+                <!-- <li class="list-group-item">
+                    <input type="text" class="form-control">
+                </li> -->
+            </ul>
+            <div class="card-footer d-flex justify-content-between">
+                <span>還有 3 筆任務未完成</span>
+                <a href="#">清除所有任務</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    
+    var app =new Vue({
+        el:'#app',
+        data:{
+            newTodo:'', //04v-modle的input
+            todos:[ //04剛剛vfor的陣列
+                 {
+                    id:'1',
+                    title:'測試',
+                    completed:false,
+                 },
+            ],
+            cacheTodo:{},
+            cacheTitle:"",
+            visibility:'all',
+        },
+        methods: {
+            addTodo:function(){
+                var value = this.newTodo.trim();
+                //直接沒打直接按新增也會新增物件 這邊要做判斷處理
+                //加上trim 打空白見不會新增 打的內容前後空白也會去除
+                if(!value){
+                    return;
+                }
+
+                var timestamp = Math.floor(Date.now()); //當作id
+                console.log(value,timestamp);//測試
+                this.todos.push({ //06處理資料方法
+                    id:timestamp,
+                    title:value,
+                    completed:false,
+                })
+                this.newTodo="";
+            },
+            // 做下一個功能 key是陣列的索引位置
+            //
+            removeTodo:function(todo){  //001不像push放入最後 移除要知道是移除哪一個
+                var newIndex ="";
+                var vm =this; //???為什麼要代個vm 不直接this就好
+                vm.todos.forEach(function(item,key){ //這個key是等下我們要使用正確的位置索引 item是要比對他id有沒有跟todo的id是一樣的
+                    // ?????????
+                    if(todo.id === item.id){ //從原本對索引變成比對id
+                        newIndex = key
+                    }
+                })
+
+                // 老師說可以這樣更精簡的寫法
+                // var vm = this;
+                // var newIndex = vm.findIndex(function(item,key){
+                //      return todo.id === item.id;
+                // })
+
+
+                // this.todos.splice(key,1);
+                this.todos.splice(newIndex,1);
+            },
+            editTodo:function(item){  //這邊item 就是那個todo陣列裡的物件
+                console.log(item); //回傳物件
+                this.cacheTodo=item;
+                this.cacheTitle=item.title;  //???????這邊是傳旨嗎
+            },
+            cancelEdit:function(){
+                this.cacheTodo={};
+            },
+            doneEdit:function(item){
+                item.title = this.cacheTitle;//??這行意義 是不是少一行
+                // item=this.cacheTodo;
+                console.log(item);
+                this.cacheTitle=" "; //??可是直接做上面editTodo就好了不行嗎
+                this.cacheTodo ={};
+
+            }
+
+        },
+        computed:{  //data放原始資料 放過濾後回傳的資料值 也是資料!!!
+            filteredTodos:function(){
+                // ??????vue this.visibilty的指向 是指向誰 為什麼不用傳入e 就可以不是全局變數 而是獲取元素本身的this 不對這題本來就是全局 只有移除那堤需要
+                // ?????else if 最後不用else結尾???
+                if(this.visibility=='all'){
+                    return this.todos;
+                }else if(this.visibility=='active'){
+                    var newTodos=[];
+                    this.todos.forEach(function(item){
+                        if(!item.completed){
+                            // return newTodos=item.push();
+                            newTodos.push(item);
+                        }
+                    })
+                    return newTodos;
+                }else if(this.visibility=='completed'){
+                    var newTodos=[];
+                    this.todos.forEach(function(item){
+                        if(item.completed){
+                            newTodos.push(item);
+                        }
+                    })
+                    return newTodos;
+                    //??? 他這次建一個新陣列 複製賽進去 為什麼不把原本todos的資料 沒符合判斷的 加上display none class就好
+                }
+                // ????不知道是不是前面return會跳掉所以這邊可以return空陣列
+                return [];
+            }
+        }
+    })
+    
+    </script>
+</body>
+
+</html>

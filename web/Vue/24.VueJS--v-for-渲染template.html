@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://10.120.30.199/24_for_renderTemplate.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>VueJS--v-for-渲染template</title>
+</head>
+<body>
+    <div id="app" style="user-select: auto;"> 
+       <!-- <h1>About</h1> <hr>
+       <h1>Products</h1> <hr>
+       <h1>Contact</h1> <hr> -->
+       <template v-for="header in headers" style="user-select: auto;"></template>
+    </div>
+    
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script style="user-select: auto;"> 
+        const originalNums = [1,2,3,4,5,6,7,8,9,10];
+    
+        var vm = new Vue({
+            el: '#app', 
+            data: {
+               headers: ['About','Products','Contact']
+            },
+            methods: {
+               
+            },
+        });
+    </script>
+
+<div class="liner-mini-button"><a class="liner-mb liner-save-button" style="background-image: url(&#39;chrome-extension://bmhcbmnbenmcecpmpepghooflbehcack/images/mini-btn@3x.png&#39;) !important;"></a></div><div class="liner-mini-tooltip"><span class="liner-color-yellow liner-mini-color-circle liner-save-button"></span><span class="liner-color-green liner-mini-color-circle liner-save-button"></span><span class="liner-color-orange liner-mini-color-circle liner-save-button"></span><span class="liner-color-violet liner-mini-color-circle liner-save-button"></span><span class="liner-color-blue liner-mini-color-circle liner-save-button"></span><span class="liner-color-pink liner-mini-color-circle liner-save-button"></span></div><div class="liner-tooltip-wrap"><div class="liner-tooltip-menu"><span class="liner-tooltip-color liner-tooltip-icon"></span><span class="liner-tooltip-comment liner-tooltip-icon"></span><span class="liner-tooltip-undo liner-tooltip-icon"></span></div><div class="liner-color-picker"><span class="liner-color-yellow liner-color-circle"></span><span class="liner-color-green liner-color-circle"></span><span class="liner-color-orange liner-color-circle"></span><span class="liner-color-violet liner-color-circle"></span><span class="liner-color-blue liner-color-circle"></span><span class="liner-color-pink liner-color-circle"></span></div><div class="liner-tooltip-arrow"><span class="liner-arrow-down"></span></div></div><div class="liner-comment-box"><div class="liner-comment-line"></div><div class="liner-comment-area"><textarea class="liner-comment-input" placeholder="寫評論"></textarea></div></div></body></html>

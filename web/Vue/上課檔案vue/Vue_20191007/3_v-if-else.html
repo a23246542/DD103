@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+        <h1>What did you get in jQuery?</h1>
+        Your score: <input type="text" v-model="score">
+        <p v-if="score>=80">It's hard to pass.</p>
+        <p v-else>I didn't pass.</p>
+    </div>
+
+    <!-- directives指令 v-if | v-else -->
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {     
+                message: 'Hello, VueJS!',
+                score: 0,
+            },
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+單一檔案組件vue-cli
+
+單一檔案組件的意思是:將每個檔案當成一個組件。
+所以需要把這些檔案經過一些轉換打包，才能讓瀏覽器順利執行這個程式。
+打包工具：
+    了解node.js, npm, webpack是甚麼？
+    nodeJS: 可以讓電腦(不用靠瀏覽器)執行Javascript
+    npm: 是nodeJS裡面的一個軟體(一個指令)，會隨著nodeJS而自動安裝，
+        它會幫我們安裝nodeJS的套件、可以發佈到npm雲端
+        我們也可以在自己的電腦使用npm指令，自動下載別人寫好的package 
+    webpack: (參考官網首頁圖，可以了解webpack主要功能)　
+        將原始檔(js,.cjssass.png...)經過轉換和打包之後，變成.js,.css,.jpg,.png...
+    
+    vue-cli: 由於webpack的複雜，所以Vue開發了一套方便建立webpack的工具，叫做vue-cli
+
+    vue-cli可以快速建立一個開發模板，並用webpack打包原始檔。
+
+要如何使用vue-cli?
+
+1.node.js LTS下載並安裝
+
+2.編寫工具不要使用線上工具，
+　若使用VScode，可以使用 Extensions--> Vue 2 snippets
+
+3.使用命令提示字元執行:
+    npm i --global vue-cli [enter]
+
+    測試是否安裝成功，可執行指令
+    vue [enter]
+
+    ※在MAC終端機操作，可能會標示權限不足，因為使用global安裝，所以指令改為：
+    sudo npm i -g vue-cli
+
+4.指令: vue list [enter] 列出vue-cli可以幫忙建立的模板有哪些?! 假設我們使用webpack-simple
+  指令: vue init webpack-simple todo-list(專案名稱) [enter]
+        這個階段會花比較長的時間...
+  指令：cd todo-list [enter]
+        npm install [enter]
+        npm run dev [enter]  會自動開啟瀏覽器
+
+5.import和export
+
+    假設：有兩個檔案 app.js和counter.js
+    app組件可以引用counter組件
+    而counter組件可以將其內容匯出，讓app組件引入，要怎麼做?
+
+    counter.js 先定義一個Counter組件
+    const Counter = Vue.component('counter',{
+        //.....
+    });
+    
+    接下來把它匯出(export)
+    export default Counter;
+
+    ==========
+    app.js 匯入(import)
+    import Counter from '相對路徑'
+    import Counter from 'counter'    (如果是js檔，可省略.js)
+
+    接下來就可以在app.js中使用Counter
+
+    new Vue({
+        el: '#app',
+        components: {
+            Counter: Counter,  //可寫成 Counter,
+        },
+        template: `
+            <div>
+                <Counter />
+            </div>
+        `,
+    });
+
+6.打開建好的專案，src/main.js
+    import Vue from 'vue'           //匯入組件Vue
+    import App from './App.vue'     //匯入組件App
+
+    new Vue({                       //定義一個Vue實例
+        el: '#app',
+        render: h => h(App)         
+    });
+
+    //render函數會傳入一個createElement函數
+    //createElement函數會輸入一個組件App
+      render: function(createElement){
+        return createElement(呼叫一個組件);
+      },
+        
+      簡化過程如下：
+      render: (createElement) => createElement(App);
+        
+      render: createElement => createElement(App);        
+     　
+      render: h => h(App);　// createElement依慣例會寫成 h
+
+7. src/App.vue
+    裡面包含三個區塊：template, script, style
+    其中，style只能放最後，而template和script先後沒差別
+    style區塊可寫可不寫，但是template和script起碼要有一個
+
+8. 照步驟安裝一次，並重寫專案todo-list
+        
+

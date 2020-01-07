@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--prop</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+
+    <!-- !!結論:props可以幫你驗證資料 -->
+    <!-- !!很多寫法都可以 -->
+    <!-- ??!!什麼裡面不能使用this.data -->
+    <!-- 驗證是開發版 不會影響城市 純提醒哪裡有問題 -->
+    <!-- 1.可以start:Number -->
+
+
+
+    <div id="app"> 
+        <h1>{{count}}</h1>
+        <button @click="count+=1"> +1 </button>
+
+        <!-- <counter :count="count"></counter> -->
+        <counter :start="count"></counter>
+    </div>
+    
+    <script>        
+        new Vue({
+            el: '#app',
+            data: {
+                count: 1,
+            },
+            components: {
+                counter: {
+                    props: ['start'],
+                    data(){
+                        return{
+                            count:this.start,
+                        };
+                    },
+                    template: `
+                        <div>
+                            <h1 style="color:red;">{{count}}</h1>
+                            <button @click="count+=1"> + </button>
+                        </div>
+                    `,
+                },
+            },
+        });
+    </script>
+</body>
+</html>
+
+<!--下層要用上層傳來的值乘以2,可以用computed
+// <div id="app"> 
+//         <h1>{{count}}</h1>
+//         <button @click="count+=1"> +1 </button>
+
+//         <counter :count="count"></counter>
+//     </div>
+    
+//     <script>        
+//         new Vue({
+//             el: '#app',
+//             data: {
+//                 count: 10,
+//             },
+//             components: {
+//                 counter: {
+//                     props: ['count'],
+//                     computed: {
+//                         countDoubled(){
+//                             return this.count * 2;
+//                         },
+//                     },
+//                     template: `
+//                         <div>
+//                             <h1 style="color:red;">{{countDoubled}}</h1>
+//                         </div>
+//                     `,
+//                 },
+//             },
+//         });
+//     </script>
+
+-->

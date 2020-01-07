@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--組件的注意事項</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">         
+        <!-- <select>
+            <my-component></my-component>
+        </select>  -->
+        <!-- 以上，資料放不進去 -->
+
+        <!-- <select>
+            <my-component>Test</my-component>
+        </select> 這樣也放不進去-->
+
+        <!--Chrome 針對 ul和table 卻可以-->
+        <!-- <ul>
+            <my-component></my-component>
+        </ul> -->
+
+    </div>
+
+    
+    <script>
+        Vue.component('MyComponent',{   //my-component、myComponent、MyComponent
+            template: '<option>Hello</option>',
+            // template: '<li>Hello</li>',
+        });
+        new Vue({
+            el: '#app',
+            template: `<select>
+                            <my-component></my-component>
+                       </select>
+                        `,
+        });
+    </script>
+</body>
+</html>

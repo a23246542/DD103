@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>24isIdNo/190829</title>
+</head>
+<body>
+    
+    <h2>寫一支程式  (流程控制、字串、函數練習) (24isIdNo.html)  
+        <br>(1)內含一副程式isIdNo()可以傳入身份證號碼,經檢驗後,若身份證號碼正確則傳回true,若錯誤則傳回false。<br>(2)該頁面上提供輸入界面,可供使用者輸入身份證號碼,並按檢查按鈕以呼叫isIdNo(),檢查輸入的資料是否正確(如下圖)
+      </h2>
+    
+    <hr>
+
+    <h2>身份證字號檢查</h2>
+    <input type="text" name="" id="box" minlength="10" maxlength="10">
+    <input type="submit" value="確認" id="submit">
+    <h2>結果為<span id="result">...</span></h2>
+
+      <script>
+      
+        function isIdNo(){
+            
+            // 確認是否有10位數
+            var id = document.getElementById('box').value;
+            var result = document.getElementById('result');
+            if(id.length != 10){
+                result.innerHTML = "字數不足，請重新輸入";
+                return false;
+            }
+
+            // 以陣列儲存ID
+            var arr = id.split('');
+            
+            console.log(typeof arr[0]);
+
+            // 第一位不是英文就false
+            var first = arr[0].toUpperCase();
+            if(first.charCodeAt(0) < 65 || first.charCodeAt(0) > 90){
+                result.innerHTML = "開頭並非英文字母，請重新輸入";
+                return false;
+            }
+            arr[0] = first;
+
+            // 後9位不是數字就false
+            for(var i=1; i<10; i++){
+                var num = arr[i].toUpperCase();
+                if(num.charCodeAt(0) < 48 || num.charCodeAt(0) > 57){
+                    result.innerHTML = "後九碼並非數字，請重新輸入";
+                    return false;
+                }
+                arr[i] = num;
+            }
+
+            // 驗證碼是否正確
+
+            var check = 0;
+            var diff = 0;
+            var local = 0;
+            var sex = "";
+
+            // 地區判斷
+            if(arr[0].charCodeAt() < 72){ // A-H
+                local += arr[0].charCodeAt() - 55;
+                diff += Math.floor(local/10)*1 + (local%10)*9;
+            }else if(arr[0].charCodeAt() > 73 && arr[0].charCodeAt() < 79){ // J74-N78
+                local += arr[0].charCodeAt() - 56; // 18-22 -> 56
+                diff += Math.floor(local/10)*1 + (local%10)*9;
+            }else if(arr[0].charCodeAt() > 79 && arr[0].charCodeAt() < 87){ // P80-V86
+                local += arr[0].charCodeAt() - 57; // 23-29 -> 57
+                diff += Math.floor(local/10)*1 + (local%10)*9;
+            }else if(arr[0].charCodeAt() > 87 && arr[0].charCodeAt() < 90){ // X88-Y89
+                local += arr[0].charCodeAt() - 58; // 30-31 -> 58
+                diff += Math.floor(local/10)*1 + (local%10)*9;
+            }else if(arr[0].charCodeAt() == 90){ // Z90
+                local += arr[0].charCodeAt() - 57; // 33 -> 57
+                diff += Math.floor(local/10)*1 + (local%10)*9;
+            }else if(arr[0].charCodeAt() == 73){ // I73
+                local += arr[0].charCodeAt() - 39; // 34 -> 39
+                diff += Math.floor(local/10)*1 + (local%10)*9;
+            }else{
+                result.innerHTML = "O W開頭不存在，請重新輸入";
+                return false;
+            }
+
+            if(arr[1] == 1){
+                sex += "男";
+            }else{
+                sex += "女"
+            }
+
+            for(var i=1; i<9; i++){
+                var j = 9 - i;
+               diff += arr[i] * j;
+            }
+
+            diff = 10 - diff%10;
+            if(diff == 10){
+                diff = 0;
+            }
+            console.log(diff);
+
+
+            if(arr[9] != diff){
+                result.innerHTML = "身份證字號有誤，請重新輸入";
+                return false;
+            }else{
+                result.innerHTML = `身份證字號正確<br>您的地區號碼為${local}<br>性別為${sex}`;
+                return true;
+            }
+        }
+
+        function result(){
+            var id = document.getElementById('box').value;
+            if(isIdNo(box) == true){
+                alert("身份證字號正確");
+            }else{
+                alert("身份證字號有誤，請重新輸入");
+            }
+        }
+
+        window.addEventListener('load', function(){
+            var submit = document.getElementById('submit');
+            // submit.addEventListener('click', isIdNo, false);
+            submit.addEventListener('click', result, false);
+
+            
+        }, false);
+
+      </script>
+
+</body>
+</html>

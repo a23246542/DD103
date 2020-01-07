@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+</head>
+<body>
+
+    <!-- 假設count,從上層傳往下層
+        下層+1
+        若要上也不影響下
+        將counter改成start 讓count放在 data function裡面
+        不直接給10 可以this.start
+        出值從那邊抓來 但後來各做各的
+    -->
+
+    <div id="app">
+        <h1>{{count}}</h1>
+        <button @click="count+=1">+1</button>
+    </div>
+    
+    <!-- u要他傳來的值要加冒號 記得嗎!! -->
+</body>
+<script>
+
+// 1因為是屬性:
+// 2陣列裡面是物件的話 直接用v-bind就好
+
+
+new Vue({
+    el:'#app', 
+    // data:{
+    //    count:10,
+    // },
+    components:{
+    }
+})
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+        台幣(TWD): <input type="text" v-model="TWD"> 
+        <ul>
+            <li>美金(USD):{{USDollar}}</li>
+            <li>日圓(JPY):{{JPYen}}</li>
+            <li>英鎊(GBP):{{GBPound}}</li>
+        </ul>
+        <!-- <ul>
+            <li>美金(USD):{{TWD / 30.63}}</li>
+            <li>日圓(JPY):{{TWD / 0.2787}}</li>
+            <li>英鎊(GBP):{{TWD / 37.08}}</li>
+        </ul> -->
+    </div>
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello, VueJS!',
+                TWD: 0,
+            },
+            methods: {     //函數(方法)們
+                DD103(member){
+                    console.log(`DD103 member: ${member}`);
+                    console.log(this.message);
+                    console.log(this.$el);
+                },
+                temp: function(){
+
+                },
+            },
+            computed: {     //計算屬性
+                USDollar: function(){
+                    return (this.TWD / 30.63).toFixed(2);
+                },
+                JPYen: function(){
+                    return Math.round(this.TWD / 0.2787 * 100) / 100.0;
+                },
+                GBPound: function(){
+                    return (this.TWD / 37.08).toFixed(2);
+                },
+            },
+        });
+    </script>
+</body>
+</html>

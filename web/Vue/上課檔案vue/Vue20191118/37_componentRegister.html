@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--組件的註冊</title>
+</head>
+<body>
+    <!-- 
+        Vue component:預先定義好的模組，包含了HTML的視覺元素，還有綁定的資料、方法和偵聽器，很像Vue實例。
+        除了可以重複使用以外，也可以讓我們在開發的時候，可以專注在一小個區塊上，也方便維護。
+    -->
+    <div id="app">        
+        <my-component></my-component> <!--Vue組件，實際內容是template裡面的標籤元件-->
+    </div>
+
+    <div id="app2">        
+        <my-component></my-component>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>
+        // 如何開始使用Vue組件?
+        /*
+            Vue.component('組件名稱',{設定options
+                使用template
+                template: '定義HTML的視覺元素',
+            });
+        */
+
+        //global component
+        Vue.component('MyComponent',{   //my-component、myComponent、MyComponent
+            template: '<h1 style="color:red;">My Component</h1>',
+        });
+        
+        new Vue({
+            el: '#app',
+        });
+        new Vue({
+            el: '#app2',
+        });
+    </script>
+</body>
+</html>

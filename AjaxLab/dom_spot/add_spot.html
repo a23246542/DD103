@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<img src="add_2.png" id="btnAddSpot">
+
+
+<!-- 01把他裝在一起比較好當templete -->
+<!-- <form id="myForm">
+  景點<input type="text" name="spot"><img src="trash.png">
+  <br>
+  <input type="submit" id="btnSend" value="送出">	
+</form>   -->
+
+<div class="spotTemplate" style="display: none;">
+     <!-- 用陣列才不會都叫同一個name -->
+     <!-- ???以後如何知道選到哪一個 填入e還是i -->
+     景點<input type="text" name="spot[]"> <img src="trash.png" alt="">
+</div>
+
+<!-- 新增的會加入到表單然後送出 -->
+<form action="" id="myForm">
+   <input type="submit" id="btnSend" value="送出">
+</form>
+
+<script type="text/javascript">
+function $id(id){
+  return document.getElementById(id);
+}
+
+window.addEventListener('load',function(){
+  
+  $id('btnAddSpot').onclick = function(){
+      let myForm = $id('myForm');
+      let btnSend = $id('btnSend');
+      let spotTemp = document.querySelector('.spotTemplate');
+      // 要用深層複製 子節點才會有
+      let newSpot = spotTemp.cloneNode(true);
+      newSpot.style.display = '';
+
+      myForm.insertBefore(newSpot,btnSend);
+    
+    //  所以複製的東西又寫了一次事件
+      // !!??可以用這個尋找newSpot的子節點 
+      newSpot.getElementByTagName('img')[0].onclick = function(e){
+        myForm.removeChild(e.target.parentNode)
+      }
+
+
+
+      // myForm.insertBefore(newSpot,btnSend);
+  }
+  // 做了這個 但是老師說 複製過去後事件無法複製 下面可以省略?
+  document.querySelector(".spotTemplate img").onclick = function(e){
+    $id("myForm").removeChild(e.target.parentNode)
+  }
+})
+
+
+
+</script>
+</body>
+</html>

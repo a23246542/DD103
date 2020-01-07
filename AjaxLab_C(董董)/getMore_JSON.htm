@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+<style type="text/css">
+  .memTable th{
+    background-color: pink;
+  }
+  .memTable td{
+    border-bottom:1px dotted deeppink;
+  }
+</style>
+</head>
+
+<body>
+<div>首頁>>會員專區</div>
+<center>
+會員帳號<input type="text" name="memId" id="memId"/>
+<input type="button" value="取得會員資料" onclick="getMember()"/>
+<div id="showPanel"></div>
+</center>
+
+
+<script>
+function showMember(jsonStr){
+  let member = JSON.parse(jsonStr);
+  let html;
+  if( member.memId ){
+    html = `<table class='memTable'>
+    <tr><th>帳號</th><td>${member.memId}</td></tr>
+    <tr><th>姓名</th><td>${member.memName}</td></tr>
+    <tr><th>生日</th><td>${member.birthday}</td></tr>
+    <tr><th>電話</th><td>${member.tel}</td></tr>
+    <tr><th>email</th><td>${member.email}</td></tr>
+  </table>
+    `;    
+  }else{
+    html = "<center>查無此人</center>";
+  }
+
+  document.getElementById("showPanel").innerHTML = html;
+
+}
+
+function getMember(){
+  var xhr = new XMLHttpRequest();
+  xhr.onload=function (){
+       if( xhr.status == 200 ){
+        //modify here
+          showMember(xhr.responseText);
+       }else{
+          alert( xhr.status );
+       }
+  }
+  
+  var url = "getMore_JSON.php?memId=" + document.getElementById("memId").value;
+  xhr.open("Get", url, true);
+  xhr.send( null );
+}
+</script>
+</body>
+</html>

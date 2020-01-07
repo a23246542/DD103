@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--綁定style</title>
+</head>
+<body>
+    <div id="app"> 
+       <h1 v-bind:style="h1Style">Lorem ipsum</h1>
+       <!-- <button v-on:click="shrink">Shrink</button> -->
+       <button @click="shrink">Shrink</button>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+<!--
+    <script>
+        const h1Style = {
+            fontSize: '50px',
+            color: 'red',
+        };
+        const blueWord = {
+            color: 'blue',
+        };
+
+        new Vue({
+            el: '#app', 
+            data: {
+            // 1.字串
+                // h1Style: 'color:blue;font-size:30px;',
+            // 2.物件
+                // h1Style: {
+                //     fontSize: '50px',
+                //     color: 'red',
+                // },
+
+                // h1Style: h1Style,
+                h1Style,
+            // 3.陣列
+                // h1Style: [h1Style,blueWord],
+            },
+            methods: {
+                shrink(){
+                    let currentSize = parseInt(this.h1Style.fontSize);
+                    // let currentSize = this.h1Style.fontSize.replace('px','');
+                    this.h1Style.fontSize = `${currentSize-1}px`;
+                },
+            },
+            computed: {},
+        });    
+    </script>
+-->
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                currentSize: 50,
+            },
+            computed: {
+                h1Style(){
+                    return {
+                        fontSize: `${this.currentSize}px`,
+                        color: 'red',
+                    };
+                },
+            },
+            methods: {
+                shrink(){
+                    this.currentSize--;
+                }
+            },
+        });
+    </script>
+</body>
+</html>

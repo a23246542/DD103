@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery-3.4.1.min.js"></script>		
+		<script>
+			$(document).ready(function(){
+				// 動態偵測螢幕上的X和Y座標
+				// $('.textHover').mousemove(function(e){
+				// 	$('#theDiv').text(`X: ${e.pageX} | Y: ${e.pageY}`);
+				// });
+				
+				// $('.textHover').mousemove().mouseout();
+				// $('.textHover').mousemove(function(){}).mouseout(function(){});
+				$('.textHover').mousemove(function(e){
+					let theText = $(this).attr('hovertext');
+					$('#theDiv').text(theText).show().css({
+						left: e.clientX + 15,
+						top: e.clientY + 15,
+					});
+				}).mouseout(function(){
+					$('#theDiv').hide();
+				});
+			});			
+		</script>
+		<title>jQuery</title>
+	</head>
+	<body>
+	  	<p>
+			<a href="http://www.google.com.tw" class="textHover" hovertext="Google, a powerful search engine.">Google</a> | 
+			<a href="http://www.cafepress.com/" class="textHover" hovertext="Cafepress is the world's best online gift shop.">Cafepress</a> | 
+			<a href="http://www.bbc.com/news" class="textHover" hovertext="BBC Trust publishes response to public consultation.">BBC</a>
+		</p>
+		<p>
+			<img src="https://loremflickr.com/320/240/paris" class="textHover" hovertext="Explore Paris holidays and discover the best time and places to visit.">
+		</p>
+		<div id="theDiv"></div>
+	</body>
+</html>

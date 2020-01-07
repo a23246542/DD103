@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // $(document).ready(function(){
+        $(document).ready(function () {
+            //用CSS尋找寬度和高度 不用寫寬高就找得到
+            /*===
+            let imgWidth = $('img').css('width');
+            let imgHeight = $('img').css('height');
+            $('#feedback').text(`Width: ${imgWidth} | Height: ${imgHeight}`);
+            ===*/
+
+            //用HTML尋找寬度和高度--X  html標籤要寫才抓得到 也沒人這樣寫
+            /*===
+            let imgWidth = $('img').attr('width');
+            let imgHeight = $('img').attr('height');
+            $('#feedback').text(`Width: ${imgWidth} | Height: ${imgHeight}`);
+            
+			//用jQuery尋找寬度和高度
+			/*======*/
+            let imgWeight = $('img').width();
+            let imgHeight = $('img').height();
+            // $('#feedback').text(`Wight:${imgWeight} | Height:${imgHeight}`);
+
+            let winWight = $(window).width();
+            let winHeight = $(window).height();
+            // $('#feedback').text(`Width: ${winWidth} | Height: ${winHeight}`);
+
+            $('img').width(winWight);
+            $('img').height(winHeight);
+
+        });
+    </script>
+
+</body>
+<img src="./images/washDrawing/037.jpg" alt="">
+<p id="feedback"></p>
+
+</html>

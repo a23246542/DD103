@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	.panel {
+		position:relative;
+		overflow:hidden;
+		top:2px;
+		left:2px;
+		height:1.5em;
+		outline:1px solide red;
+	}
+	.panel div{
+		position:absolute;
+		top:2em;
+		left:2px;
+		transition:top 1s;
+	}
+	.panel div.show{
+		top:2px;
+		left:2px;
+		transition:top 1s;
+	}	
+</style>
+</head>
+<body>
+<div class="panel">
+	<div class="show">aaaaaaaaaaaaaaaaaaa</div>
+	<div>bbbbbbbbbbbbbbbbbbbbbbbb</div>
+	<div>ccccccccccccccccccccccccccccccc</div>
+</div>
+
+<div id="oDiv">
+	11111111111 <br>
+	11111111111 <br>
+	11111111111 <br>
+
+	11111111111 <br>
+	11111111111 <br>
+	11111111111 <br>
+</div>
+
+<script type="text/javascript">
+var index = 0;	
+var panels = document.querySelectorAll(".panel div");
+
+</script> 
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--動態組件</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <!-- 比較41跟45!! 他這邊my-prop只是沒有動態綁定 1/7 -->
+    <!-- !!動態組件:先定義好組件 再透過條件判斷來決定出現什麼組件 -->
+    <div id="app"> 
+        <!-- <my-component message="hello"></my-component> -->
+        <!-- <my-component myProp="hello~~~xxggwwv"></my-component> -->
+        <my-component my-prop="hello~~~"></my-component>
+    </div>
+   
+    <script>
+        // 1.!!加了組件 就會有上下層關係 原本出現的不會出現 html是最上層 要告訴他傳什麼下來
+
+        // 這樣傳不倒
+        // Vue.component('my-component',{
+        //     template:`<h1>{{message}}</h1>`,
+        // });
+
+        Vue.component('my-component',{
+            props:['myProp'],
+            // @@props要加s!!
+            template:`<h1>{{myProp}}</h1>`,
+        })
+        new Vue({
+            el: '#app',
+            // template: 不然就寫這邊 自由多了 但寫什麼就蓋掉
+            
+        });
+    </script>
+</body>
+</html>

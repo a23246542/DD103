@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>活動專區</title>
+    <link rel="shortcut icon" href="images/favicon02.ico" type="image/x-icon" />
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    <link rel="stylesheet" href="./css/body&header&footer.css">
+    <link rel="stylesheet" href="./css/sign_in&alert.css">
+    <link rel="stylesheet" href="./css/act_style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="./css/sign_in.css"> -->
+    <script src="js/getLoginInfo.js"></script>
+    <script src="js/sign_in.js"></script>
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/act-form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/assets/css/docs.css'/>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src="js/bikeAct.js"></script> -->
+    <style>
+
+       .nav-list li a{
+           font-size: 16px;
+           font-family: "微軟正黑體";
+           font-weight: 600;
+       }
+
+        @media screen and (max-width:768px) and (min-width: 0) {
+            .tab-bikes .type{
+                margin:0;
+            }
+            .act-action .create-act{
+                padding: 11px 22px;
+                transform: translate(-1%, 134%);
+            }
+        }
+       
+
+        .post-detail {
+            margin: unset;
+            margin-bottom: 3% !important;
+        }
+
+        .post-detail .detail ul {
+            padding: 15px 15px 20px 15px;
+        }
+
+        .post-item .post-intro .title {
+            text-align: left !important;
+        }
+
+        .banner li:nth-child(2) {
+            display: none;
+        }
+
+        .banner li:nth-child(3) {
+            display: none;
+        }
+
+        .post-detail .detail ul li:nth-child(1) {
+            text-align: left !important;
+            overflow: hidden !important;
+            white-space: nowrap !important;
+            text-overflow: ellipsis !important;
+        }
+
+        .post-detail .detail .title {
+            padding-right: 33px;
+            padding-left: 18px;
+            box-sizing: border-box;
+        }
+
+        .post-detail .detail ul li:nth-last-of-type(1) {
+            /* overflow: hidden !important; */
+            overflow: auto !important;
+            display: -webkit-box !important;
+            -webkit-box-orient: vertical !important;
+            -webkit-line-clamp: 9 !important;
+            text-overflow: ellipsis !important;
+            word-break: break-all !important;
+            /* padding-bottom: 90px;
+            box-sizing: border-box; */
+        }
+
+        .post-item {
+            max-height: unset;
+        }
+
+        .post-detail .detail ul li:not(:nth-last-of-type(1)) {
+            /* line-height: 1.2rem !important; */
+        }
+
+        @include phone() {
+            [class*=col-] {
+                padding: 0 15px;
+            }
+        }
+
+        input {
+            /* -webkit-appearance: button-bevel !important; */
+            /* -webkit-appearance: initial; */
+        }
+
+        /* @media screen and (max-width:768px) and (min-width: 0) {
+           
+        } */
+
+        .main-content {
+            
+            @media screen and (max-width:768px) and (min-width: 0) {
+                padding-top: 100px;
+            }
+               
+            
+        }
+
+        .legend.title{
+            text-align: left !important;
+        }
+
+        /* --------------額外----------------- */
+        .post-detail .detail {
+            bottom: 8%;
+            top: -9%;
+            left: 2%;
+            right: 0;
+            width: 95%;
+            height: 100%;
+        }
+
+        .filter .zone-list,
+        .filter .hard-list {
+            padding: 10px 0px 10px 0px;
+        }
+
+        .filter label {
+            padding: 6px 0 6px 29px;
+
+            @media screen and (max-width: 1280px) {
+                padding-left: 19px;
+            }
+
+        }
+
+        .zone-list input[type="checkbox"]{
+            margin-right: 22px;
+        }
+
+        button.m-filter {
+            opacity: 0;
+        }
+
+        .time-area input[type="date"]{
+            display: inline-block;
+            width: 102%;
+            height: 24px;
+            border-radius: 0px;
+            /* color: #CCD; */
+            color: #574d4d;
+            font-family: "微軟正黑體";
+            letter-spacing: normal;
+            font-weight: bolder;
+            font-size: 14px;
+
+           
+        }
+
+         @media screen and (max-width:1280px) and (min-width:0) {
+
+            .time-area input[type="date"]{
+                
+                width: 87%;
+            }
+        }
+
+
+        @media screen and (max-width:768px) and (min-width: 0) {
+               
+            .filter label:hover{
+                 background-color: none;
+            }
+
+            .filter label{
+               
+                
+                padding: 6px 0 6px 24px;
+            }
+            .filter .zone-list label{
+                width: 41%;
+            }
+
+            .filter .hard-list label{
+                padding: 6px 0 6px 21px;
+                width: 43%;
+            }
+
+            .filter input[type="checkbox"] {
+                margin-right: 10px;
+            }
+
+        }
+        /* &:hover{
+           
+            transition: .3s ease-in-out;
+        } */
+
+             
+    </style>
+
+
+
+
+
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="phone">
+            <input type="checkbox" name="" id="ham">
+            <label for="ham">
+
+                <span class="ham-1"></span>
+                <span class="ham-2"></span>
+                <span class="ham-3"></span>
+                <span class="ham-4"></span>
+            </label>
+
+            <div class="logo ham"><a href="./index.html"><img src="./images/logo.png" alt=""></a></div>
+
+            <ul class="nav-icon ham">
+                <li class="icon-2"><a href="../shoppingCart.html"></a></li>
+                <li class="icon-3"><a href="#"></a></li>
+            </ul>
+
+            <nav class="pc">
+
+                <ul class=" nav-list">
+                    <li><a href="./customize.html">專屬騎行</a></li>
+                    <li><a href="./CYShop.html">CY嚴選</a></li>
+                    <li><a href="./activity.html">活動專區</a></li>
+                    <li class="logo"><a href="./cyclist.html"><img src="./images/logo.png" alt=""></a></li>
+                    <li><a href="./question.html">不可不知</a></li>
+                    <li><a href="./aboutCY.html">關於CY</a></li>
+                </ul>
+
+                <ul class="nav-icon">
+                    <li class="logstatus">
+                        <span id="memberId"></span>
+                        <div id="logout"></div>
+                    </li>
+                    <li class="icon-2"><a href="shoppingCart.html"></a></li>
+                    <li class="icon-3"></li>
+                </ul>
+            </nav>
+        </nav>
+    </header>
+    <div class="login-wrap" id="login-wrap">
+        <div class="login-html">
+            <span href="#" id="lightbox" class="lightbox-close"></span>
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">登入</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">註冊</label>
+
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <span class="userName">
+                            <label for="user" class="label">帳號</label>
+                            <input type="text" type="text" name="memId" id="memId-in" class="input"
+                                placeholder="請輸入6~10碼英數字">
+                        </span>
+
+
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">密碼</label>
+                        <input type="password" name="memPsw" class="input" id="memPsw-in" placeholder="請輸入6~10碼英數字">
+                    </div>
+
+                    <div class="group">
+                        <input id="memsign-in" type="submit" class="button" value="登入">
+                        <div class="sign_logo"></div>
+                    </div>
+
+
+                </div>
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="pass" class="label">暱稱</label>
+                        <input type="text" class="input" name="memNickName" id="memNickName0" type="text"
+                            placeholder="請輸入英數字">
+                    </div>
+
+                    <div class="group">
+                        <label for="user" class="label">帳號</label>
+                        <input type="text" class="input" name="memId" id="memId0" placeholder="請輸入6~10碼英數字">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">密碼</label>
+                        <input type="text" class="input" id="memPsw0" name="memPsw" placeholder="請輸入6~10碼英數字" />
+                    </div>
+                    <!-- <div class="group">
+                            <label for="pass" class="label">確認密碼</label>
+                            <input type="password" name="memPsw" class="input" placeholder="請再次輸入密碼">
+                        </div> -->
+                    <div class="group">
+                        <label for="pass" class="label">電子信箱</label>
+                        <input type="email" class="input" name="memEmail" id="memEmail0" placeholder="請輸入電子信箱">
+                    </div>
+
+                    <div class="group">
+                        <input class="button" id="sign-up-btn" type="submit" name="submit" value="確認">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="banner">
+
+    </div> -->
+    <div class="act-bg" id="app">
+        <div class="banner">
+            <!-- <div class="container"> -->
+            <!-- <div class="row"> -->
+            <!-- <img src="https://picsum.photos/1440/300?random=10" alt=""> -->
+            <!-- </div>   -->
+            <!-- </div>          -->
+            <ul class="banner-bg">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <!-- <ul class="tab-bikes">
+                <li class="type">公路車</li>
+                <li class="type">城市車</li>
+                <li class="type">登山車</li>
+        </ul> -->
+
+        </div>
+        <div class="out">
+            <ul class="tab-bikes">
+                <!-- <li class="type active"  data-type="1" @click="changeType">公路車</li>
+                <li class="type" data-type="2" @click="changeType">登山車</li>
+                <li class="type" data-type="3" @click="changeType">城市車</li> -->
+                <!-- <li class="type active"  data-type="1" @click="type='1',changeType()">公路車</li>
+                <li class="type" data-type="2" @click="type='2',changeType()">登山車</li>
+                <li class="type" data-type="3" @click="type='3',changeType()">城市車</li> -->
+                <li class="type active" data-type="1" @click="type='1';jqueryFn()">公路車</li>
+                <li class="type" data-type="2" @click="type='2';jqueryFn()">登山車</li>
+                <li class="type" data-type="3" @click="type='3';jqueryFn()">城市車</li>
+                <!-- <li class="type active"  data-type="1" @click="changeType(),jqueryFn()">公路車</li>
+                <li class="type" data-type="2" @click="changeType(),jqueryFn()">登山車</li>
+                <li class="type" data-type="3" @click="changeType(),jqueryFn()">城市車</li> -->
+                <!-- ref代替 -->
+            </ul>
+        </div>
+
+        <!-- <div class="tab-pages">
+        <form id="" method="" action="">
+            
+
+        </form>
+    </div> -->
+
+        <main>
+            <!-- <div class="act-bg"> -->
+            <div class="wrapper activity">
+
+                <div class="act-action">
+                    <a href="member.html"><button type="button" class="my-act m-none">我的活動</button></a>
+                    <!-- <a href="activityForm.html" style=""></button></a> -->
+                    <a href="activityForm.html"><button type="button" class="create-act">建立活動</button></a>
+                    <button type="button" class="m-filter"></button>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <!-- FIX QA側邊攔 要分開-->
+                        <!-- <aside class="search" col->
+                             <input type="text" value="輸入關鍵字">
+                        </aside> -->
+
+                        <!-- FIX??側邊欄是要做伸縮-->
+
+                        <aside class="condition col-xl-2 col-md-3 ">
+                            <span class="m-close-filter"></span>
+                            <div class="keyword">
+                                <input type="text" v-model="filterText" @keyup="filterData" placeholder="搜尋關鍵字">
+                            </div>
+                            <!-- QA FIX label -->
+                            <fieldset class="filter">
+                                <div class="time">
+                                    <legend class="title">時間</legend>
+                                    <!-- QA -->
+                                    <div class="time-area">
+                                        <div class="month-picker">
+                                            <!-- <input type="text" placeholder="結束年月" id="date-picker-start"> -->
+                                            <input type="date" placeholder="結束年月" id="date-picker-start">
+                                        </div>
+                                        <div class="month-picker-end">
+                                            <!-- <input type="text" placeholder="結束年月" id="date-picker-end"> -->
+                                            <input type="date" placeholder="結束年月" id="date-picker-end">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="zone">
+                                    <legend class="title">區域</legend>
+                                    <div class="zone-list">
+                                        <label><input type="checkbox" value="北部" name="" id=""
+                                                @click="zoneFilter($event);zoneChangeStatus()">北部</label>
+                                        <label><input type="checkbox" value="中部" name="" id=""
+                                                @click="zoneFilter($event);zoneChangeStatus()">中部</label>
+                                        <label><input type="checkbox" value="南部" name="" id=""
+                                                @click="zoneFilter($event);zoneChangeStatus()">南部</label>
+                                        <label><input type="checkbox" value="東部" name="" id=""
+                                                @click="zoneFilter($event);zoneChangeStatus()">東部</label>
+                                    </div>
+                                </div>
+                                <div class="hard">
+                                    <legend class="title">騎乘強度</legend>
+                                    <div class="hard-list">
+                                        <!-- QA FIX -->
+                                        <label><input type="checkbox" value="休閒級" name="" id="" v-model="hard"
+                                                @click="hardChangeStatus()">休閒級<span></span></label>
+                                        <label><input type="checkbox" value="運動級" name="" id="" v-model="hard"
+                                                @click="hardChangeStatus()">運動級<span></span><span></span></label>
+                                        <label><input type="checkbox" value="挑戰級" name="" id="" v-model="hard"
+                                                @click="hardChangeStatus()">挑戰級<span></span><span></span><span></span></label>
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </aside>
+                        <!-- todo dl dt dd               -->
+
+
+                        <div class="main-content col-xl-10 col-md-9 col-sm-12">
+                            <div class="container">
+                                <div class="row">
+                                    <!-- <div id="app"> -->
+                                    <post-act v-for="item in actsFilter" :key="item.actNo" :act-no="item.actNo"
+                                        :item="item" @get-asn="getActNo" v-if="item.typeNo.indexOf(type)!==-1">
+                                    </post-act>
+                                    <!-- <post-act v-for="(item in acts" :actLoc="item.actLoc" :actName="item.actName"></post-act> -->
+                                    <!-- </div> -->
+
+
+                                    <!-- <div class="post-detail col-xl-4 col-md-6 col-sm-12">
+                                        <div class="post-item">
+                                            <div class="avatar"><img src="./images/act_image/avatar.PNG" alt=""></div>
+                                            <figure class="post-img">
+                                                <img src="https://picsum.photos/350/200?random=10" alt="">
+                                            </figure>
+                                            <div class="post-intro">
+                                                <a href="./activity_inner.html">
+                                                    <h3 class="title">{{item.actName}}</h3>
+                                                </a>
+                                                <div class="txt">
+                                                    <div class="meta-top">
+                                                        <div class="date">週六 10月30日</div>
+                                                        <div class="location">{{item.actLoc}}</div>
+                                                        <span class="open-detail"></span>
+                                                    </div>
+    
+                                                    <div class="meta-bottom">
+                                                        <span class="hard">{{item.actStren}}<span class="circle"></span><span
+                                                                class="circle"></span></span>
+                                                        <div class="social">
+                                                            <span class="people">{{item.actTotal}}/{{item.actLimit}}</span>
+                                                            <span class="msg">5</span>
+                                                        </div>
+    
+                                                    </div>
+                                                </div>
+    
+                                            </div>
+                                        </div>
+                                        <div class="detail">
+                                            <div class="title">{{item.actName}}</div>
+                                            <ul>
+                                                <li>集合地點-{{item.actLoc}}</li>
+                                                <li>出發日期-{{item.actStartDate}}(六)</li>
+                                                <li>報名截止-{{item.actDeadLine}}(六)</li>
+                                                <li>五分山的地標是中央氣象局氣象雷達站，也是很多車友想征服的重要山頭，在單車界極負盛名。上到電達站後，往瑞芳和基隆港方向視野極佳，山海景致一覽無遺。
+                                                    這次活動我們將水湳洞、黃金瀑布、九份、不厭亭、五分山雷達站等景點結合，１０２＋１０６經典路線，包山包海，一次吃到飽(保證不會吐)。.</li>
+                                                <span class="close-detail"></span>
+                                            </ul>
+                                        </div>
+                                    </div> -->
+
+                                    <!-- <div class="post-detail col-xl-4 col-md-6 col-sm-12">
+                                        <div class="post-item">
+                                            <div class="avatar"><img src="./images/act_image/avatar.PNG" alt=""></div>
+                                            <figure class="post-img">
+                                                <img src="https://picsum.photos/350/200?random=10" alt="">
+                                            </figure>
+                                            <div class="post-intro">
+                                                <a href="./activity_inner.html">
+                                                    <h3 class="title">七夕自行車go</h3>
+                                                </a>
+                                                <div class="txt">
+                                                    <div class="meta-top">
+                                                        <div class="date">週六 10月30日</div>
+                                                        <div class="location">新北市汐止</div>
+                                                        <span class="open-detail"></span>
+                                                    </div>
+    
+                                                    <div class="meta-bottom">
+                                                        <span class="hard">運動級<span class="circle"></span><span
+                                                                class="circle"></span></span>
+                                                        <div class="social">
+                                                            <span class="people">5/6</span>
+                                                            <span class="msg">5</span>
+                                                        </div>
+    
+                                                    </div>
+                                                </div>
+    
+                                            </div>
+                                        </div>
+                                        <div class="detail">
+                                            <div class="title">浪漫雙重奏-五分不厭征風遊</div>
+                                            <ul>
+                                                <li>集合地點-金山區金山路336號</li>
+                                                <li>出發日期-2019-11-31(六)</li>
+                                                <li>報名截止-2019-11-31(六)</li>
+                                                <li>五分山的地標是中央氣象局氣象雷達站，也是很多車友想征服的重要山頭，在單車界極負盛名。上到電達站後，往瑞芳和基隆港方向視野極佳，山海景致一覽無遺。
+                                                    這次活動我們將水湳洞、黃金瀑布、九份、不厭亭、五分山雷達站等景點結合，１０２＋１０６經典路線，包山包海，一次吃到飽(保證不會吐)。.</li>
+                                                <span class="close-detail"></span>
+                                            </ul>
+                                        </div>
+                                    </div> -->
+
+
+                                </div>
+                            </div>
+                            <!-- <div class="container">
+                                <div class="row">
+                                    <ul class="act-pages">
+                                        <li>上一頁</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                        <li>4</li>
+                                        <li>5</li>
+                                        <li>下一頁</li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- </div> -->
+
+
+
+
+        </main>
+    </div>
+
+    <footer class="section">
+        <ul>
+            <li><img src="./images/facebook.png"></li>
+            <li><img src="./images/ig.png"></li>
+            <li><img src="./images/tw.png"></li>
+        </ul>
+    </footer>
+
+    <script>
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+
+
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+    <script src="js/bikeAct2.js"></script>
+    <script src="js/getLoginInfo.js"></script>
+    <script src="js/sign_in.js"></script>
+
+
+    <!-- <script type="module" src="js/dropkick.js"></script>
+    <script src="js/jquery.twzipcode.min.js"></script>
+    <script src="js/activityForm.js"></script> -->
+    <script>
+        if (window.module) module = window.module;
+    </script>
+    <script>
+        // $(document).ready(function () {
+
+        //     $('#date-picker-start').datepicker();
+        //     $('#date-picker-end').datepicker();
+        //     $.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+        //     $.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+
+
+        //     $('.open-detail').click(function () {
+        //         console.log('test');
+        //         $(this).parent().parent().parent().parent().next().addClass('open');
+        //         $('.close-detail').on('click', function () {
+        //             $(this).parent().parent().removeClass('open');
+        //         })
+        //         // $('.detail').css('opacity','1');
+        //         // ??同一層找
+        //     })
+
+        //     //  =========================================
+
+        // $('.tab-bikes').on('click', 'li', function (e) {
+        //     let index = $(this).index();
+        //     $('.banner-bg li.active').removeClass('active').fadeOut(100, function () {
+        //         $('.banner-bg li').eq(index).fadeIn(100).addClass('active');
+        //     })
+
+        //     $('.tab-bikes .type').not(this).removeClass('active').animate({
+        //         top: '0px'
+        //     }, 300, );
+        //     $(this).addClass('active').animate({
+        //         top: '15px'
+        //     }, 300, );
+        //     // ??突然太快
+        // });
+
+        //     // ??jquery回乎失敗
+        //     $('.banner-bg li').hide().first().show().addClass('active');
+        //     $('.tab-bikes li').first().addClass('.active');
+
+        //     // $('.tab-bikes .type').on('click',function(){
+        //     //     $('.tab-bikes .type').not(this).animate({top:'0px'},300,).;
+        //     //     $(this).animate({top:'20px'},300,);
+        //     // })
+        //     // ??無法用
+        //     // 'easeInQuad' 
+        //     // 'easeOutBounce'
+        //     // ====================手機篩選器================
+
+        //     $('.m-filter').click(function (e) {
+        //         //  e.preventDefault();
+        //         if ($('.condition').hasClass('m-open') == false) {
+        //             $('.condition').addClass('m-open');
+        //             // $('.m-open').css('transform', 'translateY(0)');
+        //         } else {
+        //             // $('.m-open').css('transform', 'translateY(100%)');
+        //             $('.condition').removeClass('m-open');
+        //         }
+
+        //     })
+
+        //     $('.m-close-filter').click(function () {
+        //         $('.condition').removeClass('m-open');
+        //     })
+
+
+
+        // })
+    </script>
+
+</body>
+
+</html>

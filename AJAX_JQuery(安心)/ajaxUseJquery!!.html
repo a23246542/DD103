@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <button id="loadButton">load</button>
+    <button id="getButton">get</button>
+    <button id="postButton">post</button>
+    <button id="ajaxButton">ajax</button>
+    <p id="feedback"></p>
+    <h1 style="color:red" ;></h1>
+    <!-- ./useParameter.ph
+    ./JSON_XML_CSV. -->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script>
+        $(document).ready(function () {
+            $('#loadButton').on('click', function () {
+                // 這邊load 市資料夾其他的url 可載入網頁!!!!
+                // $('#feedback').load('9.fontsize.html');
+                // $('#feedback').load('data.php'); //可開php
+                //可帶參數
+                $('#feedback').load('useParameter.php', {
+                    name: 'anan',
+                    age: 15
+                });
+            })
+
+            $('#getButton').click(function () {
+                $.get('useParameter.php', {
+                    name: 'anan',
+                    age: 15
+                }, function (data) {
+                    // $('#feedback').html = `<h1 style="color:red";>${data}</h1>`;
+                    // @@@根源生不一樣他是包成函式
+                    $('#feedback').html(`<h1 style="color:red";>${data}</h1>`)
+                })
+            })
+            $('#postButton').click(function () {
+                $.post("useParameter.php", {
+                    name: 'anna',
+                    age: 15
+                }, function (data) {
+                    // $('#feedback').html = `<h1 style="color:red";>${data}</h1>`;
+                    $('#feedback').html(`<h1 style="color:red";>${data}</h1>`);
+                })
+            })
+            $('#getJsonButton').click(function () {
+                $.getJSON('JSON_XML_CSV/animal.json', {}, function (data) {
+                    $('#feedback').html(`<h1 >${data[0].Reason}</h1>`)
+                })
+            })
+            //老師說哪邊寫錯 寫getAjax就好
+
+            $('#ajaxButton').click(function () {
+                $.ajax({
+                    url: 'useParameter.php',
+                    data: {
+                        name: 'anna',
+                        age: 15
+                    },
+                    type: 'POST ',
+                    // dataType:, 
+                    success: function (res) {
+                        $('#feedback').html(`<h1 >${res}</h1>`)
+                    },
+                    error: function () {},
+                    complete: function () {}
+                })
+            })
+
+
+            //     $('#ajaxButton').click(function(){
+            //         $.ajax({
+            //             url:,
+            //             data:,  //老師有打註解
+            //             type:,
+            //             dataType:, //server端回傳的資料型態
+            //             success:function(){},
+            //             error:function(){},
+            //             complete:function(){}
+            //         })
+            //     })
+
+              /*
+                $.ajax();
+                $.ajax({});
+                $.ajax({
+                    url: '',        //發出請求的網址列或檔案
+                    data: ,         //傳送到server的資料，會自動轉成jQuery的string型態
+                    type: ,         //GET或POST
+                    dataType: ,     //server端還船的資料型態，xml/html/script/json/jsonp/text(包含csv)
+                    success: function(){},
+                    error: function(){},
+                    complete: function(){},
+                });
+            */
+        })
+    </script>
+</body>
+
+</html>

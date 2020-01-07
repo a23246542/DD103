@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    	<p>
+                <button id="smallButton">Smaller</button>
+                <button id="bigButton">Bigger</button>
+            </p>
+            <ul id="names">
+                <li>Ann Hathaway</li>
+                <li>Robert De Niro</li>
+                <li>Maryl Streep</li>
+                <li>Robin Williams</li>
+                <li>Bred Pitt</li>
+                <li>Angelina Jolie</li>
+                <li>Robert Downey Jr.</li>
+                <li>Demi Moore</li>
+                <li>Bruce Willis</li>
+                <li>Cybill Shepherd</li>
+                <li>Marilyn Monroe</li>
+                <li>Robert Redford</li>
+                <li>Annete Bening</li>
+            </ul>
+
+            <script src="js/jquery-3.4.1.min.js"></script> 
+            <script>
+            
+            $(document).ready(function(){
+
+                $(`#smallButton`).click(function(){
+                    changeSize(`small`);
+                });
+
+                $(`#bigButton`).click(function(){
+                    changeSize(`big`);
+                })
+
+                function changeSize(size){
+                    let currentSize = parseInt($(`#names li`).css(`fontSize`));
+
+                    if(size ==`small`){
+                        newSize  = currentSize-2;
+                    }else if(size ==`big`){ //良好的程式習慣
+                        newSize = currentSize+2;
+                    }
+                    $(`#names li`).css(`fontSize`,newSize+'px');
+                }
+
+
+
+            });
+            
+            </script>
+
+    
+    
+</body>
+</html>

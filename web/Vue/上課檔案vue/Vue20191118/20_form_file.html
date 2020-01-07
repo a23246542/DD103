@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app"> 
+        <!--<input type="file"> file不能使用v-model,只能使用change事件-->
+        <input type="file" @change="fileSelected">
+        <p></p>
+        <img v-if="image" v-bind:src="image">
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>        
+        new Vue({
+            el: '#app', 
+            data: {
+                file: '',
+                image: '',
+            },
+            methods: {
+                fileSelected(e){
+                    // let file = e.target.files[0];
+                    // let file = e.target.files.item(0);
+                    // console.log(file);
+
+                    this.file = e.target.files[0];
+                    // this.file = e.target.files.item(0);
+                    // console.log(this.file);
+
+                    let readFile = new FileReader();
+                    readFile.readAsDataURL(this.file);
+                    // readFile.addEventListener('load',function(e){
+                    //     this.image = e.target.result;
+                    // }); 
+                    
+                    readFile.addEventListener('load',this.imageLoaded);
+                },
+                imageLoaded(e){
+                    this.image = e.target.result;
+                }
+            },
+        });
+    </script>
+</body>
+</html>

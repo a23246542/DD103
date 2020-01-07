@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+
+
+<table border="1" cellspacing="0" align="center">
+	<tr><td>1111111111111</td><td>aaaaaaaaaaaaa</td></tr>
+	<tr><td>1111111111111</td><td>aaaaaaaaaaaaa</td></tr>
+	<tr><td>1111111111111</td><td>aaaaaaaaaaaaa</td></tr>
+	<tr><td>1111111111111</td><td>aaaaaaaaaaaaa</td></tr>
+	<tr><td>1111111111111</td><td>aaaaaaaaaaaaa</td></tr>
+</table> 
+
+<script type="text/javascript">
+function highLight(e){
+	//e : 事件物件
+	//window.event:事件物件
+	// if(e){
+	// 	var obj = e.target; //取得事件是發生在哪一個物件上, ie8不支援
+	// }else{
+	// 	var obj = window.event.srcElement; //取得事件是發生在哪一個物件上 , ff在今年年初才支擾
+	// }
+	
+	var obj = e ? e.target : window.event.srcElement;
+
+	obj.style.color = "deeppink";
+	obj.style.backgroundColor = "lightBlue";
+}	
+
+function normal(e){
+	var obj = e ? e.target : window.event.srcElement;
+	obj.style.color = "black";
+	obj.style.backgroundColor = "white";
+}	
+
+
+function init(){
+	var tds = document.getElementsByTagName("td");  //傳回一個 tds物件, 內含length屬性,可以得td元素有幾個
+		//tds[0], tds[1], tds[2]
+	for( let i=0; i<tds.length; i++){
+		tds[i].onmouseover = highLight;  
+		tds[i].onmouseout = normal;		
+	}
+
+}
+
+window.onload = init;	
+</script>
+</body>
+</html>

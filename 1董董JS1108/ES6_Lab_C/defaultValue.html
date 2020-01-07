@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>defaultValue</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+//從前...
+function sayHello(name, word){
+	name = name || "Somebody";  
+	word = word || "Hello~~";   
+
+	document.write( name , "說 : ", word, "......<br>" );
+}
+sayHello();  
+sayHello(0, "");//----------
+sayHello("Sara", "Hi~");
+</script>
+
+<h2>ES6</h2>
+<script type="text/javascript">
+
+function sayHello(name = "Somebody", word = "Hello~~"){
+	document.write( name , "說 : ", word, "<br>" );
+}
+sayHello();  
+sayHello(0, "");//----------
+sayHello("Sara", "Hi~");
+</script>
+</body>
+</html>

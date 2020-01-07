@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+       <h2>{{message}}</h2>
+    </div>
+   
+    <script src="js/vue.js"></script>
+    <script>
+        /*=== 第一種mount
+        new Vue({
+            el: '#app',  //CSS selector
+            // el: document.getElementById('app'),
+            //mount(掛載):把Vue instance和HTML元素做連結
+
+            data: {
+                message: 'Hello!',
+            },
+        });        
+        ===*/
+
+        /*=== 第二種mount:先宣告，再掛載
+        var vm = new Vue({
+            data: {
+                message: 'Hello!',
+            },
+        });
+        vm.$mount('#app');
+        ===*/
+
+        /*=== 第三種:利用template與HTML做連結===*/
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello!',
+            },
+            template: '<div><h1>{{message}}--{{message}}</h1></div>',
+        });
+
+    </script>
+</body>
+</html>

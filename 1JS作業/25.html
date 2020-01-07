@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   
+    <!--/*maxlength="10" minlength="10"*/-->
+    <input type="text" name="" id="ID"  placeholder="請輸入身分證"   >
+    <input type="submit"  id="check"  value="送出驗證"  >
+    <span id="alert"></span>
+    <script>
+    
+
+
+    function isIdNo(){
+
+        var id =document.getElementById('ID').value;
+        // var str = id.value; 可簡化
+        console.log(typeof(id)); //陣列
+
+        var alert = document.getElementById("alert");
+
+        // var idLetter ="ABCDEFGHJKLMNPQRSTUVXYWZIO";
+        var idLetter = new Array('A', 'B', 'C', 'D', 
+      'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 
+      'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 
+      'X', 'Y', 'W', 'Z', 'I', 'O');
+
+        // 1驗證長度
+
+        // if(id.length<10){
+        //     alert.innerHTML='你的長度不足'
+        // }else if(id.length>10){
+        //     alert.innerHTML='你的長度過長'
+        // }..?
+        
+        if(id.length!==10){
+            alert.innerHTML='身分證只有10位喔!';
+            id.value="";
+        }
+
+        //2驗證第一個字母
+        if(idLetter.indexOf(id[0]) == -1){
+            alert.innerHTML='第一個為字母';
+            id.value="";
+        }
+
+        //3驗證第一個數字
+        if(id[1]!==1 && id[1]!==2){
+            alert.innerHTML='錯誤'
+        }
+
+        //4驗證後面數字
+        for(i=1;i<=9;i++){
+            num = parseInt(id[i])
+            if(isNaN(num)){
+                alert.innerHTML='身分證後9碼為數字'
+                id.value='';
+            }
+            
+        }
+        console.log(id[3]);
+
+
+    }
+
+
+    function int(){
+        var check =document.getElementById('check');
+        check.addEventListener('click',isIdNo,false);
+    }    
+
+    window.addEventListener("load",int,false);
+    
+    
+    /*註解失效*/
+  
+    // false是啥
+
+    
+    </script>
+    
+</body>
+</html>

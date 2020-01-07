@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- <input type="text" v-model="message"> -->
+        <input type="text" :value="message" @input="setMessage">
+        <h1>{{message}}</h1>
+    </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+  <script>
+  new Vue({
+      el:'#app',
+      data:{
+          message:'dfdfd',
+      },
+      methods: {
+         setMessage(e){
+                //  this.message=e.target.value;
+                // vue裡面不能隨便用this 所以原本e.target=this 但這邊只能用這樣
+         }
+      },
+
+  })
+  
+  </script>
+
+</body>
+</html>

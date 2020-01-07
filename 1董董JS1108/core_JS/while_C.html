@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+<h2>印三列 I love JavaScript~</h2>
+<script type="text/javascript">
+var i=10;	
+while( i<=3 ){
+	document.write("I love JavaScript~", "<br>");
+	i++;
+}	
+</script> 
+
+<h2>while  印出 1、2、3、4、5、6、7、8、9、10方法</h2>
+<script type="text/javascript">
+var i = 1;
+while( i<=9 ){ //i:10
+	document.write( i, "、");
+	i++;
+}
+document.write( i, "<br>");	
+</script>
+
+<h2>算出 1 加到 10 的總和 </h2>
+<script type="text/javascript">
+var total = 0;
+var i = 1;
+
+while( i<=10 ){
+	total += i;  // total = total + i;
+	i++;
+}
+document.write( "總和 : ", total , "<br>");
+</script>
+
+<h2>while : 印出 1 ~ 50 間3的倍數, 及其總和 </h2>
+<script type="text/javascript">
+var total = 0;
+var i=1;
+while( i <= 50){
+	if( i%3 == 0){
+		document.write(i, "<br>");
+		total += i;
+	}
+
+	i++;
+}
+document.write( "總和 : ", total , "<br>");
+</script>
+
+<h2>while : 印出 1 ~ 50 間3的倍數, 及其總和 </h2>
+<script type="text/javascript">
+var i = 3, total = 0;
+while( i<=50 ){
+	document.write(i, "<br>");
+	total += i;	
+	i += 3;
+}	
+document.write( "總和 : ", total , "<br>");
+</script>
+</body>
+</html>

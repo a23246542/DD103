@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery plugin--QRcode</title>
+    <link rel="stylesheet" href="">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/jquery-qrcode-0.17.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('button').click(function(){
+                let theURL = $(':text').val();
+                
+                $('#result').text('');
+                $('#result').qrcode({
+                    text: theURL,
+                    size: 300,
+                    fill: 'steelblue',
+                    background: '#fff',
+
+                    mode: 2,
+                    label: 'Silvia.com',
+                    fontname: 'sans',
+                    fontcolor: 'tomato',
+                    
+                    // mode: 4,
+                    // image: '../images/border.png',
+                });
+            });
+           
+        });
+    </script>
+</head>
+<body>
+    <p>
+        <label for="">網址: </label>
+        <input type="text" id="urlSource">
+        <button>Generate QRcode</button>
+    </p>
+    <div id="result"></div>
+</body>
+</html>

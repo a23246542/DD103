@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX JSON use jQuery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#loadButton').click(function(){ 
+                $.ajax({
+                    url: 'JSON_XML_CSV/apiIn.json',
+                    dataType: 'json',
+                    success: function(data){
+
+                        // console.log(data);
+                        
+                        let apiData = '<ul>';
+                            //第一種寫法:for()
+                            // for(let i=0; i<data.length; i++){
+                            //     apiData += `<li>${data[i].Name}</li>`;
+                            // }
+
+                            //第二種寫法:$.each(data,function(index,content){});
+                            $.each(data,function(index,content){
+                                apiData += `<li>${content['Name']}</li>`;
+                            });
+
+                        apiData += '</ul>';
+
+                        $('#feedback').append(apiData);
+                    },
+                });          
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2 align="center">JSON to Unordered List using AJAX(jQuery)</h2>
+    <p align="center">
+        <button id="loadButton" class="btn btn-info">Load Data</button>
+    </p>    
+
+    <div id="feedback"></div>
+</body>
+</html>

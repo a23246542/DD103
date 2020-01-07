@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--v-for-過濾資料與排序</title>
+</head>
+<body>
+    <div id="app"> 
+       <ul>
+           <li v-for="num in nums">{{num}}</li>
+       </ul>
+        <button @click="reverse">Reverse</button>
+        <button @click="even">Even</button>
+        <button @click="all">All</button>
+
+        <!-- 排序 -->
+        <button @click="original">Original</button>
+        <button @click="sort">Sort</button>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script> 
+        const originalNums = [1,2,3,4,5,6,7,8,9,10];
+    
+        var vm = new Vue({
+            el: '#app', 
+            data: {
+                // nums: [1,2,3,4,5,6,7,8,9,10],
+                nums: originalNums,
+            },
+            methods: {
+                reverse(){
+                    this.nums.reverse();
+                },
+                even(){
+                    // this.nums = this.nums.filter(elm => elm % 2 === 0);
+                    this.nums = originalNums.filter(elm => elm % 2 === 0);
+                },
+                all(){
+                    this.nums = originalNums;
+                },
+                original(){
+                    this.nums = originalNums;
+                },
+                sort(){
+                    // this.nums = originalNums.sort();
+                    this.nums = originalNums.slice().sort();
+
+                    //原始陣列(或字串)加上slice()陣列複製，讓原陣列(或字串)不變
+                    // arr.slice();
+                    // arr.slice(begin);
+                    // arr.slice(begin,end);
+                },
+            },
+        });
+    </script>
+</body>
+</html>

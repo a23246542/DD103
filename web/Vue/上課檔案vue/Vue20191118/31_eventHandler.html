@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--事件處理</title>
+</head>
+<body>
+    <div id="app"> 
+       <h1>{{num}}</h1>
+       <!-- <button @click="add">Add</button> -->
+
+       <!-- 其實不用寫methods -->
+       <button @click="num++">Add</button>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num: 0,
+            },
+            // methods: {
+            //     add(){
+            //         this.num++;
+            //     }
+            // },
+        });
+    </script>
+</body>
+</html>

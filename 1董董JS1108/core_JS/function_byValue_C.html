@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+	function swap(obj){
+		obj = {a:10,b:20};
+		var temp = obj.a;
+		obj.a = obj.b;
+		obj.b = temp;
+	}
+
+
+	var object = {a:10,b:20};
+	swap(object);
+	document.write( "a: ", object.a, "<br>");
+	document.write( "b: ", object.b, "<br>");
+</script>    
+</body>
+</html>

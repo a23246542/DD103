@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>defaultValue</title>
+</head>
+
+
+<body>
+<script type="text/javascript">
+//從前...	
+var str = ""
+
+var str = "<table border='1' cellspacing='0'>" 
+    str += "<tr><td>data</td><td>data</td></tr>";
+    str += "<tr><td>data</td><td>data</td></tr>"; 
+    str += "</table><hr>"; 
+document.write(str);
+
+//ES6:可以使用反引號讓字串以多行形式呈列
+var str = `<table border='1'>
+	<tr><td>data</td><td>data</td></tr>
+	<tr><td>data</td><td>data</td></tr>
+	<tr><td>data</td><td>data</td></tr>
+</table>`;
+
+
+//從前...	從前...	
+var name = "Ann";
+var price = 30;
+var amount = 20;
+var str = "姓名: " + name +"<br>" ;
+    str += "消費總額: " + price*amount + "元<br>"; 
+document.write(str);
+
+//ES6: 
+var str = `姓名: ${name} 消費總額: ${price*amount}元<br>`
+
+</script>
+</body>
+</html>

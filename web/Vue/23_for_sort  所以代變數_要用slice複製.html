@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://10.120.30.199/23_for_sort.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>VueJS--v-for-過濾資料與排序</title>
+</head>
+<body>
+    <div id="app" style="user-select: auto;"> 
+       <ul style="user-select: auto;">
+           <li v-for="num in nums" style="user-select: auto;">{{num}}</li>
+       </ul>
+        <button @click="reverse" style="user-select: auto;">Reverse</button>
+        <button @click="even" style="user-select: auto;">Even(偶數)</button>
+        <button @click="all" style="user-select: auto;">All</button>
+
+        <!-- 排序 -->
+        <button @click="original" style="user-select: auto;">Original</button>
+        <button @click="sort" style="user-select: auto;">Sort</button>
+    </div>
+    
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script style="user-select: auto;"> 
+        const originalNums = [1,2,3,4,5,6,7,8,9,10];
+    
+        var vm = new Vue({
+            el: '#app', 
+            data: {
+                // nums: [1,2,3,4,5,6,7,8,9,10],
+                nums: originalNums,
+            },
+            methods: {
+                reverse(){
+                    this.nums.reverse(); //竟然會動到原本的
+                },
+                even(){
+                    // this.nums = this.nums.filter(elm => elm % 2 === 0);
+                    this.nums = originalNums.filter(elm => elm % 2 === 0);
+                },
+                all(){
+                    
+                    this.nums = originalNums;
+                },
+                original(){
+                    this.nums = originalNums;
+                },
+                sort(){
+                    // this.nums = originalNums.sort();
+                    this.nums = originalNums.slice().sort();
+                    
+                    
+
+                    //原始陣列(或字串)加上slice()陣列複製，讓原陣列(或字串)不變
+                    // arr.slice();
+                    // arr.slice(begin);
+                    // arr.slice(begin,end);
+                },
+            },
+        });
+    </script>
+
+<div class="liner-mini-button"><a class="liner-mb liner-save-button" style="background-image: url(&#39;chrome-extension://bmhcbmnbenmcecpmpepghooflbehcack/images/mini-btn@3x.png&#39;) !important;"></a></div><div class="liner-mini-tooltip"><span class="liner-color-yellow liner-mini-color-circle liner-save-button"></span><span class="liner-color-green liner-mini-color-circle liner-save-button"></span><span class="liner-color-orange liner-mini-color-circle liner-save-button"></span><span class="liner-color-violet liner-mini-color-circle liner-save-button"></span><span class="liner-color-blue liner-mini-color-circle liner-save-button"></span><span class="liner-color-pink liner-mini-color-circle liner-save-button"></span></div><div class="liner-tooltip-wrap"><div class="liner-tooltip-menu"><span class="liner-tooltip-color liner-tooltip-icon"></span><span class="liner-tooltip-comment liner-tooltip-icon"></span><span class="liner-tooltip-undo liner-tooltip-icon"></span></div><div class="liner-color-picker"><span class="liner-color-yellow liner-color-circle"></span><span class="liner-color-green liner-color-circle"></span><span class="liner-color-orange liner-color-circle"></span><span class="liner-color-violet liner-color-circle"></span><span class="liner-color-blue liner-color-circle"></span><span class="liner-color-pink liner-color-circle"></span></div><div class="liner-tooltip-arrow"><span class="liner-arrow-down"></span></div></div><div class="liner-comment-box"><div class="liner-comment-line"></div><div class="liner-comment-area"><textarea class="liner-comment-input" placeholder="寫評論"></textarea></div></div></body></html>

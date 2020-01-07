@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+        <select>
+            <!-- <option v-for="month in 12">{{month}}</option> -->
+            <!-- <option v-for="month in months">{{month}}</option> -->
+            <!-- <option v-for="month in months">{{month}}</option> -->
+            <option v-for="(month,index) in months" :value="index">{{month}}</option>
+        </select>
+        <ol>
+            <li v-for="task in todos" v-bind:class="task">{{task}}</li>
+        </ol>
+    </div>
+
+    <!-- directives指令 v-for -->
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                // months: [1,2,3,4,5,6,7,8,9,10,11,12],
+                months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+                todos: [
+                    '學好Javascript',
+                    '討論專題',
+                    '年薪上看百萬',
+                ],
+            },
+            
+        });
+    </script>
+</body>
+</html>

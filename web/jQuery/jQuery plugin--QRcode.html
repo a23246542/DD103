@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://10.120.30.199/plugin_qrCode.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>jQuery plugin--QRcode</title>
+    <link rel="stylesheet" href="http://10.120.30.199/plugin_qrCode.html">
+    <script src="./jQuery plugin--QRcode_files/jquery.min.js.下載"></script>
+    <script src="./jQuery plugin--QRcode_files/jquery-qrcode-0.17.0.min.js.下載"></script>
+    <script>
+        $(document).ready(function(){
+            $('button').click(function(){
+                let theURL = $(':text').val();
+                
+                $('#result').text('');
+                $('#result').qrcode({
+                    text: theURL,
+                    size: 300,
+                    fill: 'steelblue',
+                    background: '#fff',
+
+                    mode: 2,
+                    label: 'Silvia.com',
+                    fontname: 'sans',
+                    fontcolor: 'tomato',
+                    
+                    // mode: 4,
+                    // image: '../images/border.png',
+                });
+            });
+           
+        });
+    </script>
+</head>
+<body>
+    <p style="user-select: auto;">
+        <label for="" style="user-select: auto;">網址: </label>
+        <input type="text" id="urlSource" style="user-select: auto;">
+        <button style="user-select: auto;">Generate QRcode</button>
+    </p>
+    <div id="result" style="user-select: auto;"></div>
+
+<div class="liner-mini-button"><a class="liner-mb liner-save-button" style="background-image: url(&#39;chrome-extension://bmhcbmnbenmcecpmpepghooflbehcack/images/mini-btn@3x.png&#39;) !important;"></a></div><div class="liner-mini-tooltip"><span class="liner-color-yellow liner-mini-color-circle liner-save-button"></span><span class="liner-color-green liner-mini-color-circle liner-save-button"></span><span class="liner-color-orange liner-mini-color-circle liner-save-button"></span><span class="liner-color-violet liner-mini-color-circle liner-save-button"></span><span class="liner-color-blue liner-mini-color-circle liner-save-button"></span><span class="liner-color-pink liner-mini-color-circle liner-save-button"></span></div><div class="liner-tooltip-wrap"><div class="liner-tooltip-menu"><span class="liner-tooltip-color liner-tooltip-icon"></span><span class="liner-tooltip-comment liner-tooltip-icon"></span><span class="liner-tooltip-undo liner-tooltip-icon"></span></div><div class="liner-color-picker"><span class="liner-color-yellow liner-color-circle"></span><span class="liner-color-green liner-color-circle"></span><span class="liner-color-orange liner-color-circle"></span><span class="liner-color-violet liner-color-circle"></span><span class="liner-color-blue liner-color-circle"></span><span class="liner-color-pink liner-color-circle"></span></div><div class="liner-tooltip-arrow"><span class="liner-arrow-down"></span></div></div><div class="liner-comment-box"><div class="liner-comment-line"></div><div class="liner-comment-area"><textarea class="liner-comment-input" placeholder="寫評論"></textarea></div></div></body></html>

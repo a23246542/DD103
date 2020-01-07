@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字串反轉</title>
+</head>
+<body>
+    
+    <script>
+        // 老師說都slice才
+        function reverse(txt){
+            // 先字串分割變成陣列
+            // 再用陣列的方法反轉
+            // 再用join成字串
+
+            // 這些都會return所以可以接起來
+            return txt.split('').reverse().join('');
+        }
+
+        var text = reverse("HelloMike!");
+
+        console.log(text);
+        
+    </script>
+
+
+
+
+</body>
+</html>

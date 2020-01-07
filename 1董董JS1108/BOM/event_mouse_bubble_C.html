@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+h2{
+	background-color:blue;
+}
+</style>
+</head>
+<body>
+
+
+<table id="myTable" border="1" cellspacing="0" align="center">
+	<tr><td>1111111111111</td><td>aaaaaaaaaaaaa</td></tr>
+	<tr><td>1111111111111</td><td>aaaaaaaaaaaaa</td></tr>
+	<tr><td>1111111111111</td><td>aaaaaaaaaaaaa</td></tr>
+	<tr><td>1111111111111</td><td>aaaaaaaaaaaaa</td></tr>
+	<tr><td id="td51">1111111111111</td><td>aaaaaaaaaaaaa</td></tr>
+</table> 
+
+<script type="text/javascript">
+function highLight(e){
+	var obj = e.target; //e.target : 事件發生在哪一個物件上
+
+	console.log("target: ", e.target.id);
+	console.log("this: ", this.id);
+	console.log("currentTarget: ", e.currentTarget.id);
+
+	obj.style.color = "deeppink";
+	obj.style.backgroundColor = "lightBlue";		
+}	
+
+function normal(e){
+	var obj = e.target;
+	obj.style.color = "black";
+	obj.style.backgroundColor = "white";	
+
+}	
+
+function init(){
+	let myTable = document.getElementById("myTable");
+	myTable.onmouseover = highLight;
+	myTable.onmouseout = normal;
+}
+
+window.onload = init;	
+
+
+
+
+</script>
+</body>
+</html>

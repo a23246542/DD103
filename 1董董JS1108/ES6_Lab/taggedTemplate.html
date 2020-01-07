@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>defaultValue</title>
+</head>
+
+<body>
+
+<h2>可使用標籤函數來套用樣版(tagged template) ???</h2>
+<script type="text/javascript">
+var prodName = '小丸子快樂上學去公宅';
+var price = 100;
+var amount = 20;
+
+function showMsg(strings, prodName, price, amount) {
+  var total = price * amount;
+  var bonus = total>500 ? Math.ceil(total*0.01) : 0;
+
+  return strings[0] + prodName + strings[1] + price 
+  + strings[2] + amount + 
+  `<br>總計: ${ total }元<br>紅利: ${ bonus }點`;
+}
+
+var outStr = showMsg`交易資料如下:<br>
+品名: ${prodName}<br>
+單價: ${price}元<br>
+數量: ${amount}<br>
+`;
+document.write(outStr);
+</script>
+
+</body>
+</html>

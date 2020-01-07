@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery-3.4.1.min.js"></script>			
+		<script>
+			$(document).ready(function(){
+				let textMax = 70;
+				$('#feedback').html(`<span style="color:red;">${textMax}</span> characters remaining.`);
+
+				$('#talk').keyup(function(e){
+					// alert(e.keyCode);
+					// if(e.keyCode != 8){
+					// 	let textLength = $(this).val().length;
+					// 	let textRemaining = textMax - textLength;
+					// 	$('#feedback').html(`<span style="color:red;">${textRemaining}</span> characters remaining.`);
+					// } 	
+					if(e.keyCode == 8){
+						textLength = $(this).val().length + 1;
+						textRemaining = textMax - textLength;
+						$('#feedback').html(`<span style="color:red;">${textRemaining}</span> characters remaining.`);
+
+					}else{
+						textLength = $(this).val().length;						
+						textRemaining = textMax - textLength;
+						$('#feedback').html(`<span style="color:red;">${textRemaining}</span> characters remaining.`);
+					}					
+				});
+			});			
+		</script>
+		<title>jQuery</title>
+	</head>
+	<body>
+		<form>
+			<textarea id="talk" rows="5" cols="25" maxlength="70"></textarea>
+			<p id="feedback"></p>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "C:\\Users\\user\\Google 雲端硬碟\\dd103\\web\\jQuery"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "C:\\Users\\user\\Desktop\\HEX"
+		},
+		{
+			"path": "C:\\inetpub\\wwwroot\\AjaxLab_C"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "AJAX_JQuery",
+		"liveServer.settings.port": 5501
+	}
+}

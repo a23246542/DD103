@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--組件綁定原生事件</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <!--Vue組件除了可以發出自訂事件，上層組件也可以監聽自訂事件以及原生事件(但要加上.native)-->
+    <div id="app"> 
+       <my-button @click="btnClicked"></my-button>
+       <my-button @click.native="btnClicked"></my-button>
+    </div>
+    
+    <script>       
+        Vue.component('my-button',{           
+            template: `<button>Click me!</button>`,           
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+            },
+            methods: {
+                btnClicked(){
+                    alert('Does it makes sense?');
+                },
+            },
+        });
+    </script>
+</body>
+</html>

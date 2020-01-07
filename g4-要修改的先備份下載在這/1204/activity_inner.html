@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>活動內頁</title>
+    <link rel="stylesheet" href="./css/body&header&footer.css">
+    <link rel="stylesheet" href="./css/act_inner_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src="js/getLoginInfo.js"></script>
+    <script src="js/sign_in.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="phone">
+            <input type="checkbox" name="" id="ham">
+            <label for="ham">
+
+                <span class="ham-1"></span>
+                <span class="ham-2"></span>
+                <span class="ham-3"></span>
+                <span class="ham-4"></span>
+            </label>
+
+            <div class="logo ham"><a href="./index.html"><img src="./images/logo.png" alt=""></a></div>
+
+            <ul class="nav-icon ham">
+                <li class="icon-2"><a href="../shoppingCart.html"></a></li>
+                <li class="icon-3"><a href="#"></a></li>
+            </ul>
+
+            <nav class="pc">
+
+                <ul class=" nav-list">
+                    <li><a href="./customize.html">專屬騎行</a></li>
+                    <li><a href="./CYShop.html">CY嚴選</a></li>
+                    <li><a href="./activity.html">活動專區</a></li>
+                    <li class="logo"><a href="./cyclist.html"><img src="./images/logo.png" alt=""></a></li>
+                    <li><a href="./question.html">不可不知</a></li>
+                    <li><a href="./aboutCY.html">關於CY</a></li>
+                </ul>
+
+                <ul class="nav-icon">
+                    <li class="logstatus">
+                        <span id="memberId"></span>
+                        <div id="logout"></div>
+                    </li>
+                    <li class="icon-2"><a href="shoppingCart.html"></a></li>
+                    <li class="icon-3"></li>
+                </ul>
+            </nav>
+        </nav>
+    </header>
+    <div class="login-wrap" id="login-wrap">
+        <div class="login-html">
+            <span href="#" id="lightbox" class="lightbox-close"></span>
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">登入</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">註冊</label>
+
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <span class="userName">
+                            <label for="user" class="label">帳號</label>
+                            <input type="text" type="text" name="memId" id="memId-in" class="input"
+                                placeholder="請輸入6~10碼英數字">
+                        </span>
+
+
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">密碼</label>
+                        <input type="password" name="memPsw" class="input" id="memPsw-in" placeholder="請輸入6~10碼英數字">
+                    </div>
+
+                    <div class="group">
+                        <input id="memsign-in" type="submit" class="button" value="登入">
+                        <div class="sign_logo"></div>
+                    </div>
+
+
+                </div>
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="pass" class="label">暱稱</label>
+                        <input type="text" class="input" name="memNickName" id="memNickName0" type="text"
+                            placeholder="請輸入英數字">
+                    </div>
+
+                    <div class="group">
+                        <label for="user" class="label">帳號</label>
+                        <input type="text" class="input" name="memId" id="memId0" placeholder="請輸入6~10碼英數字">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">密碼</label>
+                        <input type="text" class="input" id="memPsw0" name="memPsw" placeholder="請輸入6~10碼英數字" />
+                    </div>
+                    <!-- <div class="group">
+                            <label for="pass" class="label">確認密碼</label>
+                            <input type="password" name="memPsw" class="input" placeholder="請再次輸入密碼">
+                        </div> -->
+                    <div class="group">
+                        <label for="pass" class="label">電子信箱</label>
+                        <input type="email" class="input" name="memEmail" id="memEmail0" placeholder="請輸入電子信箱">
+                    </div>
+
+                    <div class="group">
+                        <input class="button" id="sign-up-btn" type="submit" name="submit" value="確認">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="act-inner-bg">
+        <main class="wrapper act-inner">
+            
+                <div class="container">
+                    <div class="row">
+                        <div class="act-img col-xl-6 col-md-6 col-sm-12 ">
+                            <!-- <div class="post-bg">
+                                <ul class="bg-group">
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div> -->
+        
+        
+                            <!-- <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="https://picsum.photos/500/400?random=1" alt=""></div>
+                                    <div class="swiper-slide"><img src="https://picsum.photos/500/400?random=2" alt=""></div>
+                                    <div class="swiper-slide"><img src="https://picsum.photos/500/400?random=3" alt=""></div>
+                                    <div class="swiper-slide"><img src="https://picsum.photos/500/400?random=4" alt=""></div>
+                                </div>
+                            </div>
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"></div>
+                                    <div class="swiper-slide"></div>
+                                    <div class="swiper-slide"></div>
+                                    <div class="swiper-slide"></div>
+                                </div>
+                            </div> -->
+                            <div class="slider-top">
+                                <img src="https://picsum.photos/500/400?random=1" alt="">
+                            </div>
+                            <div class="slider-bottom">
+                                <div class="btn" data-pic="left"></div>
+                                <ul class="pics">
+                                    <li class="pic-item"><img src="https://picsum.photos/500/400?random=1" alt=""></li>
+                                    <li class="pic-item"><img src="https://picsum.photos/500/400?random=2" alt=""></li>
+                                    <li class="pic-item"><img src="https://picsum.photos/500/400?random=3" alt=""></li>
+                                    <li class="pic-item"><img src="https://picsum.photos/500/400?random=4" alt=""></li>
+                                    <li class="pic-item"><img src="https://picsum.photos/500/400?random=5" alt=""></li>
+                                    <li class="pic-item"><img src="https://picsum.photos/500/400?random=6" alt=""></li>
+                                </ul>
+                                <div class="btn" data-pic="right"></div>
+                            </div>
+        
+                        </div>
+        
+                        <div class="act-info col-xl-6 col-md-6 col-sm-12">
+                            <div class="organizer">
+                                <div class="avatar">
+                                    <img src="./images/act_inner_image/avatar.PNG" alt="">
+                                </div>
+                                <div class="name">Meiching Chiang</div>
+                                <!-- <i class="el el-photo"></!-->
+                            </div>
+                            <h2 class="title">金龍湖自行車漫遊</h2>
+                            <div class="act-time">2019/11/3 10:30上午</div>
+                            <div class="last-time">最後確認2019/11/01</div>
+                            <div class="depart-pos"><i class="fas fa-map-marker-alt"></i>出發地 新北汐止,金龍湖金龍路123號</div>
+                            <button class="submit">我要參加</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="intro-row">
+                                <div class="block">
+                                    <div class="sub-title">適合車種</div>
+                                    <div class="type">公路車</div>
+                                </div>
+                                <div class="block">
+                                    <div class="sub-title">騎乘性質</div>
+                                    <div class="strength">休閒級</div>
+                                </div>
+                                <div class="block">
+                                    <div class="sub-title">參加人數</div>
+                                    <div class="applicant">5人</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ==============================參加成員================================ -->
+                    </div>
+                    <div class="row">
+                        <div class="group col-12">
+                            <div class="title">參加成員</div>
+                            <div class="avatar">
+                                <img src="https://picsum.photos/60/60?random=10" alt="">
+                            </div>
+                            <div class="avatar">
+                                <img src="https://picsum.photos/60/60?random=10" alt="">
+                            </div>
+                            <div class="avatar">
+                                <img src="https://picsum.photos/60/60?random=10" alt="">
+                            </div>
+                        </div>
+                    </div>
+        
+        
+                    <div class="row">
+                        <div class="act-desc col-12">
+                            <!-- <h2 class="title">活動說明</h2> -->
+                            <div class="desc-txt">
+                                每逢十月下旬，夏熱的天氣開始漸漸轉為舒適宜人的秋涼，除了是楓葉染紅的好時節外，也是芒花盛開之際。芒花不如玫瑰擁有艷麗的外衣，然而在秋冬之交這片開滿山的芒花勾畫出的雪白世界，容易讓人沉醉於其中的浪漫氛圍。
+                                「不厭亭」取自李白的詩句「相看兩不厭」，有人稱天堂路、寂寞公路等等，不難想其所擁有的高人氣。雖然他的海拔只有531公尺，從不厭亭往下看來時路，其線條頗為壯觀，與合歡山有幾分神似，因此也才有「小武嶺」之稱。在秋芒隨風搖曳起舞下，除了能夠以360度無死角眺望雙溪的風景，還可以一睹瑞芳和基隆之美。
+                                五分山的地標是中央氣象局氣象雷達站，也是很多車友想征服的重要山頭，在單車界極負盛名。上到電達站後，往瑞芳和基隆港方向視野極佳，山海景致一覽無遺。
+                                這次活動我們將水湳洞、黃金瀑布、九份、不厭亭、五分山雷達站等景點結合，１０２＋１０６經典路線，包山包海，一次吃到飽(保證不會吐)。
+                                <br>
+                                <br>
+                                路線說明:
+                                起點：暖暖運動公園，大概上午七點出發。
+                                　終點：暖暖運動公園，下午前回到終點。
+                                　自行補給、沒有支援車！五分山最高，只有700公尺多一點，沿途有多家便利超商與市集飲食店。
+                            </div>
+                            <div class="report">
+                                <!-- <div class="report-word"> -->
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span id="report-btn">檢舉活動</span>
+                                <!-- </div> -->
+        
+                            </div>
+                            <div id="report-box-wrap">
+                                <div class="report-box">
+                                    <h3>檢舉活動</h3>
+                                    <select name="reportMessage" id="">
+                                        <option value="">請選擇原因</option>
+                                        <option value="1">1.非相關自行車活動</option>
+                                        <option value="2">2.外部商品廣告</option>
+                                        <option value="3">3.活動內文不當</option>
+                                    </select>
+                                    <button id="report-send-btn">確認</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="comment col-xl-8 col-md-8 col-sm-12">
+                            <p class="title">留下意見</p>
+                            <!-- cols="30" rows="10" -->
+                            <!-- <div class="input"> -->
+                            <textarea name="" id="" aria-label="" placeholder="有任何疑問嗎"></textarea>
+                            <!-- </div> -->
+        
+        
+                            <!-- <input type="" class="input">框框留言滿版</input> -->
+                            <div class="input-group">
+                                <span class="errMeg"></span>
+                                <span class="counter">0/100</span>
+                            </div>
+                            <div>
+                                <button class="send">留言</button>
+                            </div>
+                            <div class="comment-list">
+                                <div class="comment-item">
+                                    <div class="avatar">
+                                        <img src="https://picsum.photos/60/60?random=10" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <div class="comment-name">clair</div>
+                                        <div class="comment-txt">發現新大陸好棒</div>
+                                        <div class="comment-date">2019-11-09</div>
+                                    </div>
+                                </div>
+                                <div class="comment-item">
+                                    <div class="avatar">
+                                        <img src="https://picsum.photos/60/60?random=10" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <div class="comment-name">小安</div>
+                                        <div class="comment-txt">竟然有這條自行車道！😱 改天也來騎騎看</div>
+                                        <div class="comment-date">2019-11-09</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            
+    
+        </main>
+    </div>
+
+    <footer class="section">
+        <ul>
+            <li><img src="./images/facebook.png"></li>
+            <li><img src="./images/ig.png"></li>
+            <li><img src="./images/tw.png"></li>
+        </ul>
+    </footer>
+
+</body>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
+<script>
+    $(document).ready(function () {
+
+        $(".pic-item").click(function () {
+
+            //抓到小圖路徑
+            let picSrc = $(this).find("img").attr("src");
+            //塞進大圖顯示區
+            $(".slider-top").find("img").attr("src", picSrc);
+        })
+
+        // let divWidth = $('#sliderBoard').width();   //div的寬度
+
+        let imgCount = $('.pics li').length;
+        $('.pic-item').width($('.act-img').width() / 4);
+        let divWidth = $('.pic-item').width(); //25%
+        $('.pics').width(divWidth * imgCount); //ul的寬度
+        // $('#content li').width(divWidth);           //li的寬度
+
+        let i = 0;
+        $(".btn").click(function () {
+
+            let length = $(".pics").find(".pic-item").width();
+
+            switch ($(this).data("pic")) {
+
+                case "left":
+
+                    $(".pics").animate({
+                        // "left": `${-36*i}%`
+                        "left": `${length}px`
+                    })
+                    // console.log(`${-36*i}%`)
+                    console.log(`${length*i}px`)
+                    i++;
+
+                    break;
+
+                case "right":
+                    // i--;
+                    $(".pics").animate({
+                        "left": `-${length*i}px`
+
+                    })
+                    i++;
+                    console.log(`-${length}px`);
+                    break;
+
+            }
+
+        });
+
+
+
+        //   var galleryThumbs = new Swiper('.gallery-thumbs',{
+        //       spaceBetween:5,
+        //       slidesPerView:3,
+        //       loop:true,
+        //       freeMode:true,
+        //       loopedSlides:3,
+        //       watchSlidesVisibility: true,
+        //       watchSlidesProgress: true,
+
+        //       navigation:{
+        //           nextEl:'.swiper-button-next',
+        //           prevEl:'.swiper-button-prev'
+        //       }
+
+        //   })
+
+
+
+        var galleryTop = new Swiper('.gallery-top', {
+            // direction: 'vertical', // 垂直切换选项
+            spaceBetween: 5,
+            loop: true, // 循环模式选项
+            loopedSlides: 1,
+            // thumbs:{
+            //     swiper:galleryThumbs,
+            // },
+            thumbs: {
+                swiper: {
+                    el: '.gallery-thumbs',
+                    slidesPerView: 4,
+                    loop: true,
+                    freeMode: true,
+                    loopedSlides: 3,
+                    watchSlidesVisibility: true,
+                    watchSlidesProgress: true,
+
+                },
+                slideThumbActiveClass: 'my-slide-thumb-active',
+            }
+
+
+        })
+
+        $('#report-btn').click(function(){
+              $('#report-box-wrap').show();
+             
+        })
+
+
+    })
+</script>
+
+</html>

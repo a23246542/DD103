@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<script type="text/javascript">
+var total = 0;	
+for( var i=1; i<=1000; i++){
+	total += i;
+	if( total > 1000){
+		document.write( "1+2+3+.....+", i, " = ", total, ", 超過1000<br>");
+		document.write( "1+2+3+.....+i = total, 超過1000<br>");
+		document.write(`1+2+3+.....+${i} = ${total}, 超過1000<br>`); //es6提供字串套變數的方法
+		break;
+	}
+}
+
+
+
+</script>    
+</body>
+</html>

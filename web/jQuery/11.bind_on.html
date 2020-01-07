@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // $('p').mouseenter().mouseleave();
+            // $('p').mouseenter(function(){}).mouseleave(function(){});
+
+            // $('p').mouseenter(function () {
+            //     $(this).addClass('highlight');
+            // }).mouseleave(function () {
+            //     $(this).removeClass('highlight');
+            // });
+        });
+
+        $(document).ready(function(){
+            // $(`p`).bind().bind();
+            // $(`p`).bind(`mouseenter`,function(){}).bind(`mouseleave`,function(){});
+
+            // $(`p`).bind(`mouseenter`,function(){
+            //     $(this).addClass(`highlight`)
+            // }).bind(`mouseleave`,function(){
+            //     $(this).removeClass(`highlight`)
+            // });
+            
+            $(`p`).bind();
+            $(`p`).bind(`mouse`)
+
+            $(`p`).bind(`mouseenter mouseleave`,function(){
+                $(this).toggleClass(`highlight`);
+            })
+
+            $(`p`).on(`mouseenter mouseleave`,function(){
+                $(this).toggleClass(`highlight`);
+            })
+ // ES6 showhand寫法
+
+            // $('p').on({});
+				// $('p').on({
+				// 	mouseenter:function(){},
+				// 	mouseleave:function(){},
+				// });
+
+				/*===
+				$('p').on({
+					mouseenter:function(){
+						$(this).addClass('highlight');
+					},
+					mouseleave:function(){
+						$(this).removeClass('highlight');
+					},
+				});
+				===*/
+				$('p').on({
+					mouseenter(){
+						$(this).addClass('highlight');
+					},
+					mouseleave(){
+						$(this).removeClass('highlight');
+					},
+                });
+                // es6 showhand寫法
+
+ //ES6 showhand寫法
+
+            // ------
+           // $(document).on('事件'[,'selector',data],function(){});
+				$(document).on('mouseenter mouseleave','p',function(){
+					$(this).toggleClass('highlight');
+                });
+                
+
+           
+
+
+        })
+
+       
+    </script>
+</head>
+
+<body>
+    <p>Ann Hathaway</p>
+
+</body>
+
+</html>

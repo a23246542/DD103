@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style></style>
+</head>
+
+
+
+<body style="margin: 0px;">
+    <div id="topMessage">
+        We see you're not logged in. Do you want to <a href="#">sign up</a>? <br>
+        <a href="#" id="hideMessage">No, thanks!</a>
+    </div>
+
+
+    <button id="slideButton">Slide Toggle</button>
+    <p>
+        <img src="https://picsum.photos/id/523/350/200">
+    </p>
+
+
+    <h2>Mouseover the gray stripe on the left edge.</h2>
+    <div id="imgBoard">
+        <img src="../images/washDrawing/011.JPG" class="myPhoto">
+        <img src="../images/washDrawing/001.JPG" class="myPhoto">
+        <img src="../images/washDrawing/007.JPG" class="myPhoto">
+        <img src="../images/washDrawing/021.JPG" class="myPhoto">
+        <img src="../images/washDrawing/008.JPG" class="myPhoto">
+        <img src="../images/washDrawing/037.JPG" class="myPhoto">
+        <img src="../images/washDrawing/013.JPG" class="myPhoto">
+        <img src="../images/washDrawing/010.JPG" class="myPhoto">
+    </div>
+
+    <div>
+        <img src="../images/washDrawing/037.JPG">
+    </div>
+    <div class="fade_to">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+        <img src="./images/bg008.gif">
+    </div>
+    <div>
+        your name: <input type="text" id="name">
+        <button id="submitButton">submit</button><br>
+        <span>Silvia</span>
+        <p id="feedback">My name is:</p>
+    </div>
+    <h3>Condiments(調味料類)</h3>
+		<p>
+			<button class="food">mustard</button>
+			<button class="food">salt</button>
+			<button class="food">pepper</button>
+			<button class="food">spices</button>
+			<button class="food">soy sauce</button>
+			<button class="food">ketchup</button>
+		</p>
+		<h3>Deli(熟食類)</h3>
+		<p>
+			<button class="food">roast beef</button>
+			<button class="food">turkey</button>
+			<button class="food">Swiss cheese</button>
+			<button class="food">potato salad</button>
+			<button class="food">potato Diane</button>
+		</p>
+		<h3>Coffee and Tea(咖啡茶飲類)</h3>
+		<p>
+			<button class="food">coffee</button>
+			<button class="food">herbal tea</button>
+			<button class="food">hot chocolate</button>
+			<button class="food">latte</button>
+			<button class="food">cafe au lait </button>
+			<button class="food">Con Panna</button>
+		</p>
+		<h3>Bread(麵包類)</h3>
+		<p>
+			<button class="food">white bread</button>
+			<button class="food">wheat bread</button>
+			<button class="food">whole grain bread</button>
+			<button class="food">rye bread</button>
+			<button class="food">pretzel</button>
+			<button class="food">pita bread</button>
+		</p>
+		<hr>
+		<h2>Your choices : </h2>
+		
+		<!-- create an ordered list -->
+        <ol id="myList"></ol>
+        <!-- create a drop-down menu -->
+        <p>
+            <select name="" id="mySelect"></select>
+        </p>
+        <!-- create a table -->
+        <p>
+            <table id="myTable"></table>
+        </p>
+        <div>
+                Bread: <input type="text" id="bread">
+                <button id="checkButton">Check bread</button>
+                
+                <p id="feedback"></p>
+        </div>
+
+
+    <script src="./js/jquery-3.4.1.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <!-- 這個才有支援animate -->
+    <script>
+        $(document).ready(function () {
+            $(`#topMessage`).slideDown(2000);
+            $(`#hideMessage`).click(function () {
+                $('#topMessage').slideUp(1000);
+            });
+
+
+
+            $('#slideButton').click(function () {
+                // $('img').slideToggle(1000);
+                $('img').slideToggle(2000, 'easeOutBounce');
+            });
+            // 縮回按鍵
+
+            // stop
+            $('#imgBoard').hover(function () {}, function () {});
+            $('#imgBoard').hover(function () {
+                $(this).stop(true).animate({ //stop家這邊才會停
+                    left: '0px',
+                    // backgroundColor:'red',
+                    // 這邊測試要加color才有效
+                }, 1000, 'easeInQuad')
+            }, function () {
+                $(this).animate({
+                    left: '-130px'
+                }, 1000, 'easeOutBounce')
+
+            });
+            // 16=======fadeinout
+            $('img').click(function () {
+                $(this).fadeOut(1000).delay(1000).fadeIn(2000);
+            });
+
+            // 17======fadeto 跟not
+
+            $('.fade_to img').css('opacity', 0.5);
+            $('.fade_to img').mouseover(function () {
+                $(this).fadeTo(200, 1);
+                $('.fade_to img').not(this).fadeTo(200, 0.5);
+            });
+
+            //18======append
+            //19.20====append to跟clone
+            $('#submitButton').click(function () {
+                let name = $('#name').val();
+                // $('#feedback').append(name, '<br>').css('textDecoration', 'underline');
+                $('#feedback').append(name).css('textDecoration', 'underline');
+                // $('#feedback').text(name); 這個會蓋過去
+
+
+                $('span').clone().appendTo('#feedback');
+
+            });
+            // ????沒顯示出來
+            // 記得學姊那個表格月曆案例 全部都用一個class就好 再用this
+             $('.food').click(function(){
+                //  let item = $('.food').text();打錯
+                 let item = $(this).text();
+
+                 $('#myList').append(`<li>${item}</li>`);
+
+
+                 $('#mySelect').append(`<option>${item}</option>`);
+             });
+
+             //22.========inArray 沒出現
+             let breads = ['donuts','bagel','pre','cro'];
+
+             $('#checkButton').click(function(){
+                let bread = $('#bread').val();
+                if($.inArray(bread,breads)!=-1){
+                    $('#feedback').html(`<span style='color:red;text-transform:capitalize'>${bread}</span>有麵包`);
+                }else{  //不用再else if
+                    $('#feedback').html(`<span>${bread}</span>沒麵包`)
+                }
+             });
+
+
+
+
+
+            
+
+            
+
+
+
+
+
+
+        });
+
+        // $(document).ready(function () {
+        //     $('#topMessage').slideDown(2000);
+        //     $('#hideMessage').click(function () {
+        //         $('#topMessage').slideUp(1000);
+        //     });
+        // });
+
+
+        // ..................................
+    </script>
+</body>
+
+
+</html>

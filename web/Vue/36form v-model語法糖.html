@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model的三種修飾福(modifer))</title>
+</head>
+<body>
+
+    <h2>點旁邊叫做blur</h2>
+    <!--v-model modifier
+        lazy :trigger when blur(全部輸入填寫完成 再顯示全部輸入的值)
+        number: parseInt() 將字串轉成數值
+        trim: $.trim()刪除輸入時產生的前後空格 適合會員輸入
+    -->
+    <div id="app">
+        <h2>lazy</h2>
+        <!-- <input v-model="message">
+        <h1>{{message}}</h1>
+
+        <input v-model.lazy="message">
+        <h1>{{message}}</h1> -->
+<!-- ---------------------------------------- -->
+        <h2>num</h2>
+        <!-- <input v-model="num">
+        <h1>{{num+1}}</h1> -->
+        <!--js奇怪地方 難保變成字串 就不用寫parseInt了 -->
+
+        <input v-model.number="num">
+        <h1>{{num+1}}</h1>
+
+<!-- ----------------------------------------------- -->
+        <h2>trim</h2>
+        <input v-model.trim="name">
+        <h1>[{{name}}]</h1>
+    </div>
+    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                message:'',
+                num:0,
+                name:'',
+            },
+            methods: {
+                
+            },
+        })
+    
+    </script>
+</body>
+</html>

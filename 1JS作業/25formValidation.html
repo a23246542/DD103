@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <style>
+        .box {
+            margin: auto;
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+
+        <input type="password" placeholder="請輸入密碼" id="psw">
+        <input type="button" value="驗證" id="send">
+
+    </div>
+
+    <script>
+        function validity() {
+            let psw = document.getElementById("psw"); /*取得輸入密碼的值*/
+            let char = /[a-z]|[A-z]/; /*驗證是否有英文字母*/
+            let num = /[0-9]/; /*驗證是否有數字*/
+
+
+            if (psw.value.length < 6) {
+                /*驗證密碼長度*/
+                alert("密碼最少要6個字元");
+                psw.value = "";
+                return; /*長度不符就返回*/
+            }
+
+            if (psw.value.search(char) == -1 || psw.value.search(num) == -1) {
+                /*當密碼不含有數字  或是  不含有英文字母 */
+                alert("密碼最少要包含一位數字及英文");
+                psw.value = "";
+                return;
+            }
+
+            alert("驗證成功");
+
+        };
+
+
+        window.addEventListener("load", function () {
+            /*初始化*/
+            document.getElementById("send").onclick = validity;
+        }, false);
+    </script>
+
+</body>
+
+</html>

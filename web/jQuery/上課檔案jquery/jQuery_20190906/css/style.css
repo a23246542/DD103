@@ -1,0 +1,9 @@
+/* 6_addClass.html */
+.myLabel{
+    text-transform: capitalize;
+    float: left;
+    width: 120px;
+}
+.highlight{
+    background: yellow;
+}

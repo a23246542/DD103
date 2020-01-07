@@ -1,0 +1,39 @@
+1.node.js LTS下載並安裝
+
+2.VScode --> Vue 2 snippets
+
+3.import和export
+
+    資料夾imports --> app.js, counter.js
+    app組件可以引用counter組件
+    而counter組件可以將其內容匯出，讓app組件引入，要怎麼做?
+
+    counter.js 先定義一個Counter組件
+    const Counter = Vue.component('counter',{
+        //.....
+    });
+    
+    接下來把它匯出export
+    export default Counter;
+
+    ==========
+    app.js 引入/匯入
+    import Counter from '相對路徑'
+    import Counter from 'counter'    (如果是js檔，可省略.js)
+
+    接下來就可以在app.js中使用Counter
+
+    new Vue({
+        el: '#app',
+        components: {
+            Counter: Counter,  //可寫成 Counter,
+        },
+        template: `
+            <div>
+                <Counter />
+            </div>
+        `,
+    });
+
+4.建立一個開發模板
+    

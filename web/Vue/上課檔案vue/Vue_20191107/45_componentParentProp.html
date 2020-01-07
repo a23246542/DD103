@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--父組件(上層)傳來的prop</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <!-- Hello希望可以傳到template或data或methods -->
+    <div id="app"> 
+    <!--1-->
+       <!--<my-component message="Hello"></my-component>-->
+    <!--2--> 
+       <!-- <my-component message="Hello" test="test string"></my-component>  -->
+    <!--3-->
+        <my-component my-props="Hello Props"></my-component>
+    </div>
+
+    
+    <script>
+        // Vue.component('my-component',{  
+        //     template: `<h1>{{message}}</h1>`,
+        // });
+
+        Vue.component('my-component',{ 
+            //1
+            // props: ['message'], 
+            // template: `<h1>{{message}}</h1>`,
+
+            //2
+            // props: ['message','test'], 
+            // template: `<h1>{{message}} -- {{test}}</h1>`,
+
+            //3
+            props: ['myProps'], 
+            template: `<h1>{{myProps}}</h1>`,
+        });
+
+        new Vue({
+            el: '#app',
+            // template:`
+            //     <div>
+            //         <my-component myProps="Hello Props!"></my-component>
+            //     </div>
+            // `,
+        });
+    </script>
+</body>
+</html>

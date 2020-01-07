@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--組件組合</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <todo-list></todo-list>
+        <!-- <div>
+            <form>
+                <input type="text">
+                <button>Submit</button>
+            </form>
+
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                ...
+            </ul>
+        </div> -->
+    </div>
+
+    
+    <script>
+        Vue.component('todo-input',{  
+            data(){
+                return {
+                   text: '',
+                };
+            },
+            methods:{
+                submit(){
+                    this.$emit('input',this.text);
+                    this.text = '';
+
+                    // vm.$emit(eventName,[...args]);
+                    // 父組件(上層)可以使用 props 把資料傳給子組件(下層)                
+                    // 子組件(下層)可以使用 $emit 觸發父組件(上層)的自訂事件                
+                },
+            }, 
+            template: `
+                <form @submit.prevent="submit">
+                    <input type="text" v-model="text">
+                    <button type="submit">Submit</button>
+                </form>
+            `,
+        });
+
+        Vue.component('todo-item',{
+            props: ['label'],
+            // props是陣列，裡面放的是傳進來的名字(label)
+            template: `<li>{{label}}</li>`,
+        });
+
+        Vue.component('todo-list',{ 
+            data(){
+                return {
+                    todos: [],
+                    // todos: ['A','B','C'],
+                };
+            },
+            methods:{
+                addTodo(text){
+                    this.todos.push(text);
+                },
+            }, 
+            template: `
+                <div>
+                    <todo-input @input="addTodo"></todo-input>
+                    <ul>
+                        <todo-item v-for="todo in todos" :label="todo">
+                            <!--label指的是組件的屬性(attribute或props)-->    
+                        </todo-item>
+                    </ul>
+                </div>
+            `,
+        });
+       
+        new Vue({
+            el: '#app',
+            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BookList>
+	<Book>
+		<Title>HTML5 &amp; CSS3</Title>
+		<Author>Terry Morris</Author>
+		<Publisher>O'Reilly</Publisher>
+	</Book>
+	<Book>
+		<Title>Learning HTML5</Title>
+		<Author>Jessica Minnick</Author>
+		<Publisher>PACKET</Publisher>
+	</Book>
+	<Book>
+		<Title>Head First jQuery</Title>
+		<Author>Jason Gonzalez</Author>
+		<Publisher>O'Reilly</Publisher>
+	</Book>
+	<Book>
+		<Title>Modern CSS3</Title>
+		<Author>Sasha Vodnik</Author>
+		<Publisher>Sitepoint</Publisher>
+	</Book>
+	<Book>
+		<Title>Learning Python</Title>
+		<Author>Benjamin LaGrone</Author>
+		<Publisher>O'Reilly</Publisher>
+	</Book>
+</BookList>

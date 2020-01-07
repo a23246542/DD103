@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+        <p>現在時間: {{today}}}</p>
+       <p>
+           Your Height: <input type="text" v-model="height">
+       </p>
+       <p>
+            Your Weight: <input type="text" v-model="weight">
+        </p>
+        <p>
+            Your BMI: <span>{{calculate}}</span>
+        </p>
+    </div>
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                height: 0,
+                weight: 0,
+
+                // BMI => 體重(公斤) / (身高 / 100) 的平方
+            },
+            methods: {     //函數(方法)們
+                
+            },
+            computed: {     //計算屬性
+                calculate: function(){
+                    BMI = this.weight / Math.pow(this.height / 100 , 2);
+                    return BMI.toFixed(2);
+                },
+                today: function(){
+                    let temp = this.height + this.weight;
+
+                    let now = new Date();
+                    return now;
+                },
+            },
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+
+<div id = "showPanel" style="font-size:20px;width:200px;height:200px;overflow:scroll">
+	    <p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>
+		<p>11111111 22222222222222 33333333</p>	
+</div>	
+
+<div id="outer">
+	outer <br>
+	outer <br>
+	outer <br>
+	<div id="inner" style="">
+		inner <br>
+		inner <br>
+		inner <br>
+	</div>
+	outer <br>
+	outer <br>
+	outer <br>
+</div>
+
+
+<script type="text/javascript">
+// outer.onmouseleave = function (){
+// 	console.log("out outer");
+// }
+
+// inner.onmousleave = function (){
+// 	console.log("out inner");
+// }
+
+outer.onmouseout = function (){
+	console.log("out outer");
+}
+
+inner.onmousout = function (){
+	console.log("out inner");
+}
+</script>    
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery-3.4.1.min.js"></script>		
+		<script>
+			$(document).ready(function(){
+				//用CSS尋找寬度和高度
+				/*===
+				let imgWidth = $('img').css('width');
+				let imgHeight = $('img').css('height');
+				$('#feedback').text(`Width: ${imgWidth} | Height: ${imgHeight}`);
+				===*/
+
+				//用HTML尋找寬度和高度--X
+				/*===
+				let imgWidth = $('img').attr('width');
+				let imgHeight = $('img').attr('height');
+				$('#feedback').text(`Width: ${imgWidth} | Height: ${imgHeight}`);
+				===*/
+
+				//用jQuery尋找寬度和高度
+				/*======*/
+				let imgWidth = $('img').width();
+				let imgHeight = $('img').height();
+				// $('#feedback').text(`Width: ${imgWidth} | Height: ${imgHeight}`);
+
+				let winWidth = $(window).width();
+				let winHeight = $(window).height();
+				// $('#feedback').text(`Width: ${winWidth} | Height: ${winHeight}`);
+
+				$('img').width(winWidth);
+				$('img').height(winHeight);
+				
+			});			
+		</script>
+		<title>jQuery</title>
+	</head>
+	<body style="margin: 0px;">
+		<img src="../images/washDrawing/037.JPG">		
+		<p id="feedback"></p>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <h2>csv to table  jquery</h2>
+    <P align='center'>
+        <button id="loadButton" class="btn btn-info">load data</button>
+    </P>
+    <div id="feedback"></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script>
+        $(document).ready(function () {
+           
+            $('#loadButton').click(function () {
+                $.ajax({
+                    url: 'JSON_XML_CSV/temp.csv',
+                    // data: {
+                    //     name: 'anna',
+                    //     age: 15
+                    // },
+                    // type: 'POST ',
+                    dataType:'text',
+                    success: function (res) {
+                        console.log(res);//整份文字檔
+                       
+                        let empData = res.split(/\n|\r\n/); //  \n輸入鍵 \r\n shiflt+輸入鍵
+                        // let tempData = data.split(/\r?\n|\r/);
+                        let tableData ='<table>';
+                        // 大部分列優先row !!!
+                            for(let rows=0;rows<empData.length;rows++){
+                                var cellData = empData[rows].split(',');
+                                tableData+='<tr>';
+                                    for(let cols=0;cols<cellData.length;cols++){
+                                        // @@@if(cellData[cols]===0){
+                                        if(rows===0){
+                                            tableData+=`<th>${cellData[cols]}</th>`;
+                                        }else{
+                                            tableData+=`<td>${cellData[cols]}</td>`;
+                                        }
+                                    }
+                                
+                                tableData+='</tr>';     
+                            }
+                        
+                        tableData+='</table>';    
+                        $('#feedback').append(tableData);
+                    },
+                    // error: function () {},
+                    // complete: function () {}
+                });
+            });
+
+
+           
+        })
+    </script>
+</body>
+
+</html>

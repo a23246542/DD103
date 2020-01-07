@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // $('input[type="submit"]').click(function(){
+            //     alert('hi!');
+            // });
+            $(':submit').click(function(){
+                let ans = $(this).attr('value');
+                alert(ans);
+            });
+
+            $('input[type="email"]').focus(function(){
+                $(this).css('background','yellow');
+            });
+
+            // $(':text').focus().blur();
+            // $(':text').focus(function(){}).blur(function(){});
+            // $(':text').focus(function(){
+
+            // }).blur(function(){
+
+            // });
+
+            $(':text').focus(function(){
+                $(this).attr('placeholder','').css('background','yellow');
+            }).blur(function(){
+                $(this).css('background','transparent');
+            });
+
+            $('textarea').focus(function(){
+                // $(this).attr('rows',5).attr('cols',50);
+                $(this).attr({
+                    rows: 5,
+                    cols: 50,
+                });
+            });
+        });        
+    </script>
+</head>
+<body>
+    name: <input type="text" placeholder="Your name?"> <br>
+    email: <input type="email"> <br>
+    <input type="submit" value="SUBMIT1">
+    <input type="submit" value="SUBMIT2">
+    <p>
+        <textarea></textarea>
+    </p>
+</body>
+</html>

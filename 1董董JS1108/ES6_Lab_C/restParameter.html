@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+
+<body>
+<h2>example 0 ...從前</h2>
+<script type="text/javascript">
+//將價錢低於highPrice的金額調漲rate
+function adjust( rate, highPrice, prices){  //rate:調漲幅度, highPrice:低於多少的要調, 商品價格們
+  for(var i=0; i<prices.length; i++){
+  	if( prices[i]<highPrice){
+  		prices[i]+=Math.floor(prices[i] * rate);
+  	}
+  }
+  return prices;
+}
+
+var arr = [ 300, 500, 400, 800];
+document.write( adjust(0.1, 600, arr));
+</script>  
+
+
+<h2>ES6 ..rest parameter</h2>
+<script type="text/javascript">
+	//將價錢低於highPrice的金額調漲rate
+function adjust( rate, highPrice, ...prices){  //rate:調漲幅度, highPrice:低於多少的要調, 商品價格們
+  for(var i=0; i<prices.length; i++){
+  	if( prices[i]<highPrice){
+  		prices[i]+=Math.floor(prices[i] * rate);
+  	}
+  }
+  return prices;
+}
+
+document.write( adjust( 0.2, 600, 300, 500, 400, 800), "<br>");;
+</script>
+
+<h2>rest parameter example</h2>
+<script type="text/javascript">
+function sum(...numbers){  
+	var total = 0; 
+	numbers.push(10000);
+	for(let i=0; i<numbers.length; i++){
+		total += numbers[i];
+	}  
+	return total;
+}
+
+document.write( "100 + 200 = ", sum(100, 200), "<br>");
+document.write( "100 + 200 + 300 = ", sum(100, 200, 300), "<br>");
+document.write( "100 + 200 + 300 + 400 = ", sum(100, 200, 300, 400), "<br>");	
+</script>
+</body>
+</html>

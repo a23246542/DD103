@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Fade in, Fade out(onclick) </title>
+</head>
+<body>
+<center>
+<input type="button" id="btnInOut" value="淡出"><br>
+<img src="melon.gif" alt="小玉" id="img1" style="opacity:1"> 	
+</center>
+</body>
+</html>
+<script>
+var opacity=1;
+var timerId;
+
+
+function fadeOut(){
+	let btnInOut = document.getElementById("btnInOut");
+	var img1 = document.getElementById("img1");
+	opacity -= 0.05;
+	img1.style.opacity = opacity;
+	if( opacity < 0){
+		clearInterval( timerId);
+		btnInOut.value = "淡入";
+		btnInOut.disabled = false;
+	}
+	console.log( opacity)
+}
+
+function fadeIn(){
+	let btnInOut = document.getElementById("btnInOut");
+	var img1 = document.getElementById("img1");
+	opacity += 0.05;
+	img1.style.opacity = opacity;
+	if( opacity > 1){
+		clearInterval( timerId);
+		btnInOut.value = "淡出";
+		btnInOut.disabled = false;
+	}
+	console.log( opacity)
+}
+
+function changeOpacity(){
+	//先令按鍵失能
+	let btnInOut = document.getElementById("btnInOut");
+	btnInOut.disabled = true; 
+	if( btnInOut.value == "淡出"){
+		timerId = setInterval(fadeOut, 100);	
+	}else{
+		timerId = setInterval(fadeIn, 100);
+	}
+	
+}
+
+function init(){
+   //點下去做淡入/淡出的切換
+	document.getElementById("btnInOut").onclick = changeOpacity;
+}
+
+window.addEventListener("load", init, false);
+</script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 01vue寫標籤頁就原本不是那個方式了 -->
+    <div id="app">
+        <template v-for="header in headers">
+            <h1>{{header}}</h1><hr>
+        </template>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+     new Vue({
+         el:"#app",
+         data:{
+             headers:['about','products','contact','test'],
+         }
+
+     })
+    
+    </script>
+</body>
+</html>

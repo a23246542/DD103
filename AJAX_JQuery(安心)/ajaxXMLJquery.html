@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <h2>xml jquery</h2>
+    <P align='center'>
+        <button id="loadButton" class="btn btn-info">load data</button>
+    </P>
+    <div id="feedback"></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script>
+        $(document).ready(function () {
+           
+            $('#loadButton').click(function () {
+                $.ajax({
+                    url: 'JSON_XML_CSV/books.xml',
+                    // data: {
+                    //     name: 'anna',
+                    //     age: 15
+                    // },
+                    // type: 'POST ',
+                    dataType:'xml',
+                    success: function (res) {
+                        console.log(res);//整份xml文件
+                    //    01
+                        let bookData ='<ol>'
+                        // //公用函數直接用 沒有對象 寫在裡面
+                        //     $.each(res,function(index,item){
+                        //     bookData += `<li></li>`
+                        // })
+
+                        // 02 
+                        // !!!也可以先選擇再來each
+                        //find boollist的子代>book
+                        // xml文件要子孫一路往下找!!!!
+                        $(res).find('Book').each(function(){
+                        // !!!選取器 但上面res因為變數不能放在引號李 所以後面用find
+                            // bookData +=
+                            // !!!@@this是find後面的book
+                            let theTitle = $(this).find('Title').text();//就是他的nodevalu了
+                            let theAuthor =$(this).find('Author').text();
+                            let thePublisher = $(this).find('Publisher').text();
+
+                            bookData +=`<li>${theTitle}written by <u>${theAuthor}</u></li>`
+                        })
+                        
+
+                        bookData +='</ol>'
+                            
+                        $('#feedback').append(bookData);
+                    },
+                    // error: function () {},
+                    // complete: function () {}
+                });
+            })
+
+
+           
+        })
+    </script>
+</body>
+
+</html>

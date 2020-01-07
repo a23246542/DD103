@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--組件裡面的data必須是function</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <!-- 加上組件之後註解以下兩行  -->
+        <!-- <h1>{{count}}</h1>
+        <button @click="count+=1"> +1 </button> -->
+
+        <counter></counter>
+        <counter></counter>
+    </div>
+
+    
+    <script>
+        Vue.component('counter',{  
+            data(){
+                return {
+                    count: 0,
+                };
+            }, 
+            template: `
+                <div>
+                    <h1>{{count}}</h1>
+                    <button @click="count+=1"> +1 </button>
+                </div>
+            `,
+        });
+
+        //在Vue instance裡面的data是物件
+        new Vue({
+            el: '#app',
+            // 加上組件之後註解data
+            // data: {
+            //     count: 0,
+            // },
+        });
+    </script>
+</body>
+</html>

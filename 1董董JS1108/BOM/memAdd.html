@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+
+<form id="myForm" action="memAdd.php" method="get" enctype="application/x-www-form-urlencoded">
+<input type="text" name="test">
+<input type="reset" name="">	
+</form>   
+<script type="text/javascript">
+var myForm = document.getElementById("myForm");
+console.log( myForm.action)	
+console.log( myForm.method)
+console.log( myForm.enctype)
+</script> 
+</body>
+</html>

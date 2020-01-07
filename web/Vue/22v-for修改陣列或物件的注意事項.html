@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 01v-for將元素轉成物件 -->
+    <!-- 02如果在意順序render出來的順序 宣告成陣列 裡面放物件的方式 -->
+    <!-- 03 (value,key)in me忘記空格會跑不出來-->
+    <!-- 04 v-for ="(month,index) in months"
+    也是value 再key(索引陣列是index)) -->
+</head>
+<body>
+
+     <div id="app">
+        <ul>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>            <!-- <li v-for="num in num1">{{num}}</li> -->
+            <li v-for="(num,index) in num1">{{index}}--{{num}}</li>
+            <!-- 物件 -->
+            <!-- <li v-for="(num,key) in num2">{{key}}---{{num}}</li> -->
+        </ul>
+        <hr>
+        <ul></ul>
+        <button @click="action">click me</button>
+        
+     </div>
+
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <script>
+         new Vue ({
+            el: '#app', 
+            data: {
+                // 陣列
+                // num1:[1,2,3,4,6],
+                num1:[10,40,60,89,29,40],
+                // 物件
+                num2:{
+                    x:5,
+                    y:10,
+                    z:15
+                }
+
+            },
+            methods:{
+                // .......修改陣列............
+                // 將數字render到li
+                action(){
+                    // 現在做的都是可以改變陣列的內容 老師
+                    // this.num1.push(this.num1.length+1);
+                    // this.num1.pop();
+                    // this.num1.unshift(9);
+                    // this.num1.shift();
+
+                    // this.num1.splice(2,1,100,200,300);
+                    // this.num1.sort();
+                    // this.num1.reverse();
+
+                    // this.num1 = this.num1.filter(elm => elm>30);
+                    // this.num1 = this.num1.filter(elm => elm%2===0);
+
+                    
+                    // this.num1[0]=7878; //!!!!!vue這無法改變"陣列"內容
+                    // this.num1.splice(0,1,7878);
+
+                    // 如何清空陣列
+                    // this.num1.splice(0);
+                    // this.num1.length=0; //vue這樣無法刪除
+
+                    
+                    // ..............修改物件...............
+                    // 01原本js 無法新增物件 但可以修改已有的key/value
+
+                    this.num2.q=15;
+                    this.num3
+                
+
+                }
+            },
+         })
+
+        //  vm.set(this.num2,"z",200);這邊this變成window 所以失效
+        vm
+     
+     
+     </script>
+</body>
+</html>

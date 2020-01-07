@@ -1,0 +1,21 @@
+body{
+    font: 110% 'Gill Sans MT',Tahoma;
+    text-transform: capitalize;
+    background: #ddd;
+}
+form{
+    background: #fff;
+    width: 210px;
+    padding: 15px;
+    margin: 50px;
+    /* border: 1px solid #ccc; */
+    box-shadow: rgba(0,0,0,0.6) 0px 0px 15px;
+}
+div{
+    /* border: 1px solid red; */
+    margin: 8px 0px;
+}
+label{
+    width: 150px;
+    float: left;
+}

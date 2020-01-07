@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<script type="text/javascript">
+var arr = new Array();	
+arr[0] = new Array(1, 2, 3, 4);
+arr[1] = new Array(11, 12, 13, 14);
+arr[2] = new Array(21, 22, 23, 24);
+
+var arr = new Array( new Array(1,2,3,4), new Array(11, 12, 13, 14), new Array(21, 22, 23, 24));	
+
+var total;
+var total2 = 0;
+document.write( "<table border='1' cellspacing='0'>");
+for( var i=0; i<3; i++){
+	document.write( "<tr>");
+	total = 0;
+	for( var j=0; j<4; j++){
+		document.write( "<td>", arr[i][j], "</td>");
+		total += arr[i][j];
+	}
+	var avg = total / 4;
+	document.write( "<td>", avg, "</td>");
+	document.write( "</tr>");
+
+	total2 += avg;
+}
+document.write( "</table>");
+document.write( `全班總平均 : ${total2/3}`)
+</script>  
+
+<h2>array literal</h2>
+<script type="text/javascript">
+var arr = new Array();
+var arr = [];
+
+var arr = new Array(11,22,33);
+var arr = [11, 22, 33];	
+
+var arr = [ [1,2,3,4], [11,12,13,14], [21,22,23,24]];
+document.write(arr[2][2]);
+</script>  
+</body>
+</html>

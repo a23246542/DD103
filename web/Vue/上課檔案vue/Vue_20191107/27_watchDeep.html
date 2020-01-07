@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app"> 
+       <input type="text" v-model="inputValue.x">
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app', 
+            data: {
+                inputValue: {
+                    x: '',
+                },
+            },
+            methods: {},
+            computed: {},
+            watch: {  //偵聽器，偵測data或computed的變化
+                //宣告成物件
+                inputValue: {
+                    handler(val,oldVal){
+                        console.log(`${oldVal.x} --> ${val.x}`);
+                        console.log(val === oldVal);
+                    }, 
+                    deep: true,
+                },
+            },
+        });
+    </script>
+</body>
+</html>

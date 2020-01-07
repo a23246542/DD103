@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+
+	.title {
+		color:blue;
+		border-bottom:1px dotted blue;
+	}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+
+document.write("<hr color='deeppink'>");
+document.write("<h3 class='title'>型別轉換</h3>");	
+</script>
+
+
+<h2>隱含轉換.....危險</h2>	
+<script type="text/javascript">
+var price = "20";
+var amount = "10";
+var ship = "80";
+
+document.write("subTotal :", subTotal, "<br>");
+document.write("total :", total, "<br>");
+</script>
+
+<h2>強制轉換parseInt()</h2>
+<script type="text/javascript">
+document.write("parseInt('321abc') :",parseInt('321abc'), "<br>");	//321
+
+</script> 
+
+<h2>強制轉換parseInt().....</h2>	
+<script type="text/javascript">
+var price = "20";
+var amount = "10";
+var ship = "80";
+
+document.write("subTotal :", subTotal, "<br>");
+document.write("total :", total, "<br>");
+</script>   
+</body>
+</html>

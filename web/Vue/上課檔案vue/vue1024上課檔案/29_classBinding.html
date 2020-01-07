@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--綁定class</title>
+    <style>
+        .submit{
+           background: #3C6E71; 
+           color: #fff;
+           border-radius: 8px;
+           padding: 5px 8px;
+        }
+        .submit.disabled{
+            background: #aaa; 
+        }
+    </style>
+</head>
+<body>
+    <div id="app"> 
+       <!-- <input type="text">
+       <button class="submit">Submit</button>
+       <button class="submit disabled">Submit</button> -->
+
+       <input v-model="text">
+       <button v-bind:class="btnClass">Submit</button>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app', 
+            data: {
+                text: '',
+                // btnClass: ['submit','disabled'],
+            },
+            methods: {},
+            computed: {
+                btnClass(){
+                //1.傳回值是字串
+                    // if(this.text.length === 0){
+                    //     return 'submit disabled';
+                    // }else{
+                    //     return 'submit';
+                    // }
+
+                //2.傳回值是物件
+                    // if(this.text.length === 0){
+                    //     return {
+                    //         submit: true,
+                    //         disabled: true,
+                    //     };
+                    // }else{
+                    //     return {
+                    //         submit: true,
+                    //         disabled: false,
+                    //     };
+                    // }
+
+                //3.直接傳回物件
+                    return {
+                        submit: true,
+                        disabled: this.text.length === 0,
+                    };
+                },                
+            },
+        });
+    </script>
+</body>
+</html>

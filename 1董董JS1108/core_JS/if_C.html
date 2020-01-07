@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	h2{
+		color:deeppink;
+	}
+</style>
+</head>
+<body>
+
+<h2>句型 1</h2>	
+<script type="text/javascript">
+// var math = 0;
+// var eng = 10;
+// var ch = 70;
+// var avg = (math * 30 + eng * 30 + ch * 40 )/100;
+
+var avg = 85;
+if( avg >= 60 )
+	document.write("通過", "<br>"); 
+</script>  
+
+<h2>句型 2</h2>	
+<script type="text/javascript">
+var avg = 35;
+
+if( avg >= 60 ){
+	document.write("通過", "<br>");
+	document.write("證書列印中", "<br>");
+}
+
+</script>
+
+<h2>句型 3</h2>	
+<script type="text/javascript">
+var avg = 38;
+
+if( avg >= 60 )
+	document.write("通過", "<br>"); 
+else
+	document.write("未通過", "<br>"); 
+</script> 
+
+<h2>句型 4</h2>	
+<script type="text/javascript">
+var avg = 35;
+
+if( avg >= 60 ){
+	document.write("通過", "<br>");
+	document.write("證書列印中", "<br>");
+}else{
+	document.write("未通過", "<br>"); 
+	document.write("三餐飯後睡前看", "<br>");
+}
+</script>
+
+<h2>三元運算</h2>	
+<script type="text/javascript">
+var avg = 65;
+document.write(( avg >= 60 ) ?  "通過" : "未通過", "<br>");
+</script>
+
+<h2>句型 5 : if...else if...elseif.....else</h2>
+<script type="text/javascript">
+var avg = 57, grade;
+
+if( avg >= 90){
+	grade = "A";
+}else if( avg >= 80){
+	grade = "B";
+}else if( avg >= 70){
+	grade = "C";
+}else if( avg >= 60){
+	grade = "D";
+}else {
+	grade = "E";
+}
+document.write("等級為", grade, "<br>");
+</script>
+
+<h2>句型 6.....................</h2>
+<script type="text/javascript">
+var lowType, amount, education;
+
+lowType = "1";
+education = false;
+
+if( lowType == "1"){
+	amount = 5000;
+	if( education == true){ //true
+		amount = amount + 1000;
+	}
+}else if( lowType == "2" ){
+	amount = 3000;
+}else if( lowType == "3"){
+	amount = 1000;
+}else{
+	amount = 0;
+}
+document.write("補助款為", amount, "<br>");	
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+</head>
+<style>
+.memTable th{
+      background-color: pink;
+}
+
+.memTable td{
+     border-bottom: 1px dotted deeppink;
+}
+
+</style>
+
+<body>
+<div>首頁>>會員專區</div>
+<!-- <center>
+會員帳號<input type="text" name="memId" id="memId"/>
+<input type="button" value="取得會員資料" onclick="getMember()"/>
+<div id="showPanel"></div>
+</center> -->
+
+會員帳號<input type="text" id="memId" name="memId">
+<input type="button" value="取得會員資料" onclick = 'getMember()'>
+<div id="showPanel"></div>
+<script>
+
+// window.onload=function(){
+
+
+
+// }
+
+function showMember(xml){
+
+  // 不是陣列就是物件
+  let data = xml.documentElement.childNodes;
+
+  let table= document.createElement('table');
+   for(let i =0; i<data.length;i++){
+    
+     tr= document.createElement('tr');
+     th = document.createElement('th');
+     td = document.createElement('td');
+     table.appendChild(tr);
+     tr.appendChild(th,td);
+
+    //  佐格
+    var textNode= data[i].nodeName;
+    th.appendChild(textNode);
+
+    // 又隔
+    var textNode = data[i].firstChild.nodeValue;
+    td.appendChild(textNode);
+
+
+
+   }
+   table.setAttribute('class','memtable');
+   document.getElementById("showPanel").appendChild(table);
+
+}
+
+
+function getMember(){
+  var xhr = new XMLHttpRequest();
+
+  xhr.onload = function(){
+     if(status===200){
+      //  showMember(data);
+       showMember(xhr.responseXML);
+     }else{
+       alert(xhr.status);
+     }
+     
+  }
+
+  let url = "getMore_XML_copy.php?memId="+document.getElementById('memId').value;
+  xhr.open('GET',url,true);
+  // xhr.send(document.getElementById('memId').value) 
+  xhr.send(null); 
+  
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--如果兩個組件沒有上下關係 要如何溝通</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <!-- 第一個方法是 另一個下層傳給上層 上層再pass給另一個下層 -->
+    <!-- 就是把count放在new Vue裡面 吃到同一個count 就會同步-->
+
+    <!-- 第二個方法 使用vuex工具做溝通 將所有的組件跟一個[統一的資料]做溝通
+        而這些[統一的資料]
+        集中式的管理
+    -->
+
+    <!-- 第三個方法event bus是做小範圍的 -->
+
+    <div id="app"> 
+      
+    </div>
+   
+    <script>       
+        Vue.component('my-count',{      
+            data(){
+                return{
+                    count:0,
+                }
+            },
+            template: `
+             <h1>{{count}}</h1>
+            `,           
+        });
+
+        Vue.component('my-button',{      
+            template: `
+             <button> +1 </button>
+            `,           
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+               count:0
+            },
+            methods: {
+               setOuter(count){
+
+              },
+            },
+        });
+    </script>
+</body>
+</html>

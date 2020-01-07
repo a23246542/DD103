@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--keep-alive</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <button @click="content='lessons'">Lessons</button>
+        <button @click="content='apply'">Apply</button>
+        <button @click="content='temp'">Temp</button>
+        <hr>
+        <p>
+            <keep-alive>
+                <component :is="content"></component>
+            </keep-alive>
+        </p>        
+    </div>
+
+    
+    <script>
+        Vue.component('apply',{  
+            template: `
+                <form>
+                    <textarea></textarea><br>
+                    <button>Submit</button>
+                </form>
+            `,
+        });
+        Vue.component('lessons',{  
+            template: `
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+            `,
+        });
+        Vue.component('temp',{  
+            template: `
+                <img src="../images/limes.jpg">
+            `,
+        });
+        new Vue({
+            el: '#app',
+            data: {
+                content: 'lessons',
+            },
+        });
+    </script>
+</body>
+</html>

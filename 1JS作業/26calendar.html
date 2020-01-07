@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>26calendar/190904</title>
+    <style>
+    .container{
+        width: 50%;
+        margin: auto;
+    }
+
+    table, tr, td{
+        border: 1px solid #aaa;
+        font-size: 30px;
+    }
+    td{
+        padding: 20px;
+        text-align: center;
+    }
+    td:hover{
+        background-color: pink;
+    }
+    tr:nth-child(1){
+        background-color: lightblue;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+    <h2>作業26, 網頁開啟時，在網頁上顯示該月的月曆。<br>（流程控制、內建物件）(26calendar.htm)<br>西元年份尾數 四的倍數為閏年  //2月29天<br>西元年份尾數 百的倍數是平年  //2月28天<br>西元年份尾數 四百的倍數是閏年  //2月29天</h2>
+
+    <select name="" id="year"></select>
+    <select name="" id="month"></select>
+
+    <table>
+        <tr>
+            <td>日</td>
+            <td>一</td>
+            <td>二</td>
+            <td>三</td>
+            <td>四</td>
+            <td>五</td>
+            <td>六</td>
+        </tr>
+        <tr>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+        </tr>
+        <tr>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+        </tr>
+        <tr>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+        </tr>
+        <tr>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+        </tr>
+        <tr>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+            <td class="days"></td>
+        </tr>
+    </table>
+
+    </div>
+
+    <script>
+    
+    function read(){
+        // 清除表格內容
+            var td = document.querySelectorAll('.days'); 
+            for(var i=0; i<td.length; i++){
+                td[i].innerText = "";
+            }
+
+        console.log(`readSTart`);
+        // 建立時間物件
+        var year = document.querySelector('#year').value;
+        var month = document.querySelector('#month').value;
+        console.log(`${year} ${month}`);
+
+        var begin = {
+            firstWeek: new Date(year, month-1, 1).getDay(),
+            firstDay: new Date(year, month-1, 1).getDate()
+        }
+        // 建立日期循環
+            var arr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        // 抓取日期
+            var days = arr[month-1];
+            if(month-1 == 1 && year % 4 == 0){
+                days = 29;
+            }
+        // 填入總表格
+            for(var i=0; i<days; i++){
+                td[begin.firstWeek+i].innerText = i + 1;
+            }
+    }
+
+    window.addEventListener('load', function(){
+
+        // 填入可選取的年月
+        var select = document.getElementsByTagName('select');
+        var yearSet = {
+            Start: 2000,
+            End: 2040,
+            now: new Date().getFullYear()
+        }
+        for(var i=yearSet.Start; i<=yearSet.End; i++){
+            if(i == yearSet.now){
+                select[0].innerHTML += `<option value="${i}" selected>${i}</option>`;
+            }else{
+                select[0].innerHTML += `<option value="${i}">${i}</option>`;
+            }
+        }
+        var monthNow = new Date().getMonth()+1;
+        for(var i=1; i<=12; i++){
+            if(i == monthNow){
+                select[1].innerHTML += `<option value="${i}" selected>${i}</option>`;
+            }else{
+                select[1].innerHTML += `<option value="${i}">${i}</option>`;
+            }
+        }
+
+        // 預設啟動
+        read();
+
+        // 設定事件驅動
+        select[0].addEventListener('change', read, false);
+        select[1].addEventListener('change', read, false);
+    }, false);
+
+    </script>
+
+</body>
+</html>

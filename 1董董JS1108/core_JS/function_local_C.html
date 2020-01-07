@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<script type="text/javascript" src="lib.js"></script>
+</head>
+<body>
+
+
+<hr>
+<script type="text/javascript">
+var a;   //a:10   b:20   c:30 
+a = 10;
+
+var b = 20;
+
+c = 30;
+
+function test(a){  //a:100,  d : 400, 
+	var d = 40;
+
+	a = 100;
+	d = 400; 
+	e = 50;//......
+	return;
+}
+test();
+
+document.write( "a : " , a, "<br>");	//10
+document.write( "b : " , b, "<br>");	//20
+document.write( "c : " , c, "<br>");	//30
+//document.write( "d : " , d, "<br>");	//error
+document.write( "e : " , e, "<br>");	//50 
+</script>
+
+
+<h2>危險的範例</h2>  
+<script type="text/javascript">
+var total = 100; //要執行100次
+var i = 10;	//每做10次,....
+
+document.write("100 + 200 = ",sum(100,200), "<br>");
+document.write( "total : " , total, "<br>"); //被毀了
+document.write( "i : " , i, "<br>");
+
+</script>  
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+   
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- 01......原本 -->
+        <!-- <input v-model="input" @keydown="keydown"> -->
+        <!-- 02.........vue的語法堂 -->
+        <!-- <input v-model="input" @keydown.enter="keydownEnter"> -->
+        <!-- <input v-model="input" @keydown.13="keydownEnter"> -->
+        <!-- <input v-model="input" @keydown.esc="keydownEnter"> -->
+        <!-- 03....讓a當作輸入結束的符號 並且不會留在輸入框 -->
+        <input v-model="input" @keydown.a.prevent="keydownEnter">
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js'></script>
+  <script>
+  new Vue({
+      el:'#app',
+      data:{
+          input:'',
+          list:[],
+          
+      },
+      methods: {
+        keydown(e){
+            // list.push()
+            console.log(e);
+            console.log(e.keyCode) //不分大小寫 用這個就可以知道每個件的keycode了
+            // 當是輸入鍵才輸出的寫法
+            if(e.keyCode===13){
+               this.list.push(this.input);
+               this.input="";
+            }
+        },
+        keydownEnter(){  //這邊就不用寫e 事件物件
+           this.list.push(this.input);
+           this.input="";
+        }
+
+      },
+      computed: {
+        
+      },
+
+  })
+  
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--修飾符(modifier)語法糖</title>
+    <style>
+        .box{
+            border: 3px solid red;
+            min-width: 100px;
+            min-height: 100px;
+            padding: 50px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">        
+        <!-- prevent | e.preventDefault() -->
+        <!-- <a href="https://www.google.com" target="_blank">Google</a> -->
+        <!-- <a href="https://www.google.com" target="_blank" @click="linkClick">Google</a> -->
+        <a href="https://www.google.com" target="_blank" @click.prevent="linkClick">Google</a>
+        <p></p>
+
+        <!-- stop | e.stopPropagation() -->
+        <div class="box" @click.stop="divText='C'">
+            <div class="box" @click.stop="divText='B'">
+                <div class="box" @click.stop="divText='A'"></div>
+                <!-- <div class="box" @click="setA"></div> -->
+            </div>
+        </div>
+        <h1>{{divText}}</h1>
+    </div>
+    
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+               divText: '',
+            },
+            methods: {
+                linkClick(e){
+                    // e.preventDefault();
+                    alert('Do not open a new page.');
+                },
+                setA(e){
+                    e.stopPropagation();
+                    this.divText = 'A';
+                }
+            },
+        });
+    </script>
+</body>
+</html>

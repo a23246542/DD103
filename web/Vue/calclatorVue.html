@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        font:100% ;
+        text-transform: capitalize;
+        background: #ccc;
+
+    }
+
+    form{
+        background: #fff;
+        width: 210px;
+        padding: 15px;
+        margin: 20px;
+        box-shadow: 0px 0px 20 px  rgba(0,0,0,.6);
+    }
+
+    div{
+        margin: 8px 0;
+    }
+
+    label{
+        width: 150px;
+        /* float: left; */
+    }
+    input{
+        /* width: 120px; */
+        /* float: right; */
+    }
+    </style>
+</head>
+<body>
+    <form action="" id="theForm">
+        <fieldset>
+            <legend>Calculator</legend>
+            <div>
+                <label for="quantity">quantity</label>
+                <input type="number" min = "0" name="" id="quantity" v-model="num">
+            </div>
+            <div>
+                <label for="price">price per unit</label>
+                <input type="text" name="" id="price" v-model="num">
+            </div>
+            <div>
+                <label for="tax">Tax rate(%)</label>
+                <input type="text" name="" id="price">
+            </div>
+            <div>
+                <label for="discount">discount</label>
+                <input type="text" name="" id="discount">
+            </div>
+            <div>
+                <label for="price">total</label>
+                <input type="text" name="" id="total">
+            </div>
+            <div id="feedback"></div>
+        </fieldset>
+    </form>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    
+    
+    </script>
+</body>
+</html>

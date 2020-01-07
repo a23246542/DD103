@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--prop 驗證</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <counter :start="10"></counter> -->
+
+        <!-- 如何驗證屬性值是不是數值? -->
+        <counter :start="10"></counter>
+    </div>
+    
+    <script> 
+        Vue.component('counter',{
+            // props: ['start'],  //props是陣列，但也可以是物件
+            props: {
+                // start: Number,
+                start:{
+                    type: Number,
+                    default: 0,
+                    // default(){
+                    //     return ?.getSetting();
+                    // },
+                    validator(value){
+                        return value <=10;
+                    },
+                },
+            },
+            data(){
+                return{
+                    count:this.start,
+                };
+            },
+            template: `
+                <div>
+                    <h1 style="color:red;">{{count}}</h1>
+                    <button @click="count+=1"> +1 </button>
+                    <button @click="count-=1"> -1 </button>
+                </div>
+            `, 
+        }); 
+
+        new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+</html>

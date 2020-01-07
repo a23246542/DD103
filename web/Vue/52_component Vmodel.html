@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS--組件的v-model</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <div id="app">         
+        <!-- <my-counter :outer-count.sync="outerCount"></my-counter> -->
+        <!-- <my-counter :outer-count="outerCount" @update:outer-count="val=>outerCount=val"></my-counter> -->
+        <my-counter v-model="outerCount"></my-counter>
+        <!-- <my-counter :value="outerCount" @input="val=>outerCount=val"></my-counter> -->
+        <!-- <my-counter :count="outerCount" @input="val=>outerCount=val"></my-counter> -->
+        <!-- <my-counter :count="outerCount" @update:count="val=>outerCount=val"></my-counter> -->
+        <h1>{{outerCount}}</h1>
+    </div>
+    
+    <script> 
+        Vue.component('my-counter',{
+            model: {
+                prop: 'count',
+                event: 'update:count', //表示接收的事件是update:count
+            },
+            // props: ['outerCount'],
+            props: ['count'],
+            data(){
+                return {
+                    // innerCount: this.outerCount,
+                    // innerCount: this.value,
+                    innerCount: this.count,
+                };
+            },
+            methods: {
+                sync(){
+                    // this.$emit('update:outerCount',this.innerCount);
+                    // this.$emit('input',this.innerCount);
+                    this.$emit('update:count',this.innerCount);
+                },
+            },
+            template: `
+                <div>
+                    <h1>{{innerCount}}</h1>
+                    <button @click="innerCount+=1"> +1 </button>
+                    <button @click="sync"> sync </button>
+                </div>
+            `,        
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                outerCount: 10,  
+            },
+        });
+    </script>
+</body>
+</html>

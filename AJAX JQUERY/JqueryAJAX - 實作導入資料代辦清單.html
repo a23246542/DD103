@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+        <!-- 學習理由
+        學 jQuery 的理由是儘管它現在沒有那麼熱門了，但在小專案上面依然很好用，而且透過 jQuery 可以幫你減少一些原生很煩瑣的操作，節省時間。然後只是想要入門 jQuery 的話我覺得不用花多久時間，所以學一下比較好。
+        
+        Bootstrap 的話則是能夠美化你的介面並且加速排版。
+        
+        除了學新的工具以外，同時也是在訓練自己看文件的能力。今天你想要用 jQuery 來做 AJAX，應該要用哪個函式？想要套用 Bootstrap 的按鈕，class 應該怎麼用？這些都要透過 Google 或者是去官方文件查詢才會知道。看文件也是工程師的必備能力之一。
+        
+        學習目標
+        我覺得可以用這兩個東西寫出一個 TodoList 就沒問題了。 -->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
+    <script>
+        var item_template = "<li class='{{class}}'>{{num}}.{{name}}({{date}})</li>";
+        var data_url = "https://awiclass.monoame.com/api/command.php?type=get&name=tododata";
+        var tododata;
+
+        $.ajax({
+            url: data_url,
+            success: function (res) {
+                tododata = JSON.parse(res);
+                for (var i = 0; i < tododata.length; i++) {
+                    var item = tododata[i];
+                    var now_class = (item.done == true) ? "done" : "";
+
+
+                    var now_item =
+                        item_template.replace("{{name}}", item.name)
+                        .replace("{{num}}", i + 1)
+                        .replace("{{date}}", item.date)
+                        .replace("{{class}}", now_class);
+                    $("#listitem").append(now_item);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

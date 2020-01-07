@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <!-- <li v-for="item in classmate" v-on:click="DD103(item.name)">{{item.name}}</li> -->
+            <li v-for="item in classmate" @click="DD103(item.name)">{{item.name}}</li>
+            <!-- 呼叫當下是那個item -->
+        </ol>
+    </div>
+<!--
+    <script>
+        function test(){
+            alert(this);
+        }
+        test();   //window
+
+        //this代表function執行的當下的外層物件
+        //this執行的時候才存在
+
+        var data = {
+            name: 'Steve',
+            checkNum: function(){
+                alert(this);
+            },
+        };
+
+        data.checkNum();    //data
+    </script>
+-->   
+   
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello, VueJS!',
+                classmate: [{name:'Steve',age: 18},
+                            {name:'Tina',age: 20},
+                            {name:'Stella',age: 25},
+                            {name:'Anan',age: 15},
+                           ],
+            },
+            methods: {     //函數(方法)們
+                DD103(member){
+                    console.log(`DD103 member: ${member}`);
+                    console.log(this.message);
+                    console.log(this.$el);
+                },
+            },
+        });
+    </script>
+</body>
+</html>
